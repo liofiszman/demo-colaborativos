@@ -1,5 +1,6 @@
-package home;
+package Controllers;
 
+import home.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;

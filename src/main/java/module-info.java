@@ -8,4 +8,6 @@ module com.example.demo {
 
     opens home to javafx.fxml;
     exports home;
+    exports Controllers;
+    opens Controllers to javafx.fxml;
 }
