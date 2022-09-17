@@ -8,14 +8,14 @@
 <?import javafx.geometry.Insets?>
 
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="Controllers.HelloController">
+      fx:controller="Controllers.HomeController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
     <Button text="X" onAction="#backToHome"/>
 
-    <Label text ="Selector de reporte por mes" fx:id="diarioTitle"/>
-
-    <Button text="Elegir mes" onAction="#onObtenerReporteMensualButtonClick"/>
+    <Label text ="Actividades del día" fx:id="diarioTitle"/>
+    <Label/>
+    <Label text ="Numero de turno"/>
 </VBox>
 
