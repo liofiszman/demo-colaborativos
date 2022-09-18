@@ -1,2 +1,4 @@
-package Classes;public class Mecanico {
+package Classes;
+
+public class Mecanico {
 }

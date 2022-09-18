@@ -1,2 +1,4 @@
-package Classes;public class Vehiculo {
+package Classes;
+
+public class Vehiculo {
 }

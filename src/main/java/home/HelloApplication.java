@@ -15,14 +15,17 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
 
-
     @Override
     public void start(Stage stage) throws IOException {
         home(stage);
     }
 
     public static void home(Stage stage) throws IOException {
-        showStage(stage, "hello-view.fxml");
+        showStage(stage, "home-view.fxml");
+    }
+
+    public static void calendario(Stage stage) throws IOException{
+        showStage(stage, "calendario-view.fxml");
     }
     public static void asistencia(Stage stage) throws IOException {
         showStage(stage, "asistencia-view.fxml");
@@ -30,9 +33,7 @@ public class HelloApplication extends Application {
     public static void actividades(Stage stage) throws IOException {
         showStage(stage, "actividades-view.fxml");
     }
-    public static void calendario(Stage stage) throws IOException{
-        showStage(stage, "calendario-view.fxml");
-    }
+
     public static void conformidad(Stage stage) throws IOException {
         showStage(stage, "conformidad-view.fxml");
     }
@@ -69,12 +70,21 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.show();
 
-        //showStage(stage, "diario-view.fxml");
+        //showStage(stage, "reporte-diario-view.fxml");
     }
 
     public static void messelector(Stage stage) throws IOException {
-        showStage(stage, "messelector-view.fxml");
+        showStage(stage, "reporte-messelector-view.fxml");
     }
+
+    public static void buscador(Stage stage) throws IOException {
+        showStage(stage, "buscador-view.fxml");
+    }
+
+    //public static void buscadorResultado(Stage stage) throws IOException {
+    //    showStage(stage, "buscador-view.fxml");
+    //}
+
 
     public static void mensual(Stage stage) throws IOException {
         TableView<Arreglo> table = new TableView<Arreglo>();
@@ -101,22 +111,31 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.show();
 
-        //showStage(stage, "mensual-view.fxml");
+        //showStage(stage, "reporte-mensual-view.fxml");
     }
 
-    private static ObservableList<String> getEspecialidades() {
+    public static ObservableList<String> getEspecialidades() {
         ObservableList<String> list = FXCollections.observableArrayList(
-                "frenos",
-                "electricidad",
-                "tren delantero y amortiguación",
-                "encendido y carburación",
-                "chapa y pintura",
-                "mecánica en general"
+                "Mecánica en general",
+                "Frenos",
+                "Electricidad",
+                "Tren delantero y amortiguación",
+                "Encendido y carburación",
+                "Chapa y pintura"
         );
 
         return list;
     }
+    public static ObservableList<String> getCompanias() {
+        ObservableList<String> list = FXCollections.observableArrayList(
+                "Sancor",
+                "La Caja",
+                "San Cristobal",
+                "Orbis"
+        );
 
+        return list;
+    }
     private static ObservableList<Arreglo> getArreglos() {
         ObservableList<Arreglo> list = FXCollections.observableArrayList(
                 new Arreglo("03/09/2022","USP784", "SSJ-32", "mecánica en general",
@@ -129,7 +148,6 @@ public class HelloApplication extends Application {
 
         return list;
     }
-
         public static class Arreglo {
 
             public Arreglo(String fecha, String cliente, String mecanico, String especialidad,

@@ -1,2 +1,4 @@
-package Classes;public class Persona {
+package Classes;
+
+public abstract class Persona {
 }

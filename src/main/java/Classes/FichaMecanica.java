@@ -1,2 +1,4 @@
-package Classes;public class FichaMecanica {
+package Classes;
+
+public class FichaMecanica {
 }

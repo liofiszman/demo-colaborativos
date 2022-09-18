@@ -1,2 +1,4 @@
-package Classes;public class FichaConformidad {
+package Classes;
+
+public class FichaConformidad {
 }

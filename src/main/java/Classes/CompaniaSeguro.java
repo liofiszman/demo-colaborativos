@@ -1,2 +1,4 @@
-package Classes;public class CompaniaSeguro {
+package Classes;
+
+public class CompaniaSeguro {
 }

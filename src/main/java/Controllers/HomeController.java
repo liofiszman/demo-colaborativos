@@ -10,35 +10,22 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class HelloController {
+public class HomeController extends BaseController {
     @FXML
     private Label welcomeText;
 
-    @FXML
-    private AnchorPane showPane;
-
-    @FXML
-    protected void onRegistrarAsistenciaButtonClick(ActionEvent event) throws IOException {
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        HelloApplication.asistencia(stage);
-    }
-    @FXML
-    protected void onRegistrarActividadesButtonClick(ActionEvent event) throws IOException {
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        HelloApplication.actividades(stage);
-    }
     @FXML
     protected void onRegistrarCalendarioButtonClick(ActionEvent event) throws IOException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         HelloApplication.calendario(stage);
     }
+
     @FXML
-    protected void onRegistrarConformidadButtonClick(ActionEvent event) throws IOException {
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        HelloApplication.conformidad(stage);
-    }
+    private AnchorPane showPane;
     @FXML
     protected void onReporteDiarioButtonClick(ActionEvent event) throws IOException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -49,6 +36,23 @@ public class HelloController {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         HelloApplication.messelector(stage);
     }
+    @FXML
+    protected void onRegistrarAsistenciaButtonClick(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        HelloApplication.asistencia(stage);
+    }
+    @FXML
+    protected void onRegistrarActividadesButtonClick(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        HelloApplication.actividades(stage);
+    }
+
+    @FXML
+    protected void onRegistrarConformidadButtonClick(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        HelloApplication.conformidad(stage);
+    }
+
 
     @FXML
     protected void onObtenerReporteMensualButtonClick(ActionEvent event) throws IOException {
@@ -57,47 +61,35 @@ public class HelloController {
     }
 
     @FXML
-    protected void backToHome(ActionEvent event) throws IOException {
+    protected void onBuscarTurnos(ActionEvent event) throws IOException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        HelloApplication.home(stage);
+        HelloApplication.buscador(stage);
     }
 
-    // ASISTENCIA
-    @FXML
-    private Label datosTurnoText;
-    @FXML
-    private Label datosTurnoSecondText;
-    @FXML
-    private Label actividadesText;
-    @FXML
-    private Label insumosText;
+    /* @FXML
+    protected void onTurnosPatenteClick(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        HelloApplication.buscadorResultado(stage);
+    } */
 
-    @FXML
-    protected void datosTurnoButtonClick() {
-        datosTurnoText.setText("Turno para el 10/10 a las 13:30 hs");
-        datosTurnoSecondText.setText("Mecánico SSJ-32, especialidad General");
 
-        actividadesText.setText("Alineado y balanceado.");
-        insumosText.setText("Sin repuestos utilizados.");
-    }
+
+
+
+
 
     //CALENDARIO
-    @FXML
-    private Label patenteText;
-    @FXML
-    private Label clienteText;
-    @FXML
-    private Label especialidadText;
-    @FXML
-    private Label fechaTurnoText;
+
 
     @FXML
     private DatePicker datePicker;
 
-    public void confirmarTurnoButtonClick(ActionEvent actionEvent) {
-        patenteText.setText("OSJ-321");
-        clienteText.setText("Juan Carlos Castro");
-        especialidadText.setText("Frenos");
-        fechaTurnoText.setText("Turno para el 10/10 a las 13:30 hs");
+    @FXML
+    private Label buscadorText;
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 }
