@@ -20,7 +20,6 @@ public class FichaConformidad {
     public boolean setFichaConforme(boolean fichaConforme){
         return fichaConforme;
     }
-
     public String getMotivosDisconforme() {
         return motivosDisconforme;
     }
