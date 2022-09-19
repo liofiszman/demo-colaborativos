@@ -1,9 +1,10 @@
 package Classes;
 public class Turno {
     private int id;
-    private String patente;
-    private String cliente;
-
+    private String fecha;
+    private Mecanico mecanico;
+    private Vehiculo vehiculo;
+    private Boolean asistencia;
     public Turno(){
     }
 
@@ -13,16 +14,23 @@ public class Turno {
     public void setId(int id) {
         this.id = id;
     }
-    public String getPatente(){
-        return patente;
+
+    public String getFecha(){
+        return fecha;
     }
-    public void setPatente(String patente){
-        this.patente = patente;
+    public void setFecha(String fecha){
+        this.fecha = fecha;
     }
-    public String getCliente(){
-        return cliente;
+    public Vehiculo getVehiculo(){
+        return vehiculo;
     }
-    public void setCliente(String cliente){
-        this.patente = cliente;
+    public void setVehiculo(Vehiculo vehiculo){
+        this.vehiculo = vehiculo;
+    }
+    public boolean getAsistencia(){
+        return asistencia;
+    }
+    public boolean setAsistnecia(boolean asistencia){
+        return asistencia;
     }
 }
