@@ -1,26 +1,25 @@
 package Classes;
 public class Vehiculo {
-    private int id;
-    private String marca;
-    private String patente;
-    private CompaniaSeguro companiaSeguro;
-    private String numeroPoliza;
-
     public Vehiculo() {
     }
 
+    private int id;
     public int getId() {
         return id;
     }
     public void setId(int id) {
         this.id = id;
     }
+
+    private String marca;
     public String getMarca() {
         return marca;
     }
     public void setMarca(String marca) {
         this.marca = marca;
     }
+
+    private String patente;
     public String getPatente() {
         return patente;
     }
@@ -28,12 +27,15 @@ public class Vehiculo {
         this.patente = patente;
     }
 
+    private CompaniaSeguro companiaSeguro;
     public CompaniaSeguro getCompaniaSeguro() {
         return companiaSeguro;
     }
     public void setCompaniaSeguro(CompaniaSeguro companiaSeguro) {
         this.companiaSeguro = companiaSeguro;
     }
+
+    private String numeroPoliza;
     public String getNumeroPoliza() {
         return numeroPoliza;
     }

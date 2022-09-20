@@ -1,5 +1,6 @@
 package Controllers;
 
+import Business.TurnoBusinessObject;
 import Classes.Mecanico;
 import Classes.Opcion;
 import Classes.Turno;
@@ -23,17 +24,19 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class TurnosController extends BaseController {
-    private Opcion opcion ;
+    private Opcion opcion;
+    private TurnoBusinessObject _turnosBO = new TurnoBusinessObject();
 
     /// Captura la información del formulario para solicitar turno
     @FXML
     protected void verOpcionesButtonClick(ActionEvent event) throws IOException {
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         opcion.setPatente(this.PatenteTextField.getText());
         opcion.setCliente(this.ClienteTextField.getText());
         opcion.setEspecialidad(this.selectedEspecialidad.getText());
         opcion.setCompania(this.selectedCompania.getText());
         opcion.setFecha(this.FechaSeleccionada.getValue());
+
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         verOpciones(stage);
     }
 
@@ -62,9 +65,10 @@ public class TurnosController extends BaseController {
     }
 
     /// Confirma un turno de la lista previa.
-    private void reservarTurno(Turno turno) {
+    private void reservarTurno(Turno turno, ActionEvent event) throws IOException {
         // TODO : llamar elemento del DOM para reservar turno
-        // TODO : redirigir a buscador de turnos.
+
+        backToHome(event);
     }
 
 
@@ -106,7 +110,11 @@ public class TurnosController extends BaseController {
                     {
                         btn.setOnAction((ActionEvent event) -> {
                             Turno turno = getTableView().getItems().get(getIndex());
-                            reservarTurno(turno);
+                            try {
+                                reservarTurno(turno, event);
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
                         });
                     }
 

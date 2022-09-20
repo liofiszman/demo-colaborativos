@@ -1,12 +1,17 @@
 package Classes;
 public class FichaConformidad {
-    private int id;
-    private FichaMecanica fichaMecanica;
-    private boolean fichaConforme;
-    private String motivosDisconforme;
-
-    public FichaConformidad() {
+    public FichaConformidad(int id, boolean firmaConforme) {
+        this.id = id;
+        this.firmaConforme = firmaConforme;
     }
+
+    public FichaConformidad(int id, boolean firmaConforme, String motivosDisconforme) {
+        this.id = id;
+        this.firmaConforme = firmaConforme;
+        this.motivosDisconforme = motivosDisconforme;
+    }
+
+    private int id;
     public int getId() {
         return id;
     }
@@ -14,16 +19,19 @@ public class FichaConformidad {
         this.id = id;
     }
 
-    public boolean getFichaConforme(){
-        return fichaConforme;
-    }
-    public boolean setFichaConforme(boolean fichaConforme){
-        return fichaConforme;
-    }
+    private String motivosDisconforme;
     public String getMotivosDisconforme() {
         return motivosDisconforme;
     }
     public void setMotivosDisconforme(String motivosDisconforme) {
         this.motivosDisconforme = motivosDisconforme;
+    }
+
+    private boolean firmaConforme;
+    public boolean isFirmaConforme() {
+        return firmaConforme;
+    }
+    public void setFirmaConforme(boolean firmaConforme) {
+        this.firmaConforme = firmaConforme;
     }
 }
