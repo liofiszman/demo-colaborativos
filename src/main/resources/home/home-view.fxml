@@ -13,6 +13,7 @@
 
     <Label text ="Seleccione una acción" fx:id="welcomeText"/>
     <Button text="Solicitar turno" onAction="#onRegistrarCalendarioButtonClick"/>
+    <Button text="Buscar turno" onAction="#onBuscarTurnosButtonClick"/>
     <Button text="Registrar asistencia" onAction="#onRegistrarAsistenciaButtonClick"/>
     <Button text="Registrar actividades" onAction="#onRegistrarActividadesButtonClick"/>
     <Button text="Registrar ficha de conformidad" onAction="#onRegistrarConformidadButtonClick"/>

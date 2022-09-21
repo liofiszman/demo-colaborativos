@@ -27,7 +27,7 @@
     <Label fx:id="datosTurnoText"/>
     <Label fx:id="datosTurnoSecondText"/>
 
-    <Button text="Confirmar asistencia" onAction="#backToHome"/>
-    <Button text="Cancelar turno" onAction="#backToHome"/>
+    <Button text="Confirmar asistencia" onAction="#confirmarTurnoButtonClick"/>
+    <Button text="Cancelar turno" onAction="#cancelarTurnoButtonClick"/>
 </VBox>
 

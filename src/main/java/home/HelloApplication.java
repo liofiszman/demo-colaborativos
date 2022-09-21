@@ -1,5 +1,6 @@
 package home;
 
+import Business.TurnoBusinessObject;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,9 +15,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
+    public static TurnoBusinessObject turnosBO;
 
     @Override
     public void start(Stage stage) throws IOException {
+        turnosBO = new TurnoBusinessObject();
         home(stage);
     }
 
@@ -81,9 +84,9 @@ public class HelloApplication extends Application {
         showStage(stage, "buscador-view.fxml");
     }
 
-    //public static void buscadorResultado(Stage stage) throws IOException {
-    //    showStage(stage, "buscador-view.fxml");
-    //}
+    public static void buscadorResultado(Stage stage) throws IOException {
+        showStage(stage, "buscador-view.fxml");
+    }
 
 
     public static void mensual(Stage stage) throws IOException {
@@ -114,28 +117,6 @@ public class HelloApplication extends Application {
         //showStage(stage, "reporte-mensual-view.fxml");
     }
 
-    public static ObservableList<String> getEspecialidades() {
-        ObservableList<String> list = FXCollections.observableArrayList(
-                "Mecánica en general",
-                "Frenos",
-                "Electricidad",
-                "Tren delantero y amortiguación",
-                "Encendido y carburación",
-                "Chapa y pintura"
-        );
-
-        return list;
-    }
-    public static ObservableList<String> getCompanias() {
-        ObservableList<String> list = FXCollections.observableArrayList(
-                "Sancor",
-                "La Caja",
-                "San Cristobal",
-                "Orbis"
-        );
-
-        return list;
-    }
     private static ObservableList<Arreglo> getArreglos() {
         ObservableList<Arreglo> list = FXCollections.observableArrayList(
                 new Arreglo("03/09/2022","USP784", "SSJ-32", "mecánica en general",

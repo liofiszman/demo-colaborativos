@@ -1,5 +1,9 @@
 package Classes;
 public class FichaConformidad {
+    public FichaConformidad(int id) {
+        this.id = id;
+    }
+
     public FichaConformidad(int id, boolean firmaConforme) {
         this.id = id;
         this.firmaConforme = firmaConforme;

@@ -1,12 +1,10 @@
 package Controllers;
 
 import Business.TurnoBusinessObject;
-import Classes.Mecanico;
 import Classes.Opcion;
 import Classes.Turno;
 import home.HelloApplication;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -25,7 +23,7 @@ import java.util.ResourceBundle;
 
 public class TurnosController extends BaseController {
     private Opcion opcion;
-    private TurnoBusinessObject _turnosBO = new TurnoBusinessObject();
+    private String numeroTurno;
 
     /// Captura la información del formulario para solicitar turno
     @FXML
@@ -42,19 +40,18 @@ public class TurnosController extends BaseController {
 
     /// Lista las opciones de turnos en formato de tabla.
     public void verOpciones(Stage stage) {
-        List<Turno> opciones = new ArrayList<Turno>();
-
-        opciones.add(new Turno());
-
+        // llamar elemento del DOM para obtener opciones de turnos a partir de los datos en Opcion opcion
+        List<Turno> opciones = HelloApplication.turnosBO.obtenerTurnos(opcion);
         TableView<Turno> tableOpciones = new TableView<Turno>();
-        // TODO : llamar elemento del DOM para obtener opciones de turnos a partir de los datos en Opcion opcion
         tableOpciones.setItems(FXCollections.observableArrayList(opciones));
 
         TableColumn fechaCol = new TableColumn("Fecha");
         fechaCol.setCellValueFactory(new PropertyValueFactory("fecha"));
+        TableColumn horaCol = new TableColumn("Hora");
+        horaCol.setCellValueFactory(new PropertyValueFactory("hora"));
         TableColumn mecanicoCol = new TableColumn("Mecanico");
-        mecanicoCol.setCellValueFactory(new PropertyValueFactory("mecanico"));
-        tableOpciones.getColumns().addAll(fechaCol, mecanicoCol);
+        mecanicoCol.setCellValueFactory(new PropertyValueFactory("mecanicoNombre"));
+        tableOpciones.getColumns().addAll(fechaCol, horaCol, mecanicoCol);
 
         addButtonToTable(tableOpciones);
 
@@ -65,14 +62,21 @@ public class TurnosController extends BaseController {
     }
 
     /// Confirma un turno de la lista previa.
-    private void reservarTurno(Turno turno, ActionEvent event) throws IOException {
-        // TODO : llamar elemento del DOM para reservar turno
+    private void reservarTurno(Turno turno, ActionEvent event) throws IOException, InterruptedException {
+        int turnoN = HelloApplication.turnosBO.addTurno(turno, opcion);
+        turno.setId(turnoN);
 
-        backToHome(event);
+        new BuscadorController().buscarTurno(turno,event);
+        //Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        //HelloApplication.buscadorResultado(stage);
     }
 
+    @FXML private TextField BuscadorTurnoTextField;
+    @FXML private TextField BuscadorPatenteTextField;
 
-
+    @FXML private TextField TurnoTextField;
+    @FXML private TextField datosTurnoText;
+    @FXML private TextField datosTurnoSecondText;
     //region Turnos XML Generation
     @FXML private ComboBox<String> especialidadCombo;
     @FXML private Label selectedEspecialidad;
@@ -88,14 +92,31 @@ public class TurnosController extends BaseController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        especialidadCombo.getItems().setAll(HelloApplication.getEspecialidades());
+        especialidadCombo.getItems().setAll(HelloApplication.turnosBO.obtenerEspecialidades());
         selectedEspecialidad.textProperty().bind(especialidadCombo.getSelectionModel().selectedItemProperty());
 
-        companiaCombo.getItems().setAll(HelloApplication.getCompanias());
+        companiaCombo.getItems().setAll(HelloApplication.turnosBO.getCompanias());
         selectedCompania.textProperty().bind(companiaCombo.getSelectionModel().selectedItemProperty());
 
         if (this.opcion == null)
             opcion = new Opcion();
+    }
+
+    @FXML
+    protected void datosTurnoButtonClick(ActionEvent event) {
+        numeroTurno = this.TurnoTextField.getText();
+
+        Turno turno = HelloApplication.turnosBO.obtenerTurno(numeroTurno);
+
+        if(turno == null) {
+            datosTurnoText.setText("Turno "+numeroTurno+" no encontrado.");
+        }
+        else {
+            String formatoCalendario = turno.getFecha().toString();
+            String FormatoHora = turno.getHora().toString();
+            datosTurnoText.setText("Turno para el "+formatoCalendario+" a las "+FormatoHora+" hs");
+            datosTurnoSecondText.setText("Mecánico "+turno.getMecanico().getNombre()+", "+turno.getMecanico().getEspecialidad());
+        }
     }
 
     private void addButtonToTable(TableView table) {
@@ -112,13 +133,11 @@ public class TurnosController extends BaseController {
                             Turno turno = getTableView().getItems().get(getIndex());
                             try {
                                 reservarTurno(turno, event);
-                            } catch (IOException e) {
+                            } catch (IOException | InterruptedException e) {
                                 throw new RuntimeException(e);
                             }
                         });
                     }
-
-
 
                     @Override
                     public void updateItem(Void item, boolean empty) {
@@ -137,7 +156,4 @@ public class TurnosController extends BaseController {
         table.getColumns().add(colBtn);
     }
     //endregion
-
-
-
 }

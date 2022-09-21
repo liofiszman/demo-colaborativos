@@ -61,32 +61,10 @@ public class HomeController extends BaseController {
     }
 
     @FXML
-    protected void onBuscarTurnos(ActionEvent event) throws IOException {
+    protected void onBuscarTurnosButtonClick(ActionEvent event) throws IOException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         HelloApplication.buscador(stage);
     }
-
-    /* @FXML
-    protected void onTurnosPatenteClick(ActionEvent event) throws IOException {
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        HelloApplication.buscadorResultado(stage);
-    } */
-
-
-
-
-
-
-
-    //CALENDARIO
-
-
-    @FXML
-    private DatePicker datePicker;
-
-    @FXML
-    private Label buscadorText;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

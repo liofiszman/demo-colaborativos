@@ -1,6 +1,7 @@
 package Classes;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.Locale;
 
@@ -24,4 +25,24 @@ public class Opcion {
     private LocalDate Fecha;
     public void setFecha(LocalDate value) { Fecha = value; }
     public LocalDate getFecha() { return Fecha; }
+
+    private LocalTime Hora;
+
+    public LocalTime getHora() {
+        return Hora;
     }
+
+    public void setHora(LocalTime hora) {
+        Hora = hora;
+    }
+
+    private Mecanico Mecanico;
+
+    public Classes.Mecanico getMecanico() {
+        return Mecanico;
+    }
+
+    public void setMecanico(Classes.Mecanico mecanico) {
+        Mecanico = mecanico;
+    }
+}

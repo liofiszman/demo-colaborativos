@@ -1,6 +1,12 @@
 package Classes;
 public class Vehiculo {
-    public Vehiculo() {
+    public Vehiculo(int id, String marca, String patente, CompaniaSeguro companiaSeguro, String numeroPoliza, Cliente cliente) {
+        setId(id);
+        setMarca(marca);
+        setPatente(patente);
+        setCompaniaSeguro(companiaSeguro);
+        setNumeroPoliza(numeroPoliza);
+        setCliente(cliente);
     }
 
     private int id;
@@ -41,5 +47,13 @@ public class Vehiculo {
     }
     public void setNumeroPoliza (String numeroPoliza) {
         this.numeroPoliza = numeroPoliza;
+    }
+
+    private Cliente cliente;
+    public Cliente getCliente() {
+        return cliente;
+    }
+    public void setCliente (Cliente numeroPoliza) {
+        this.cliente = cliente;
     }
 }
