@@ -41,6 +41,18 @@ public class HelloApplication extends Application {
         showStage(stage, "conformidad-view.fxml");
     }
 
+    public static void messelector(Stage stage) throws IOException {
+        showStage(stage, "reporte-messelector-view.fxml");
+    }
+
+    public static void buscador(Stage stage) throws IOException {
+        showStage(stage, "buscador-view.fxml");
+    }
+
+    public static void buscadorResultado(Stage stage) throws IOException {
+        showStage(stage, "buscador-view.fxml");
+    }
+
     public static void showStage(Stage stage, String viewName) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(viewName));
         Scene scene = new Scene(fxmlLoader.load(), 640, 480);
@@ -72,22 +84,7 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(vbox, 800, 600);
         stage.setScene(scene);
         stage.show();
-
-        //showStage(stage, "reporte-diario-view.fxml");
     }
-
-    public static void messelector(Stage stage) throws IOException {
-        showStage(stage, "reporte-messelector-view.fxml");
-    }
-
-    public static void buscador(Stage stage) throws IOException {
-        showStage(stage, "buscador-view.fxml");
-    }
-
-    public static void buscadorResultado(Stage stage) throws IOException {
-        showStage(stage, "buscador-view.fxml");
-    }
-
 
     public static void mensual(Stage stage) throws IOException {
         TableView<Arreglo> table = new TableView<Arreglo>();
@@ -113,8 +110,6 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(vbox, 800, 600);
         stage.setScene(scene);
         stage.show();
-
-        //showStage(stage, "reporte-mensual-view.fxml");
     }
 
     private static ObservableList<Arreglo> getArreglos() {

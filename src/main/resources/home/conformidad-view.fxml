@@ -8,7 +8,7 @@
 <?import javafx.geometry.Insets?>
 
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="Controllers.TurnosController">
+      fx:controller="Controllers.ConformidadController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
@@ -24,8 +24,8 @@
     <Label fx:id="actividadesText" />
     <Label fx:id="insumosText"  />
 
-    <Button text="CONFORME" onAction="#backToHome"/>
-    <Button text="XX NO CONFORME XX" onAction="#backToHome"/>
+    <Button text="CONFORME" onAction="#conformeButtonClick"/>
+    <Button text="XX NO CONFORME XX" onAction="#inconformeButtonClick"/>
 
 </VBox>
 

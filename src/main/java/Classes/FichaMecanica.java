@@ -27,7 +27,7 @@ public class FichaMecanica {
     public String getRepuestos() {
         return repuestos;
     }
-    public void setRepuestos(String apellido) {
+    public void setRepuestos(String repuestos) {
         this.repuestos = repuestos;
     }
 

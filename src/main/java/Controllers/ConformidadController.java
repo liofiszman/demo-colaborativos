@@ -11,13 +11,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ActividadesController extends BaseController  {
+public class ConformidadController extends BaseController  {
     private String numeroTurno;
 
     @FXML
     protected void datosTurnoButtonClick(ActionEvent event) {
-        numeroTurno = this.TurnoTextField.getText();
-
+        numeroTurno = this.numeroTurnoText.getText();
         Turno turno = HelloApplication.turnosBO.obtenerTurno(numeroTurno);
 
         if(turno == null) {
@@ -26,31 +25,34 @@ public class ActividadesController extends BaseController  {
         else {
             String formatoCalendario = turno.getFecha().toString();
             String FormatoHora = turno.getHora().toString();
+
             datosTurnoText.setText("Turno para el "+formatoCalendario+" a las "+FormatoHora+" hs");
             datosTurnoSecondText.setText("Mecánico "+turno.getMecanico().getNombre()+", "+turno.getMecanico().getEspecialidad());
-
-            actividadesTextField.setText(turno.getFichaMecanica().getActividades());
-            insumosTextField.setText(turno.getFichaMecanica().getRepuestos());
+            actividadesText.setText(turno.getFichaMecanica().getActividades());
+            insumosText.setText(turno.getFichaMecanica().getRepuestos());
         }
     }
 
-    @FXML
-    protected void registrarButtonClick(ActionEvent event) throws IOException {
-        numeroTurno = this.TurnoTextField.getText();
-        String actividadesText = this.actividadesTextField.getText();
-        String insumosText = this.insumosTextField.getText();
-        HelloApplication.turnosBO.registrarActividades(numeroTurno,actividadesText,insumosText);
+    @FXML protected void conformeButtonClick(ActionEvent event) throws IOException {
+        numeroTurno = this.numeroTurnoText.getText();
+        HelloApplication.turnosBO.firmaConforme(numeroTurno);
+        backToHome(event);
+    }
+
+    @FXML protected void inconformeButtonClick(ActionEvent event) throws IOException {
+        numeroTurno = this.numeroTurnoText.getText();
+        HelloApplication.turnosBO.firmaInconforme(numeroTurno);
         backToHome(event);
     }
 
     // ASISTENCIA
-    @FXML private TextField TurnoTextField;
+    @FXML private TextField numeroTurnoText;
 
     @FXML private Label datosTurnoText;
     @FXML private Label datosTurnoSecondText;
 
-    @FXML private TextField actividadesTextField;
-    @FXML private TextField insumosTextField;
+    @FXML private Label actividadesText;
+    @FXML private Label insumosText;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

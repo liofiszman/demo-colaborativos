@@ -33,6 +33,14 @@ public class DAOFichaMecanica implements IDAOFichaMecanica {
         return _fichasMecanicas;
     }
 
+    public void actualizar(FichaMecanica ficha){
+        _ID = ficha.getId();
+
+        _fichasConformidad.actualizar(ficha.getFichaConformidad());
+        _fichasMecanicas.removeIf(getByID);
+        _fichasMecanicas.add(ficha);
+    }
+
     public FichaMecanica obtenerFichaMecanica(String id){
         try {
             _ID = Integer.valueOf(id);

@@ -28,7 +28,7 @@
     <TextField fx:id="actividadesTextField" promptText="actividades..." />
     <TextField fx:id="insumosTextField" promptText="insumos..." />
 
-    <Button text="Registrar" onAction="#backToHome"/>
+    <Button text="Registrar" onAction="#registrarButtonClick"/>
 
 </VBox>
 
