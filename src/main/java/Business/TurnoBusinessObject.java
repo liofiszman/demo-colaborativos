@@ -35,6 +35,17 @@ public class TurnoBusinessObject {
                 .stream().map(CompaniaSeguro::getNombre).toList();
     }
 
+    public void registrarActividades(String numeroTurno,String actividadesText,String insumosText){
+        turnos.registrarActividades(numeroTurno, actividadesText, insumosText);
+    }
+
+    public void firmaConforme(String numeroTurno){
+        turnos.firmaConforme(numeroTurno);
+    }
+    public void firmaInconforme(String numeroTurno){
+        turnos.firmaInconforme(numeroTurno);
+    }
+
     public Turno obtenerTurno(String id) {
         return turnos.obtenerTurno(id);
     }

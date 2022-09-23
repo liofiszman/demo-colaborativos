@@ -14,4 +14,8 @@ public interface IDAOTurno {
     void cancelarTurno(String id);
     int addTurno(Turno turno, Opcion opcion);
     String obtenerTurnoID();
+    void registrarActividades(String numeroTurno, String actividadesText, String insumosText);
+
+    void firmaConforme(String numeroTurno);
+    void firmaInconforme(String numeroTurno);
 }

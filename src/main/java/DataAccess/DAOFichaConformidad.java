@@ -43,6 +43,13 @@ public class DAOFichaConformidad implements IDAOFichaConformidad {
         return nueva;
     }
 
+    public void actualizar(FichaConformidad ficha){
+        _ID = ficha.getId();
+
+        _fichasConformidad.removeIf(getByID);
+        _fichasConformidad.add(ficha);
+    }
+
     private Predicate<FichaConformidad> getByID = new Predicate<FichaConformidad>() {
         @Override
         public boolean test(FichaConformidad element) {

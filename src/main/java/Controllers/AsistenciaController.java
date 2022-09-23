@@ -34,15 +34,25 @@ public class AsistenciaController extends BaseController  {
     @FXML
     protected void confirmarTurnoButtonClick(ActionEvent event) throws IOException {
         numeroTurno = this.TurnoTextField.getText();
-        HelloApplication.turnosBO.registrarAsistencia(numeroTurno);
-        backToHome(event);
+        try{
+            HelloApplication.turnosBO.registrarAsistencia(numeroTurno);
+            backToHome(event);
+        }
+        catch(Exception ex){
+            datosTurnoText.setText("No se encontró un el turno "+numeroTurno);
+        }
     }
 
     @FXML
     protected void cancelarTurnoButtonClick(ActionEvent event) throws IOException {
         numeroTurno = this.TurnoTextField.getText();
-        HelloApplication.turnosBO.cancelarTurno(numeroTurno);
-        backToHome(event);
+        try{
+            HelloApplication.turnosBO.cancelarTurno(numeroTurno);
+            backToHome(event);
+        }
+        catch(Exception ex){
+            datosTurnoText.setText("No se encontró un el turno "+numeroTurno+" para cancelar");
+        }
     }
 
     // ASISTENCIA

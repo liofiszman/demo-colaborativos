@@ -28,20 +28,18 @@ public class ActividadesController extends BaseController  {
             String FormatoHora = turno.getHora().toString();
             datosTurnoText.setText("Turno para el "+formatoCalendario+" a las "+FormatoHora+" hs");
             datosTurnoSecondText.setText("Mecánico "+turno.getMecanico().getNombre()+", "+turno.getMecanico().getEspecialidad());
+
+            actividadesTextField.setText(turno.getFichaMecanica().getActividades());
+            insumosTextField.setText(turno.getFichaMecanica().getRepuestos());
         }
     }
 
     @FXML
-    protected void confirmarTurnoButtonClick(ActionEvent event) throws IOException {
+    protected void registrarButtonClick(ActionEvent event) throws IOException {
         numeroTurno = this.TurnoTextField.getText();
-        HelloApplication.turnosBO.registrarAsistencia(numeroTurno);
-        backToHome(event);
-    }
-
-    @FXML
-    protected void cancelarTurnoButtonClick(ActionEvent event) throws IOException {
-        numeroTurno = this.TurnoTextField.getText();
-        HelloApplication.turnosBO.cancelarTurno(numeroTurno);
+        String actividadesText = this.actividadesTextField.getText();
+        String insumosText = this.insumosTextField.getText();
+        HelloApplication.turnosBO.registrarActividades(numeroTurno,actividadesText,insumosText);
         backToHome(event);
     }
 
@@ -50,6 +48,9 @@ public class ActividadesController extends BaseController  {
 
     @FXML private Label datosTurnoText;
     @FXML private Label datosTurnoSecondText;
+
+    @FXML private TextField actividadesTextField;
+    @FXML private TextField insumosTextField;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

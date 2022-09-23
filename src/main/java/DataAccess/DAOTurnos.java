@@ -27,6 +27,9 @@ public class DAOTurnos implements IDAOTurno {
             _turnos.add(new Turno(123, java.time.LocalDate.of(2022,10,21),
                     LocalTime.of(10,0,0), _mecanicos.obtenerMecanico("001"),
                     _vehiculos.obtenerVehiculo("001"), _fichaMecanica.obtenerFichaMecanica("001") ));
+            _turnos.add(new Turno(001, java.time.LocalDate.now(),
+                    LocalTime.of(10,0,0), _mecanicos.obtenerMecanico("123"),
+                    _vehiculos.obtenerVehiculo("002"), _fichaMecanica.obtenerFichaMecanica("002") ));
         }
     }
 
@@ -73,17 +76,51 @@ public class DAOTurnos implements IDAOTurno {
     public void registrarAsistencia(String id) {
         _ID = Integer.valueOf(id);
         Turno turno =  _turnos.stream().filter(getByID).filter(checkActive).findFirst().get();
-        _turnos.removeIf(getByID);
+
         turno.setAsistnecia(true);
+        _turnos.removeIf(getByID);
         _turnos.add(turno);
     }
     public void cancelarTurno(String id) {
         _ID = Integer.valueOf(id);
         Turno turno =  _turnos.stream().filter(getByID).filter(checkActive).findFirst().get();
-        _turnos.removeIf(getByID);
+
         turno.setAsistnecia(false);
         turno.setActive(false);
+        _turnos.removeIf(getByID);
         _turnos.add(turno);
+    }
+
+    public void registrarActividades(String numeroTurno, String actividadesText, String insumosText){
+        _ID = Integer.valueOf(id);
+        Turno turno =  _turnos.stream().filter(getByID).filter(checkActive).findFirst().get();
+
+        turno.getFichaMecanica().setActividades(actividadesText);
+        turno.getFichaMecanica().setRepuestos(insumosText);
+
+        _fichaMecanica.actualizar(turno.getFichaMecanica());
+        _turnos.removeIf(getByID);
+        _turnos.add(turno);
+    }
+
+    public void firmaConforme(String numeroTurno){
+        firmar(numeroTurno, true);
+    }
+
+    private void firmar(String numeroTurno, boolean conforme) {
+        _ID = Integer.valueOf(id);
+        Turno turno =  _turnos.stream().filter(getByID).filter(checkActive).findFirst().get();
+        turno.getFichaMecanica().getFichaConformidad().setFirmaConforme(conforme);
+        turno.getFichaMecanica().getFichaConformidad().setFirmada(true);
+
+        _fichaMecanica.actualizar(turno.getFichaMecanica());
+
+        _turnos.removeIf(getByID);
+        _turnos.add(turno);
+    }
+
+    public void firmaInconforme(String numeroTurno){
+        firmar(numeroTurno, false);_ID = Integer.valueOf(id);
     }
 
     public List<Turno> obtenerTurnos(Opcion opcion, List<Mecanico> mecanicos){

@@ -38,4 +38,14 @@ public class FichaConformidad {
     public void setFirmaConforme(boolean firmaConforme) {
         this.firmaConforme = firmaConforme;
     }
+
+    private boolean firmada;
+
+    public boolean isFirmada() {
+        return firmada;
+    }
+
+    public void setFirmada(boolean firmada) {
+        this.firmada = firmada;
+    }
 }
