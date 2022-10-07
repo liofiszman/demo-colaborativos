@@ -2,9 +2,10 @@ package Business;
 
 public enum TipoDAOEnum {
     DAOCliente,
-    DAOCOmpaniaSeguro,
+    DAOMecanico,
+    DAOCompaniaSeguro,
     DAOFichaConformidad,
-    DAOFIchaMecanica,
+    DAOFichaMecanica,
     DAOTurnos,
     DAOVehiculo
 }

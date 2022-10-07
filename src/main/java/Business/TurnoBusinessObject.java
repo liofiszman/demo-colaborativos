@@ -9,9 +9,18 @@ import DataAccess.*;
 import java.util.List;
 
 public class TurnoBusinessObject {
-    DAOTurnos turnos = new DAOTurnos();
-    DAOMecanico mecanicos = new DAOMecanico();
-    DAOCompaniaSeguro companiasSeguro = new DAOCompaniaSeguro();
+    DAOTurnos turnos = (DAOTurnos) getDAO(TipoDAOEnum.DAOTurnos);
+    DAOMecanico mecanicos = (DAOMecanico) getDAO(TipoDAOEnum.DAOMecanico);
+    DAOCompaniaSeguro companiasSeguro = (DAOCompaniaSeguro) getDAO(TipoDAOEnum.DAOCompaniaSeguro);
+
+    IDAO getDAO(TipoDAOEnum tipoDAO) {
+        switch (tipoDAO) {
+            case DAOTurnos -> { return new DAOTurnos(); }
+            case DAOMecanico -> { return new DAOMecanico(); }
+            case DAOCompaniaSeguro -> { return new DAOCompaniaSeguro(); }
+            default -> { return null; }
+        }
+    }
 
     public List<Turno> obtenerTurnos(String patente) {
         return turnos.obtenerTurnos(patente);
