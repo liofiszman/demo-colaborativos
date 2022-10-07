@@ -4,12 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e91a7b1-eab4-4380-8919-0c98634ac732" name="Changes" comment="sarasa">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/1dab3bdc-7096-4402-996d-50154916eb6c.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/1dab3bdc-7096-4402-996d-50154916eb6c/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="6e91a7b1-eab4-4380-8919-0c98634ac732" name="Changes" comment="Added DTO's">
+      <change afterPath="$PROJECT_DIR$/src/main/java/DTO/ClienteDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DTO/CompaniaSegurosDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DTO/FichaConformidadDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DTO/FichaMecanicaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DTO/HorarioAtencionDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DTO/MecanicoDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DTO/TurnoDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DTO/VehiculoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/JPAMappingSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/JPAMappingSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/POJOGeneratorSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/POJOGeneratorSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1dab3bdc-7096-4402-996d-50154916eb6c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1dab3bdc-7096-4402-996d-50154916eb6c.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/demo-colaborativos.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/demo-colaborativos.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/DAOTurnos.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/DAOTurnos.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/IDAOCliente.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/IDAOCliente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/IDAOCompaniaSeguro.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/IDAOCompaniaSeguro.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/IDAOFichaConformidad.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/IDAOFichaConformidad.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/IDAOFichaMecanica.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/IDAOFichaMecanica.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/IDAOMecanico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/IDAOMecanico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/IDAOTurno.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/IDAOTurno.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/IDAOVehiculo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/IDAOVehiculo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +67,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.15057471",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml"
+    "settings.editor.selected.configurable": "pojo-generator.jpa-mapping"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -78,7 +96,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665174082890</updated>
-      <workItem from="1665174087616" duration="6441000" />
+      <workItem from="1665174087616" duration="7444000" />
     </task>
     <task id="LOCAL-00001" summary="sarasa">
       <created>1665181184047</created>
@@ -87,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665181184047</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="sarasa">
+      <created>1665181342868</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1665181342868</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -107,7 +132,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="sarasa" />
-    <option name="LAST_COMMIT_MESSAGE" value="sarasa" />
+    <MESSAGE value="Added DTO's" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added DTO's" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
