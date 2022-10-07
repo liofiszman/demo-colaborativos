@@ -16,6 +16,6 @@
 
     <Label text ="Selector de reporte por mes" fx:id="diarioTitle"/>
 
-    <Button text="Elegir mes" onAction="#onObtenerReporteMensualButtonClick"/>
+    <!-- <Button text="Elegir mes" onAction="#onObtenerReporteMensualButtonClick"/> -->
 </VBox>
 

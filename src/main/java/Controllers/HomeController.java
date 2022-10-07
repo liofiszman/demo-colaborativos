@@ -29,12 +29,12 @@ public class HomeController extends BaseController {
     @FXML
     protected void onReporteDiarioButtonClick(ActionEvent event) throws IOException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        HelloApplication.diario(stage);
+        HelloApplication.reporteDiario(stage);
     }
     @FXML
     protected void onReporteMensualButtonClick(ActionEvent event) throws IOException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        HelloApplication.messelector(stage);
+        HelloApplication.reporteMensual(stage);
     }
     @FXML
     protected void onRegistrarAsistenciaButtonClick(ActionEvent event) throws IOException {
@@ -57,7 +57,7 @@ public class HomeController extends BaseController {
     @FXML
     protected void onObtenerReporteMensualButtonClick(ActionEvent event) throws IOException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        HelloApplication.mensual(stage);
+        HelloApplication.reporteMensual(stage);
     }
 
     @FXML

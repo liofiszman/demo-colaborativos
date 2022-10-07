@@ -103,10 +103,6 @@ public class DAOTurnos implements IDAOTurno {
         _turnos.add(turno);
     }
 
-    public void firmaConforme(String numeroTurno){
-        firmar(numeroTurno, true);
-    }
-
     private void firmar(String numeroTurno, boolean conforme) {
         _ID = Integer.valueOf(id);
         Turno turno =  _turnos.stream().filter(getByID).filter(checkActive).findFirst().get();
@@ -117,6 +113,10 @@ public class DAOTurnos implements IDAOTurno {
 
         _turnos.removeIf(getByID);
         _turnos.add(turno);
+    }
+
+    public void firmaConforme(String numeroTurno){
+        firmar(numeroTurno, true);
     }
 
     public void firmaInconforme(String numeroTurno){
@@ -166,6 +166,19 @@ public class DAOTurnos implements IDAOTurno {
         return opciones;
     }
 
+    public List<Turno> obtenerTurnos(LocalDate FechaDesde, LocalDate FechaHasta){
+        _opcion = new Opcion();
+        _opcion.setFecha(FechaDesde);
+        _opcion.setFechaHasta(FechaHasta);
+        List<Turno> turnos = _turnos.stream()
+                .filter(checkActive)
+                .filter(getFechaDesde)
+                .filter(getHasta)
+                .toList();
+
+        return turnos;
+    }
+
     private Predicate<Turno> checkExists = new Predicate<Turno>() {
         @Override
         public boolean test(Turno turno) {
@@ -180,6 +193,13 @@ public class DAOTurnos implements IDAOTurno {
         @Override
         public boolean test(Turno turno) {
             return turno.getFecha().isAfter(_opcion.getFecha());
+        }
+    };
+
+    private Predicate<Turno> getHasta = new Predicate<Turno>() {
+        @Override
+        public boolean test(Turno turno) {
+            return turno.getFecha().isBefore(_opcion.getFechaHasta());
         }
     };
 
