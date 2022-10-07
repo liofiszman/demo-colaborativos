@@ -13,9 +13,5 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
     <Button text="X" onAction="#backToHome"/>
-
-    <Label text ="Actividades del día" fx:id="diarioTitle"/>
-    <Label/>
-    <Label text ="Numero de turno"/>
 </VBox>
 

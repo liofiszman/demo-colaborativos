@@ -1,4 +1,8 @@
 package Business;
+import Business.ReporteStrategy.ConcreteReporteStrategyDiario;
+import Business.ReporteStrategy.ConcreteReporteStrategyMensual;
+import Business.ReporteStrategy.IReporteStrategy;
+import Business.ReporteStrategy.TipoReporteEnum;
 import Classes.*;
 import DataAccess.*;
 
@@ -16,6 +20,21 @@ public class TurnoBusinessObject {
     public List<Turno> obtenerTurnos(Opcion opcion) {
         List<Mecanico> opcionesMecanicos = mecanicos.obtenerTurnos(opcion);
         return turnos.obtenerTurnos(opcion, opcionesMecanicos);
+    }
+
+    private IReporteStrategy Strategy;
+    private void setStrategy(IReporteStrategy strategy) {
+        this.Strategy = strategy; }
+    private List<Turno> executeStrategy() {
+        return Strategy.GetTurnos(turnos); }
+
+    public List<Turno> GetTurnos(TipoReporteEnum tipoReporteEnum) {
+        if (tipoReporteEnum == TipoReporteEnum.Diario)
+            setStrategy(new ConcreteReporteStrategyDiario());
+        if (tipoReporteEnum == TipoReporteEnum.Mensual)
+            setStrategy(new ConcreteReporteStrategyMensual());
+
+        return executeStrategy();
     }
 
     public int addTurno(Turno turno, Opcion opcion) {

@@ -45,4 +45,14 @@ public class Opcion {
     public void setMecanico(Classes.Mecanico mecanico) {
         Mecanico = mecanico;
     }
+
+    private LocalDate FechaHasta;
+
+    public LocalDate getFechaHasta() {
+        return FechaHasta;
+    }
+
+    public void setFechaHasta(LocalDate fechaHasta) {
+        FechaHasta = fechaHasta;
+    }
 }

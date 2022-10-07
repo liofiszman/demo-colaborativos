@@ -166,6 +166,19 @@ public class DAOTurnos implements IDAOTurno {
         return opciones;
     }
 
+    public List<Turno> obtenerTurnos(LocalDate FechaDesde, LocalDate FechaHasta){
+        _opcion = new Opcion();
+        _opcion.setFecha(FechaDesde);
+        _opcion.setFechaHasta(FechaHasta);
+        List<Turno> turnos = _turnos.stream()
+                .filter(checkActive)
+                .filter(getFechaDesde)
+                .filter(getHasta)
+                .toList();
+
+        return turnos;
+    }
+
     private Predicate<Turno> checkExists = new Predicate<Turno>() {
         @Override
         public boolean test(Turno turno) {
@@ -180,6 +193,13 @@ public class DAOTurnos implements IDAOTurno {
         @Override
         public boolean test(Turno turno) {
             return turno.getFecha().isAfter(_opcion.getFecha());
+        }
+    };
+
+    private Predicate<Turno> getHasta = new Predicate<Turno>() {
+        @Override
+        public boolean test(Turno turno) {
+            return turno.getFecha().isBefore(_opcion.getFechaHasta());
         }
     };
 
