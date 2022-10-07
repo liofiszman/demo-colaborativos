@@ -7,7 +7,7 @@ import Classes.Turno;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface IDAOTurno {
+public interface IDAOTurno extends IDAO {
     List<Turno> obtenerTurnos(String patente);
     List<Turno> obtenerTurnos(LocalDate fechaDesde, LocalDate fechaHasta);
     List<Turno> obtenerTurnos(Opcion opcion, List<Mecanico> mecanicos);

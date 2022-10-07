@@ -103,10 +103,6 @@ public class DAOTurnos implements IDAOTurno {
         _turnos.add(turno);
     }
 
-    public void firmaConforme(String numeroTurno){
-        firmar(numeroTurno, true);
-    }
-
     private void firmar(String numeroTurno, boolean conforme) {
         _ID = Integer.valueOf(id);
         Turno turno =  _turnos.stream().filter(getByID).filter(checkActive).findFirst().get();
@@ -117,6 +113,10 @@ public class DAOTurnos implements IDAOTurno {
 
         _turnos.removeIf(getByID);
         _turnos.add(turno);
+    }
+
+    public void firmaConforme(String numeroTurno){
+        firmar(numeroTurno, true);
     }
 
     public void firmaInconforme(String numeroTurno){
