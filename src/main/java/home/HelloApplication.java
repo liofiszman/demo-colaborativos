@@ -14,6 +14,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class HelloApplication extends Application {
     public static TurnoBusinessObject turnosBO;
@@ -71,6 +75,14 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
+        /*Llamada a Singleton y query en base de datos*/
+        try {
+            Statement st = Utils.DBConnection.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from cliente");
+        }catch(Exception ex){
+            System.out.println("SQLException: " + ex.getMessage());
+        }
+
         launch();
     }
 }
