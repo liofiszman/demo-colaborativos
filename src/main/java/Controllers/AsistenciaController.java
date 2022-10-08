@@ -5,6 +5,7 @@ import Classes.Turno;
 import home.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import java.io.IOException;
@@ -60,6 +61,9 @@ public class AsistenciaController extends BaseController  {
 
     @FXML private Label datosTurnoText;
     @FXML private Label datosTurnoSecondText;
+
+    @FXML private Button confirmarTurnoButton;
+    @FXML private Button cancelarTurnoButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

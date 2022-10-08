@@ -94,10 +94,7 @@ public class Turno {
     public void setFichaMecanica(FichaMecanica fichaMecanica) { this.fichaMecanica = fichaMecanica; }
 
     private String mecanicoNombre;
-
     public String getMecanicoNombre() {
         return this.getMecanico().getNombre();
     }
-
-
 }
