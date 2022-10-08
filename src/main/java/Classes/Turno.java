@@ -1,5 +1,7 @@
 package Classes;
 
+import Business.EstadoTurnoEnum;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -96,5 +98,21 @@ public class Turno {
     private String mecanicoNombre;
     public String getMecanicoNombre() {
         return this.getMecanico().getNombre();
+    }
+
+    public EstadoTurnoEnum getEstadoTurno()
+    {
+        if(!isActive)
+            return EstadoTurnoEnum.CANCELADO;
+        if(fichaMecanica != null
+                && fichaMecanica.getFichaConformidad() != null
+                && fichaMecanica.getFichaConformidad().isFirmada())
+            return EstadoTurnoEnum.FIRMADO;
+        if(fichaMecanica != null)
+            return EstadoTurnoEnum.TRABAJADO;
+        if(asistencia)
+            return EstadoTurnoEnum.ASISTENCIA;
+
+        return EstadoTurnoEnum.CREADO;
     }
 }

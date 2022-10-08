@@ -3,20 +3,14 @@ package Controllers;
 import Classes.Opcion;
 import Classes.Turno;
 import home.HelloApplication;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import static home.HelloApplication.showStage;
@@ -28,7 +22,7 @@ public class BuscadorController extends BaseController {
     /// Confirma un turno de la lista previa.
     public void buscarTurno(Turno turno, ActionEvent event) throws IOException, InterruptedException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        showStage(stage, "buscador-view.fxml");
+        showStage(stage, "/Views/buscador-view.fxml");
     }
 
     @FXML

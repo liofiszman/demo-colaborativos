@@ -1,6 +1,6 @@
 package Controllers;
 
-import Business.TurnoBusinessObject;
+import Business.EstadoTurnoEnum;
 import Classes.Turno;
 import home.HelloApplication;
 import javafx.event.ActionEvent;
@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -35,24 +36,36 @@ public class AsistenciaController extends BaseController  {
     @FXML
     protected void confirmarTurnoButtonClick(ActionEvent event) throws IOException {
         numeroTurno = this.TurnoTextField.getText();
-        try{
-            HelloApplication.turnosBO.registrarAsistencia(numeroTurno);
-            backToHome(event);
-        }
-        catch(Exception ex){
-            datosTurnoText.setText("No se encontró un el turno "+numeroTurno);
+        Turno turno = HelloApplication.turnosBO.obtenerTurno(numeroTurno);
+
+        if(turno != null && turno.getEstadoTurno() != EstadoTurnoEnum.CREADO)
+            datosTurnoText.setText("No se puede confirmar un turno con estado " + turno.getEstadoTurno().toString());
+        else {
+            try{
+                HelloApplication.turnosBO.registrarAsistencia(numeroTurno);
+                backToHome(event);
+            }
+            catch(Exception ex){
+                datosTurnoText.setText("No se encontró un el turno "+numeroTurno);
+            }
         }
     }
 
     @FXML
     protected void cancelarTurnoButtonClick(ActionEvent event) throws IOException {
         numeroTurno = this.TurnoTextField.getText();
-        try{
-            HelloApplication.turnosBO.cancelarTurno(numeroTurno);
-            backToHome(event);
-        }
-        catch(Exception ex){
-            datosTurnoText.setText("No se encontró un el turno "+numeroTurno+" para cancelar");
+        Turno turno = HelloApplication.turnosBO.obtenerTurno(numeroTurno);
+
+        if(turno != null && turno.getEstadoTurno() != EstadoTurnoEnum.CREADO)
+            datosTurnoText.setText("No se puede cancelar un turno con estado " + turno.getEstadoTurno().toString());
+        else {
+            try{
+                HelloApplication.turnosBO.cancelarTurno(numeroTurno);
+                backToHome(event);
+            }
+            catch(Exception ex){
+                datosTurnoText.setText("No se encontró un el turno "+numeroTurno+" para cancelar");
+            }
         }
     }
 
