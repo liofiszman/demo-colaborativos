@@ -4,25 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e91a7b1-eab4-4380-8919-0c98634ac732" name="Changes" comment="Added DTO's">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Utils/DBConnection.java" afterDir="false" />
+    <list default="true" id="6e91a7b1-eab4-4380-8919-0c98634ac732" name="Changes" comment="Added DTO's &amp; DB Connection Sigleton">
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/Dao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/Dao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/dao.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/dto.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/dto.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/java.dal" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/settings.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DTO/Cliente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DTO/CompaniaSeguro.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DTO/FichaConformidad.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DTO/FichaMecanica.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DTO/HorarioAtencion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DTO/Mecanico.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DTO/Turno.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DTO/Vehiculo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1dab3bdc-7096-4402-996d-50154916eb6c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1dab3bdc-7096-4402-996d-50154916eb6c.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/demo-colaborativos.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/demo-colaborativos.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_18_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_18_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_18_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_18_0_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/home/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/home/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/DAOTurnos.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/DAOTurnos.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/IDAOCliente.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/IDAOCliente.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/IDAOCompaniaSeguro.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/IDAOCompaniaSeguro.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/IDAOFichaConformidad.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/IDAOFichaConformidad.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/IDAOFichaMecanica.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/IDAOFichaMecanica.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/IDAOMecanico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/IDAOMecanico.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/IDAOTurno.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/IDAOTurno.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/IDAOVehiculo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/IDAOVehiculo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/home/HelloApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/home/HelloApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DTO/ClienteDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DTO/CompaniaSegurosDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DTO/FichaConformidadDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DTO/FichaMecanicaDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DTO/HorarioAtencionDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DTO/MecanicoDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DTO/TurnoDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DTO/VehiculoDTO.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,10 +75,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.15057471",
-    "settings.editor.selected.configurable": "pojo-generator.jpa-mapping"
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -77,6 +87,14 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/DAO" />
+      <recent name="$PROJECT_DIR$/src/main/java/DTO" />
+      <recent name="$PROJECT_DIR$/src/main/java/DTO2" />
+      <recent name="$PROJECT_DIR$/src/main/java" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.Run">
     <configuration name="Run" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="home.HelloApplication" />
@@ -98,7 +116,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665174082890</updated>
-      <workItem from="1665174087616" duration="9754000" />
+      <workItem from="1665174087616" duration="10747000" />
+      <workItem from="1665432414780" duration="3391000" />
     </task>
     <task id="LOCAL-00001" summary="sarasa">
       <created>1665181184047</created>
@@ -121,7 +140,21 @@
       <option name="project" value="LOCAL" />
       <updated>1665182412940</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added DTO's &amp; DB Connection Sigleton">
+      <created>1665184922136</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1665184922136</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added DTO's &amp; DB Connection Sigleton">
+      <created>1665432785666</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1665432785666</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,7 +175,19 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="sarasa" />
     <MESSAGE value="Added DTO's" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added DTO's" />
+    <MESSAGE value="Added DTO's &amp; DB Connection Sigleton" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added DTO's &amp; DB Connection Sigleton" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/home/HelloApplication.java</url>
+          <line>80</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

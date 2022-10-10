@@ -1,0 +1,44 @@
+<changelist name="Uncommitted_changes_before_Update_at_07_10_2022_19_40_[Changes]" date="1665182464438" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_10_2022_19_40_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 07/10/2022 19:40 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/DataAccess/IDAOVehiculo.class" />
+    <option name="AFTER_PATH" value="target/classes/DataAccess/IDAOVehiculo.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_10_2022_19_40_[Changes]/IDAOVehiculo.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/DataAccess/IDAOMecanico.class" />
+    <option name="AFTER_PATH" value="target/classes/DataAccess/IDAOMecanico.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_10_2022_19_40_[Changes]/IDAOMecanico.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/DataAccess/IDAOTurno.class" />
+    <option name="AFTER_PATH" value="target/classes/DataAccess/IDAOTurno.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_10_2022_19_40_[Changes]/IDAOTurno.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/DataAccess/DAOTurnos.class" />
+    <option name="AFTER_PATH" value="target/classes/DataAccess/DAOTurnos.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_10_2022_19_40_[Changes]/DAOTurnos.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/DataAccess/IDAOFichaConformidad.class" />
+    <option name="AFTER_PATH" value="target/classes/DataAccess/IDAOFichaConformidad.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_10_2022_19_40_[Changes]/IDAOFichaConformidad.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/DataAccess/IDAOCliente.class" />
+    <option name="AFTER_PATH" value="target/classes/DataAccess/IDAOCliente.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_10_2022_19_40_[Changes]/IDAOCliente.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/DataAccess/IDAOCompaniaSeguro.class" />
+    <option name="AFTER_PATH" value="target/classes/DataAccess/IDAOCompaniaSeguro.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_10_2022_19_40_[Changes]/IDAOCompaniaSeguro.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/DataAccess/IDAOFichaMecanica.class" />
+    <option name="AFTER_PATH" value="target/classes/DataAccess/IDAOFichaMecanica.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_10_2022_19_40_[Changes]/IDAOFichaMecanica.class" />
+  </binary>
+</changelist>

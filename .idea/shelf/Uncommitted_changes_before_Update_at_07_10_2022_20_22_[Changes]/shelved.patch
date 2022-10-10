@@ -1,0 +1,39 @@
+Index: .idea/demo-colaborativos.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule=\"true\" type=\"JAVA_MODULE\" version=\"4\">\n  <component name=\"NewModuleRootManager\" LANGUAGE_LEVEL=\"JDK_18\">\n    <output url=\"file://$MODULE_DIR$/target/classes\" />\n    <output-test url=\"file://$MODULE_DIR$/target/test-classes\" />\n    <content url=\"file://$MODULE_DIR$\">\n      <sourceFolder url=\"file://$MODULE_DIR$/src/main/java\" isTestSource=\"false\" />\n      <sourceFolder url=\"file://$MODULE_DIR$/src/main/resources\" type=\"java-resource\" />\n      <excludeFolder url=\"file://$MODULE_DIR$/target\" />\n    </content>\n    <orderEntry type=\"inheritedJdk\" />\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\n    <orderEntry type=\"library\" name=\"Maven: org.openjfx:javafx-controls:18.0.1\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Maven: org.openjfx:javafx-controls:win:18.0.1\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Maven: org.openjfx:javafx-graphics:18.0.1\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Maven: org.openjfx:javafx-graphics:win:18.0.1\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Maven: org.openjfx:javafx-base:18.0.1\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Maven: org.openjfx:javafx-base:win:18.0.1\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Maven: org.openjfx:javafx-fxml:18.0.1\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Maven: org.openjfx:javafx-fxml:win:18.0.1\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Maven: org.controlsfx:controlsfx:11.1.1\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Maven: com.dlsc.formsfx:formsfx-core:11.5.0\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Maven: org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0\" level=\"project\" />\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.junit.jupiter:junit-jupiter-api:5.8.2\" level=\"project\" />\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.opentest4j:opentest4j:1.2.0\" level=\"project\" />\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.junit.platform:junit-platform-commons:1.8.2\" level=\"project\" />\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.apiguardian:apiguardian-api:1.1.2\" level=\"project\" />\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.junit.jupiter:junit-jupiter-engine:5.8.2\" level=\"project\" />\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.junit.platform:junit-platform-engine:1.8.2\" level=\"project\" />\n  </component>\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/demo-colaborativos.iml b/.idea/demo-colaborativos.iml
+--- a/.idea/demo-colaborativos.iml	(revision 6f500da9f4686ff89f3cf5fc8d5e3562d6f37e4e)
++++ b/.idea/demo-colaborativos.iml	(date 1665183624628)
+@@ -10,14 +10,15 @@
+     </content>
+     <orderEntry type="inheritedJdk" />
+     <orderEntry type="sourceFolder" forTests="false" />
++    <orderEntry type="library" name="mysql.connector.java" level="project" />
+     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:18.0.1" level="project" />
+-    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:win:18.0.1" level="project" />
++    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:mac:18.0.1" level="project" />
+     <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:18.0.1" level="project" />
+-    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:win:18.0.1" level="project" />
++    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:mac:18.0.1" level="project" />
+     <orderEntry type="library" name="Maven: org.openjfx:javafx-base:18.0.1" level="project" />
+-    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:18.0.1" level="project" />
++    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:mac:18.0.1" level="project" />
+     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:18.0.1" level="project" />
+-    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:win:18.0.1" level="project" />
++    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:mac:18.0.1" level="project" />
+     <orderEntry type="library" name="Maven: org.controlsfx:controlsfx:11.1.1" level="project" />
+     <orderEntry type="library" name="Maven: com.dlsc.formsfx:formsfx-core:11.5.0" level="project" />
+     <orderEntry type="library" name="Maven: org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0" level="project" />
+@@ -27,5 +28,7 @@
+     <orderEntry type="library" scope="TEST" name="Maven: org.apiguardian:apiguardian-api:1.1.2" level="project" />
+     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.8.2" level="project" />
+     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.8.2" level="project" />
++    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.30" level="project" />
++    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.19.4" level="project" />
+   </component>
+ </module>
+\ No newline at end of file
