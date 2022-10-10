@@ -17,4 +17,9 @@ public abstract class BaseController implements Initializable {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         HelloApplication.home(stage);
     }
+
+    protected static void backToHomeStatic(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        HelloApplication.home(stage);
+    }
 }

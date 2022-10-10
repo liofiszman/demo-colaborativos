@@ -7,9 +7,12 @@ import home.HelloApplication;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableListBase;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -47,9 +50,31 @@ public class ReportesController extends BaseController {
         table.getColumns().addAll(clienteCol, mecanicoCol, especialidadCol, conformidadCol, servicioCol);
 
         VBox vbox = new VBox(table);
+        vbox.getChildren().add(getBackButton());
         Scene scene = new Scene(vbox, 800, 600);
+
         stage.setScene(scene);
+
         stage.show();
+    }
+
+    private static Button getBackButton() {
+        var backButton = new Button();
+        backButton.setAlignment(Pos.BOTTOM_CENTER);
+
+        backButton.setText("X");
+        backButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    backToHomeStatic(event);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        return backButton;
     }
 
     private static ObservableList<Arreglo> getArreglos(List<Turno> turnos) {
@@ -83,6 +108,7 @@ public class ReportesController extends BaseController {
         table.getColumns().addAll(companiaCol, fechaCol, clienteCol, mecanicoCol, servicioCol, conformidadCol);
 
         VBox vbox = new VBox(table);
+        vbox.getChildren().add(getBackButton());
         Scene scene = new Scene(vbox, 800, 600);
         stage.setScene(scene);
         stage.show();

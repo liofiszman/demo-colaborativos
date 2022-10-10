@@ -3,20 +3,12 @@ package home;
 import Business.TurnoBusinessObject;
 import Controllers.ReportesController;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 public class HelloApplication extends Application {
@@ -29,33 +21,33 @@ public class HelloApplication extends Application {
     }
 
     public static void home(Stage stage) throws IOException {
-        showStage(stage, "home-view.fxml");
+        showStage(stage, "/Views/home-view.fxml");
     }
 
     public static void calendario(Stage stage) throws IOException{
-        showStage(stage, "calendario-view.fxml");
+        showStage(stage, "/Views/calendario-view.fxml");
     }
     public static void asistencia(Stage stage) throws IOException {
-        showStage(stage, "asistencia-view.fxml");
+        showStage(stage, "/Views/asistencia-view.fxml");
     }
     public static void actividades(Stage stage) throws IOException {
-        showStage(stage, "actividades-view.fxml");
+        showStage(stage, "/Views/actividades-view.fxml");
     }
 
     public static void conformidad(Stage stage) throws IOException {
-        showStage(stage, "conformidad-view.fxml");
+        showStage(stage, "/Views/conformidad-view.fxml");
     }
 
     public static void messelector(Stage stage) throws IOException {
-        showStage(stage, "reporte-messelector-view.fxml");
+        showStage(stage, "/Views/reporte-messelector-view.fxml");
     }
 
     public static void buscador(Stage stage) throws IOException {
-        showStage(stage, "buscador-view.fxml");
+        showStage(stage, "/Views/buscador-view.fxml");
     }
 
     public static void buscadorResultado(Stage stage) throws IOException {
-        showStage(stage, "buscador-view.fxml");
+        showStage(stage, "/Views/buscador-view.fxml");
     }
 
     public static void reporteDiario(Stage stage) throws IOException {
