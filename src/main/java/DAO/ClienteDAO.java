@@ -11,14 +11,14 @@ import java.util.List;
 public class ClienteDAO {
 
     public int create_cliente(Cliente p) throws Exception {
-        String sql = "insert into cliente values (?)";
+        String sql = "insert into cliente (nombre, telefono, apellido, tipo_documento, documento) values (?, ?, ?, ?, ?)";
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         preparedStatement.setString(1 ,p.get_nombre());
-        preparedStatement.setString(1 ,p.get_telefono());
-        preparedStatement.setString(1 ,p.get_apellido());
-        preparedStatement.setString(1 ,p.get_tipo_documento());
-        preparedStatement.setString(1 ,p.get_documento());
+        preparedStatement.setString(2 ,p.get_telefono());
+        preparedStatement.setString(3 ,p.get_apellido());
+        preparedStatement.setString(4 ,p.get_tipo_documento());
+        preparedStatement.setString(5 ,p.get_documento());
 
         return preparedStatement.executeUpdate();
     }
@@ -69,24 +69,28 @@ public class ClienteDAO {
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql);
         preparedStatement.setString(1 ,p.get_nombre());
-        preparedStatement.setString(1 ,p.get_telefono());
-        preparedStatement.setString(1 ,p.get_apellido());
-        preparedStatement.setString(1 ,p.get_tipo_documento());
-        preparedStatement.setString(1 ,p.get_documento());
-        preparedStatement.setInt(2,p.get_id());
+        preparedStatement.setString(2 ,p.get_telefono());
+        preparedStatement.setString(3 ,p.get_apellido());
+        preparedStatement.setString(4 ,p.get_tipo_documento());
+        preparedStatement.setString(5 ,p.get_documento());
+        preparedStatement.setInt(6 ,p.get_id());
 
 
         return preparedStatement.executeUpdate();
     }
 
 
-    public int update_cliente(String nombre, Integer id) throws Exception {
+    public int update_cliente(String nombre, String telefono, String apellido, String tipo_documento, String documento, Integer id) throws Exception {
 
         String sql = "update cliente set nombre=?, telefono=?, apellido=?, tipo_documento=?, documento=? where id=?";
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql);
         preparedStatement.setString(1 ,nombre);
-        preparedStatement.setInt(2,id);
+        preparedStatement.setString(2 ,telefono);
+        preparedStatement.setString(3 ,apellido);
+        preparedStatement.setString(4 ,tipo_documento);
+        preparedStatement.setString(5 ,documento);
+        preparedStatement.setInt(6 ,id);
 
         return preparedStatement.executeUpdate();
 
