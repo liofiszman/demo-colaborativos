@@ -1,13 +1,13 @@
 package DAO;
 
 import DTO.HorarioAtencion;
+import DTO.Turno;
 import Utils.DBConnection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Time;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,6 +105,20 @@ public class HorarioAtencionDAO {
         return preparedStatement.executeUpdate();
     }
 
+    public List<HorarioAtencion> get_horario_atencion_by_mecanico(Integer mecanico_id) throws Exception {
+        Statement st = Utils.DBConnection.getConnection().createStatement();
+        ResultSet rs = st.executeQuery("select * from horario_atencion where mecanico_id=?");
+        List<HorarioAtencion> horarioAtencionList = new ArrayList<>();
+        while(rs.next()) {
+            HorarioAtencion horarioAtencion = new HorarioAtencion();
+            horarioAtencion.set_id(rs.getInt("Id"));
+            horarioAtencion.set_dia_atencion(rs.getString("dia_atencion"));
+            horarioAtencion.set_hora_desde(rs.getTime("hora_desde"));
+            horarioAtencion.set_hora_hasta(rs.getTime("hora_hasta"));
+            horarioAtencion.set_mecanico_id(rs.getInt("mecanico_id"));
+            horarioAtencionList.add(horarioAtencion);
+        }
+        return horarioAtencionList;
+    }
 
 }
-
