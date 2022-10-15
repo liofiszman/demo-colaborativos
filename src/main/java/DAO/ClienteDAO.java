@@ -1,6 +1,7 @@
 package DAO;
 
 import DTO.Cliente;
+import DTO.CompaniaSeguro;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -62,6 +63,24 @@ public class ClienteDAO {
         return cliente;
     }
 
+    public Cliente ReadCliente(String nombre) throws Exception {
+
+
+        PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement("select * from cliente where nombre = ?");
+        preparedStatement.setString(1,nombre);
+        preparedStatement.setMaxRows(1);
+        ResultSet rs  = preparedStatement.executeQuery();
+
+        Cliente cliente = new Cliente();
+        cliente.set_id(rs.getInt("Id"));
+        cliente.set_nombre(rs.getString("nombre"));
+        cliente.set_telefono(rs.getString("telefono"));
+        cliente.set_apellido(rs.getString("apellido"));
+        cliente.set_tipo_documento(rs.getString("tipo_documento"));
+        cliente.set_documento(rs.getString("documento"));
+
+        return cliente;
+    }
 
     public int UpdateCliente(Cliente p) throws Exception {
 
@@ -107,5 +126,16 @@ public class ClienteDAO {
         return preparedStatement.executeUpdate();
     }
 
+    public List<Cliente> obtenerCliente() throws Exception {
+        return ReadClienteList();
+    }
+
+    public DTO.Cliente obtenerCliente(String id) throws Exception {
+        return ReadCliente(Integer.valueOf(id));
+    }
+
+    public DTO.Cliente obtenerCLienteNombre(String nombre) throws Exception {
+        return ReadCliente(nombre);
+    }
 
 }

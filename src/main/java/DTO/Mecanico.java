@@ -12,6 +12,7 @@ public class Mecanico  {
     private String tipo_documento;  // t
     private String documento;  // t
 
+    private String especialidad;
     public Integer get_id() {
         return this.id;
     }
@@ -58,5 +59,13 @@ public class Mecanico  {
 
     public void set_documento(String documento) {
         this.documento = documento;
+    }
+
+    public String get_especialidad() {
+        return this.especialidad;
+    }
+
+    public void set_especialidad(String especialidad) {
+        this.especialidad = especialidad;
     }
 }
