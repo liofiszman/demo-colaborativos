@@ -12,6 +12,7 @@ import java.util.function.Predicate;
 
 public class CompaniaSegurosDAO implements IDAOCompaniaSeguro {
     private List<DTO.CompaniaSeguro> _companiasSeguro;
+    private int id = 1;
 
     public CompaniaSegurosDAO() throws Exception {
         _companiasSeguro = obtenerCompaniasSeguro();
@@ -38,7 +39,7 @@ public class CompaniaSegurosDAO implements IDAOCompaniaSeguro {
     }
 
     public int CreateCompaniaSeguro(DTO.CompaniaSeguro p) throws Exception {
-        String sql = "insert into compania_seguros values (?)";
+        String sql = "insert into compania_seguros (nombre) values (?)";
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
         preparedStatement.setString(1 ,p.getNombre());
@@ -48,12 +49,12 @@ public class CompaniaSegurosDAO implements IDAOCompaniaSeguro {
 
     public List<CompaniaSeguro> ReadCompaniaSeguroList() throws Exception {
         Statement st = Utils.DBConnection.getConnection().createStatement();
-        ResultSet rs = st.executeQuery("select * from compania_seguros");
+        ResultSet rs = st.executeQuery("select id,nombre from compania_seguros");
 
         List<CompaniaSeguro> companiaSeguroList = new ArrayList<>();
         while(rs.next()) {
             CompaniaSeguro companiaSeguro = new CompaniaSeguro();
-            companiaSeguro.setId(rs.getInt("Id"));
+            companiaSeguro.setId(rs.getInt("id"));
             companiaSeguro.setNombre(rs.getString("nombre"));
             companiaSeguroList.add(companiaSeguro);
         }
@@ -64,13 +65,13 @@ public class CompaniaSegurosDAO implements IDAOCompaniaSeguro {
 
     public CompaniaSeguro ReadCompaniaSeguro(Integer id) throws Exception {
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(
-                "select * from compania_seguros where id = ?");
+                "select id,nombre from compania_seguros where id = ?");
         preparedStatement.setInt(1,id);
         preparedStatement.setMaxRows(1);
         ResultSet rs  = preparedStatement.executeQuery();
 
         CompaniaSeguro companiaSeguro = new CompaniaSeguro();
-        companiaSeguro.setId(rs.getInt("Id"));
+        companiaSeguro.setId(rs.getInt("id"));
         companiaSeguro.setNombre(rs.getString("nombre"));
 
         return companiaSeguro;
@@ -78,13 +79,13 @@ public class CompaniaSegurosDAO implements IDAOCompaniaSeguro {
 
     public CompaniaSeguro ReadCompaniaSeguro(String nombre) throws Exception {
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(
-                "select * from compania_seguros where nombre = ?");
+                "select id,nombre from compania_seguros where nombre = ?");
         preparedStatement.setString(1,nombre);
         preparedStatement.setMaxRows(1);
         ResultSet rs  = preparedStatement.executeQuery();
 
         CompaniaSeguro companiaSeguro = new CompaniaSeguro();
-        companiaSeguro.setId(rs.getInt("Id"));
+        companiaSeguro.setId(rs.getInt("id"));
         companiaSeguro.setNombre(rs.getString("nombre"));
 
         return companiaSeguro;

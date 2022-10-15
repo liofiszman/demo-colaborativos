@@ -5,50 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e91a7b1-eab4-4380-8919-0c98634ac732" name="Changes" comment="Added DTO's">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_base.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_graphics.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/javafx-base-18.0.1-win.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/javafx-base-18.0.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/javafx-controls-18.0.1-win.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/javafx-controls-18.0.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/javafx-fxml-18.0.1-win.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/javafx-fxml-18.0.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/javafx-graphics-18.0.1-win.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/javafx-graphics-18.0.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/demo-colaborativos.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/demo-colaborativos.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_18_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_18_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_18_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_18_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_18_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_18_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_18_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_18_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_10_2022_19_40__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_10_2022_19_40__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Business/TurnoBusinessObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Business/TurnoBusinessObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Classes/Vehiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classes/Vehiculo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/TurnosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/TurnosController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/CompaniaSegurosDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/CompaniaSegurosDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DTO/CompaniaSeguro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DTO/CompaniaSeguro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DataAccess/DAOCompaniaSeguro.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DataAccess/DAOVehiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataAccess/DAOVehiculo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DataAccess/IDAOCompaniaSeguro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataAccess/IDAOCompaniaSeguro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Business/TurnoBusinessObject$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Business/TurnoBusinessObject$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Business/TurnoBusinessObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Business/TurnoBusinessObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Classes/Vehiculo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Classes/Vehiculo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/TurnosController$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/TurnosController$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/TurnosController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/TurnosController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/TurnosController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/TurnosController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/DAOCompaniaSeguro$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/DAOCompaniaSeguro$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/DAOCompaniaSeguro.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/DAOVehiculo$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/DAOVehiculo$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/DAOVehiculo$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/DAOVehiculo$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/DAOVehiculo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/DAOVehiculo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/IDAOCompaniaSeguro.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/IDAOCompaniaSeguro.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DAO/CompaniaSegurosDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/CompaniaSegurosDAO.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,23 +173,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/DAO/CompaniaSegurosDAO.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/DAO/CompaniaSegurosDAO.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/DAO/CompaniaSegurosDAO.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/DAO/CompaniaSegurosDAO.java</url>
-          <line>45</line>
+          <line>46</line>
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/DAO/CompaniaSegurosDAO.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/DAO/CompaniaSegurosDAO.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
