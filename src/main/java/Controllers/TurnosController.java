@@ -94,8 +94,11 @@ public class TurnosController extends BaseController {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         especialidadCombo.getItems().setAll(HelloApplication.turnosBO.obtenerEspecialidades());
         selectedEspecialidad.textProperty().bind(especialidadCombo.getSelectionModel().selectedItemProperty());
+        try {
+            companiaCombo.getItems().setAll(HelloApplication.turnosBO.getCompanias());
+        }
+        catch (Exception ex){}
 
-        companiaCombo.getItems().setAll(HelloApplication.turnosBO.getCompanias());
         selectedCompania.textProperty().bind(companiaCombo.getSelectionModel().selectedItemProperty());
 
         if (this.opcion == null)

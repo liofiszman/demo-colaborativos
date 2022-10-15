@@ -9,6 +9,16 @@ public class Vehiculo {
         setCliente(cliente);
     }
 
+    public Vehiculo(int id, String marca, String patente, DTO.CompaniaSeguro companiaSeguro, String numeroPoliza, Cliente cliente) {
+        setId(id);
+        setMarca(marca);
+        setPatente(patente);
+        CompaniaSeguro seguro = new CompaniaSeguro(companiaSeguro.getId(), companiaSeguro.getNombre());
+        setCompaniaSeguro(seguro);
+        setNumeroPoliza(numeroPoliza);
+        setCliente(cliente);
+    }
+
     private int id;
     public int getId() {
         return id;

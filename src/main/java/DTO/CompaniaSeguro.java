@@ -8,19 +8,19 @@ public class CompaniaSeguro  {
     private Integer id;  // t
     private String nombre;  // t
 
-    public Integer get_id() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void set_id(Integer id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String get_nombre() {
+    public String getNombre() {
         return this.nombre;
     }
 
-    public void set_nombre(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 }

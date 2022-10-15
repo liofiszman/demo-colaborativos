@@ -1,34 +1,60 @@
 package DAO;
 
 import DTO.CompaniaSeguro;
+import DataAccess.IDAOCompaniaSeguro;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
-public class CompaniaSegurosDAO {
+public class CompaniaSegurosDAO implements IDAOCompaniaSeguro {
+    private List<DTO.CompaniaSeguro> _companiasSeguro;
 
+    public CompaniaSegurosDAO() throws Exception {
+        _companiasSeguro = obtenerCompaniasSeguro();
 
-    public int CreateCompaniaSeguro(CompaniaSeguro p) throws Exception {
+        if(_companiasSeguro.isEmpty()) {
+            CompaniaSeguro compania = new CompaniaSeguro();
+            compania.setNombre("Sancor");
+            CreateCompaniaSeguro(compania);
+
+            compania = new CompaniaSeguro();
+            compania.setNombre("La Caja");
+            CreateCompaniaSeguro(compania);
+
+            compania = new CompaniaSeguro();
+            compania.setNombre("San Cristobal");
+            CreateCompaniaSeguro(compania);
+
+            compania = new CompaniaSeguro();
+            compania.setNombre("Orbis");
+            CreateCompaniaSeguro(compania);
+
+            _companiasSeguro = obtenerCompaniasSeguro();
+        }
+    }
+
+    public int CreateCompaniaSeguro(DTO.CompaniaSeguro p) throws Exception {
         String sql = "insert into compania_seguros values (?)";
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-        preparedStatement.setString(1 ,p.get_nombre());
+        preparedStatement.setString(1 ,p.getNombre());
 
         return preparedStatement.executeUpdate();
     }
 
     public List<CompaniaSeguro> ReadCompaniaSeguroList() throws Exception {
         Statement st = Utils.DBConnection.getConnection().createStatement();
-        ResultSet rs = st.executeQuery("select * from cliente");
+        ResultSet rs = st.executeQuery("select * from compania_seguros");
 
         List<CompaniaSeguro> companiaSeguroList = new ArrayList<>();
         while(rs.next()) {
             CompaniaSeguro companiaSeguro = new CompaniaSeguro();
-            companiaSeguro.set_id(rs.getInt("Id"));
-            companiaSeguro.set_nombre(rs.getString("nombre"));
+            companiaSeguro.setId(rs.getInt("Id"));
+            companiaSeguro.setNombre(rs.getString("nombre"));
             companiaSeguroList.add(companiaSeguro);
         }
 
@@ -37,16 +63,29 @@ public class CompaniaSegurosDAO {
 
 
     public CompaniaSeguro ReadCompaniaSeguro(Integer id) throws Exception {
-
-
-        PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement("select * from cliente where id = ?");
+        PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(
+                "select * from compania_seguros where id = ?");
         preparedStatement.setInt(1,id);
         preparedStatement.setMaxRows(1);
         ResultSet rs  = preparedStatement.executeQuery();
 
         CompaniaSeguro companiaSeguro = new CompaniaSeguro();
-        companiaSeguro.set_id(rs.getInt("Id"));
-        companiaSeguro.set_nombre(rs.getString("nombre"));
+        companiaSeguro.setId(rs.getInt("Id"));
+        companiaSeguro.setNombre(rs.getString("nombre"));
+
+        return companiaSeguro;
+    }
+
+    public CompaniaSeguro ReadCompaniaSeguro(String nombre) throws Exception {
+        PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(
+                "select * from compania_seguros where nombre = ?");
+        preparedStatement.setString(1,nombre);
+        preparedStatement.setMaxRows(1);
+        ResultSet rs  = preparedStatement.executeQuery();
+
+        CompaniaSeguro companiaSeguro = new CompaniaSeguro();
+        companiaSeguro.setId(rs.getInt("Id"));
+        companiaSeguro.setNombre(rs.getString("nombre"));
 
         return companiaSeguro;
     }
@@ -57,8 +96,8 @@ public class CompaniaSegurosDAO {
         String sql = "update compania_seguros set nombre=? where id=?";
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql);
-        preparedStatement.setString(1 ,p.get_nombre());
-        preparedStatement.setInt(2,p.get_id());
+        preparedStatement.setString(1 ,p.getNombre());
+        preparedStatement.setInt(2,p.getId());
 
 
         return preparedStatement.executeUpdate();
@@ -89,4 +128,15 @@ public class CompaniaSegurosDAO {
     }
 
 
+    public List<CompaniaSeguro> obtenerCompaniasSeguro() throws Exception {
+        return ReadCompaniaSeguroList();
+    }
+
+    public DTO.CompaniaSeguro obtenerCompaniaSeguro(String id) throws Exception {
+        return ReadCompaniaSeguro(Integer.valueOf(id));
+    }
+
+    public DTO.CompaniaSeguro obtenerCompaniaSeguroNombre(String nombre) throws Exception {
+        return ReadCompaniaSeguro(nombre);
+    }
 }

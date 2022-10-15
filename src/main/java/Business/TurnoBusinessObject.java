@@ -4,6 +4,7 @@ import Business.ReporteStrategy.ConcreteReporteStrategyMensual;
 import Business.ReporteStrategy.IReporteStrategy;
 import Business.ReporteStrategy.TipoReporteEnum;
 import Classes.*;
+import DAO.*;
 import DataAccess.*;
 
 import java.util.List;
@@ -11,14 +12,19 @@ import java.util.List;
 public class TurnoBusinessObject {
     DAOTurnos turnos = (DAOTurnos) getDAO(TipoDAOEnum.DAOTurnos);
     DAOMecanico mecanicos = (DAOMecanico) getDAO(TipoDAOEnum.DAOMecanico);
-    DAOCompaniaSeguro companiasSeguro = (DAOCompaniaSeguro) getDAO(TipoDAOEnum.DAOCompaniaSeguro);
+    CompaniaSegurosDAO companiasSeguro = (CompaniaSegurosDAO) getDAO(TipoDAOEnum.DAOCompaniaSeguro);
 
     IDAO getDAO(TipoDAOEnum tipoDAO) {
-        switch (tipoDAO) {
-            case DAOTurnos -> { return new DAOTurnos(); }
-            case DAOMecanico -> { return new DAOMecanico(); }
-            case DAOCompaniaSeguro -> { return new DAOCompaniaSeguro(); }
-            default -> { return null; }
+        try {
+            switch (tipoDAO) {
+                case DAOTurnos -> { return new DAOTurnos(); }
+                case DAOMecanico -> { return new DAOMecanico(); }
+                case DAOCompaniaSeguro -> { return new CompaniaSegurosDAO(); }
+                default -> { return null; }
+            }
+        }
+        catch (Exception ex){
+            return null;
         }
     }
 
@@ -58,9 +64,9 @@ public class TurnoBusinessObject {
         return mecanicos.obtenerEspecialidades();
     }
 
-    public List<String> getCompanias() {
+    public List<String> getCompanias() throws Exception {
         return companiasSeguro.obtenerCompaniasSeguro()
-                .stream().map(CompaniaSeguro::getNombre).toList();
+                .stream().map(DTO.CompaniaSeguro::getNombre).toList();
     }
 
     public void registrarActividades(String numeroTurno,String actividadesText,String insumosText){

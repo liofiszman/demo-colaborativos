@@ -5,7 +5,7 @@ import Classes.CompaniaSeguro;
 import java.util.List;
 
 public interface IDAOCompaniaSeguro extends IDAO {
-    List<CompaniaSeguro> obtenerCompaniasSeguro();
-    CompaniaSeguro obtenerCompaniaSeguro(String id);
-    CompaniaSeguro obtenerCompaniaSeguroNombre(String nombre);
+    List<DTO.CompaniaSeguro> obtenerCompaniasSeguro() throws Exception;
+    DTO.CompaniaSeguro obtenerCompaniaSeguro(String id) throws Exception ;
+    DTO.CompaniaSeguro obtenerCompaniaSeguroNombre(String nombre) throws Exception ;
 }
