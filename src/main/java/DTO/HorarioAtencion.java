@@ -4,14 +4,13 @@ package DTO;
 // http://sqldalmaker.sourceforge.net
 
 import java.sql.Time;
-import java.time.LocalTime;
 
 public class HorarioAtencion  {
 
     private Integer id;  // t
     private String dia_atencion;  // t
-    private LocalTime hora_desde;  // t
-    private LocalTime hora_hasta;  // t
+    private Time hora_desde;  // t
+    private Time hora_hasta;  // t
     private Integer mecanico_id;  // t
 
     public Integer get_id() {
@@ -30,19 +29,19 @@ public class HorarioAtencion  {
         this.dia_atencion = dia_atencion;
     }
 
-    public LocalTime get_hora_desde() {
+    public Time get_hora_desde() {
         return this.hora_desde;
     }
 
-    public void set_hora_desde(LocalTime hora_desde) {
+    public void set_hora_desde(Time hora_desde) {
         this.hora_desde = hora_desde;
     }
 
-    public LocalTime get_hora_hasta() {
+    public Time get_hora_hasta() {
         return this.hora_hasta;
     }
 
-    public void set_hora_hasta(LocalTime hora_hasta) {
+    public void set_hora_hasta(Time hora_hasta) {
         this.hora_hasta = hora_hasta;
     }
 
