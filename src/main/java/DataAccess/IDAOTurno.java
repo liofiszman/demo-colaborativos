@@ -2,16 +2,16 @@ package DataAccess;
 
 import Classes.Mecanico;
 import Classes.Opcion;
-import Classes.Turno;
+import DTO.Turno;
 
 import java.time.LocalDate;
 import java.util.List;
 
 public interface IDAOTurno extends IDAO {
-    List<Turno> obtenerTurnos(String patente);
-    List<Turno> obtenerTurnos(LocalDate fechaDesde, LocalDate fechaHasta);
-    List<Turno> obtenerTurnos(Opcion opcion, List<Mecanico> mecanicos);
-    Turno obtenerTurno(String id);
+    List<DTO.Turno> obtenerTurnos(String patente);
+    List<DTO.Turno> obtenerTurnos(LocalDate fechaDesde, LocalDate fechaHasta);
+    List<DTO.Turno> obtenerTurnos(Opcion opcion, List<DTO.Mecanico> mecanicos);
+    DTO.Turno obtenerTurno(String id);
     void registrarAsistencia(String id);
     void cancelarTurno(String id);
     int addTurno(Turno turno, Opcion opcion);

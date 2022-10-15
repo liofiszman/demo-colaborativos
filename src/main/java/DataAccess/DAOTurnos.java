@@ -1,3 +1,4 @@
+/*
 package DataAccess;
 
 import Classes.*;
@@ -33,7 +34,7 @@ public class DAOTurnos implements IDAOTurno {
         }
     }
 
-    public List<Turno> obtenerTurnos(String patente){
+    public List<DTO.Turno> obtenerTurnos(String patente){
         _patente = patente;
         return _turnos.stream().filter(getTurnosByPantente).toList();
     }
@@ -224,3 +225,4 @@ public class DAOTurnos implements IDAOTurno {
         }
     };
 }
+*/

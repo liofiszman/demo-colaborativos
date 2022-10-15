@@ -14,18 +14,19 @@ public class Arreglo {
         setEspecialidad(especialidad);
     }
 
-    public Arreglo(Turno turno)
+    public Arreglo(DTO.Turno turno, DTO.Mecanico mecanico, DTO.FichaConformidad fichaConformidad,
+                   DTO.FichaMecanica fichaMecanica, DTO.Vehiculo vehiculo, DTO.CompaniaSeguro companiaSeguro)
     {
-        setPatente(turno.getPatente());
-        setMecanico(turno.getMecanicoNombre());
-        if(turno.getFichaMecanica().getFichaConformidad().isFirmaConforme())
+        setPatente(vehiculo.get_patente());
+        setMecanico(mecanico.get_nombre());
+        if(fichaConformidad.get_firmada_conforme())
             setConformidad("Conforme");
         else
             setConformidad("No conforme");
-        setFecha(turno.getFecha().toString());
-        setServicio(turno.getFichaMecanica().getActividades());
-        setCompania(turno.getVehiculo().getCompaniaSeguro().getNombre());
-        setEspecialidad(turno.getMecanico().getEspecialidad());
+        setFecha(turno.get_fecha().toString());
+        setServicio(fichaMecanica.get_actividades());
+        setCompania(companiaSeguro.getNombre());
+        setEspecialidad(mecanico.get_especialidad());
     }
 
     private String Especialidad;

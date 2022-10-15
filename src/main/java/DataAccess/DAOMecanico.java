@@ -1,4 +1,6 @@
+/*
 package DataAccess;
+
 
 import Classes.HorarioAtencion;
 import Classes.Mecanico;
@@ -19,27 +21,7 @@ public class DAOMecanico implements IDAOMecanico {
     public DAOMecanico(){
         if(_mecanicos == null || _mecanicos.isEmpty()) {
             _mecanicos = new ArrayList<Mecanico>();
-            ArrayList<HorarioAtencion> horarios = new ArrayList<HorarioAtencion>();
-            horarios.add(new HorarioAtencion(1001, DayOfWeek.MONDAY,
-                    LocalTime.of(8, 0, 0), LocalTime.of(13,0,0)));
-            horarios.add(new HorarioAtencion(1002, DayOfWeek.MONDAY,
-                    LocalTime.of(17, 0, 0), LocalTime.of(20,0,0)));
-            horarios.add(new HorarioAtencion(1003, DayOfWeek.TUESDAY,
-                    LocalTime.of(10, 0, 0), LocalTime.of(17,0,0)));
-            horarios.add(new HorarioAtencion(1004, DayOfWeek.WEDNESDAY,
-                    LocalTime.of(10, 0, 0), LocalTime.of(17,0,0)));
-            horarios.add(new HorarioAtencion(1005, DayOfWeek.FRIDAY,
-                    LocalTime.of(9, 0, 0), LocalTime.of(16,0,0)));
-            _mecanicos.add(new Mecanico(001, "Gabriel Martinez", "DNI",
-                    "33.333.333", "3323232323", "Mecánica en general", horarios));
-            horarios.add(new HorarioAtencion(1006, DayOfWeek.THURSDAY,
-                    LocalTime.of(9, 0, 0), LocalTime.of(13,0,0)));
-            _mecanicos.add(new Mecanico(002, "Otro Juan Perez", "DNI",
-                    "44.444.444", "1231231233", "Chapa y pintura",horarios));
-            horarios.add(new HorarioAtencion(1006, DayOfWeek.THURSDAY,
-                    LocalTime.of(15, 0, 0), LocalTime.of(20,0,0)));
-            _mecanicos.add(new Mecanico(123, "Yago Marti", "DNI",
-                    "55.555.555", "5559595959", "Frenos",horarios));
+
         }
     }
 
@@ -83,3 +65,4 @@ public class DAOMecanico implements IDAOMecanico {
         }
     };
 }
+ */

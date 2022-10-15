@@ -1,7 +1,8 @@
 package Controllers;
 
 import Classes.Opcion;
-import Classes.Turno;
+import DTO.Mecanico;
+import DTO.Turno;
 import home.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,10 +47,12 @@ public class BuscadorController extends BaseController {
             datosTurnoSecondText.setText("");
         }
         else {
-            String formatoCalendario = turno.getFecha().toString();
-            String FormatoHora = turno.getHora().toString();
+            Mecanico mecanico = HelloApplication.turnosBO.obtenerMecanico(turno.get_mecanico_id());
+
+            String formatoCalendario = turno.get_fecha().toString();
+            String FormatoHora = turno.get_hora().toString();
             datosTurnoText.setText("Turno para el "+formatoCalendario+" a las "+FormatoHora+" hs");
-            datosTurnoSecondText.setText("Mecánico "+turno.getMecanico().getNombre()+", "+turno.getMecanico().getEspecialidad());
+            datosTurnoSecondText.setText("Mecánico "+ mecanico.get_nombre()+", "+mecanico.get_especialidad());
         }
     }
 

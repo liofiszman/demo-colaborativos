@@ -6,7 +6,7 @@ import Classes.FichaMecanica;
 import java.util.List;
 
 public interface IDAOFichaConformidad extends IDAO {
-    List<FichaConformidad> obtenerFichasConformidad();
-    FichaConformidad obtenerFichaConformidad(String id);
-    void actualizar(FichaConformidad ficha);
+    List<DTO.FichaConformidad> obtenerFichasConformidad();
+    DTO.FichaConformidad obtenerFichaConformidad(String id);
+    void actualizar(DTO.FichaConformidad ficha);
 }

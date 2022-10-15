@@ -1,3 +1,4 @@
+/*
 package DataAccess;
 
 import Classes.Cliente;
@@ -89,3 +90,4 @@ public class DAOVehiculo implements IDAOVehiculo {
         }
     };
 }
+*/

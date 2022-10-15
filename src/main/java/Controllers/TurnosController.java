@@ -2,7 +2,7 @@ package Controllers;
 
 import Business.TurnoBusinessObject;
 import Classes.Opcion;
-import Classes.Turno;
+import DTO.*;
 import home.HelloApplication;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -64,7 +64,7 @@ public class TurnosController extends BaseController {
     /// Confirma un turno de la lista previa.
     private void reservarTurno(Turno turno, ActionEvent event) throws IOException, InterruptedException {
         int turnoN = HelloApplication.turnosBO.addTurno(turno, opcion);
-        turno.setId(turnoN);
+        turno.set_id(turnoN);
 
         new BuscadorController().buscarTurno(turno,event);
         //Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -115,10 +115,11 @@ public class TurnosController extends BaseController {
             datosTurnoText.setText("Turno "+numeroTurno+" no encontrado.");
         }
         else {
-            String formatoCalendario = turno.getFecha().toString();
-            String FormatoHora = turno.getHora().toString();
+            Mecanico mecanico = HelloApplication.turnosBO.obtenerMecanico(turno.get_mecanico_id());
+            String formatoCalendario = turno.get_fecha().toString();
+            String FormatoHora = turno.get_hora().toString();
             datosTurnoText.setText("Turno para el "+formatoCalendario+" a las "+FormatoHora+" hs");
-            datosTurnoSecondText.setText("Mecánico "+turno.getMecanico().getNombre()+", "+turno.getMecanico().getEspecialidad());
+            datosTurnoSecondText.setText("Mecánico "+ mecanico.get_nombre()+", "+mecanico.get_especialidad());
         }
     }
 

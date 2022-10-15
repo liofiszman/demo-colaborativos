@@ -1,3 +1,4 @@
+/*
 package DataAccess;
 
 import Classes.FichaConformidad;
@@ -57,3 +58,4 @@ public class DAOFichaConformidad implements IDAOFichaConformidad {
         }
     };
 }
+*/

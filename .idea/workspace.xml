@@ -5,9 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e91a7b1-eab4-4380-8919-0c98634ac732" name="Changes" comment="Added DTO's">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1dab3bdc-7096-4402-996d-50154916eb6c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1dab3bdc-7096-4402-996d-50154916eb6c.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Business/ReporteStrategy/ConcreteReporteStrategyDiario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Business/ReporteStrategy/ConcreteReporteStrategyDiario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Business/ReporteStrategy/ConcreteReporteStrategyMensual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Business/ReporteStrategy/ConcreteReporteStrategyMensual.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Business/ReporteStrategy/IReporteStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Business/ReporteStrategy/IReporteStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Business/TurnoBusinessObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Business/TurnoBusinessObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Classes/Arreglo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classes/Arreglo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/BuscadorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/BuscadorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ReportesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/ReportesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/TurnosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/TurnosController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ClienteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ClienteDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/CompaniaSegurosDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/CompaniaSegurosDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DAO/CompaniaSegurosDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/CompaniaSegurosDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/HorarioAtencionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/HorarioAtencionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/MecanicoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/MecanicoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/TurnoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/TurnoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataAccess/DAOCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataAccess/DAOCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataAccess/DAOFichaConformidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataAccess/DAOFichaConformidad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataAccess/DAOFichaMecanica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataAccess/DAOFichaMecanica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataAccess/DAOMecanico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataAccess/DAOMecanico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataAccess/DAOTurnos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataAccess/DAOTurnos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataAccess/DAOVehiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataAccess/DAOVehiculo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataAccess/IDAOCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataAccess/IDAOCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataAccess/IDAOCompaniaSeguro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataAccess/IDAOCompaniaSeguro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataAccess/IDAOFichaConformidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataAccess/IDAOFichaConformidad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataAccess/IDAOFichaMecanica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataAccess/IDAOFichaMecanica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataAccess/IDAOMecanico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataAccess/IDAOMecanico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataAccess/IDAOTurno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataAccess/IDAOTurno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataAccess/IDAOVehiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataAccess/IDAOVehiculo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,32 +188,6 @@
     <MESSAGE value="Added DTO's &amp; DB Connection Sigleton" />
     <MESSAGE value="Ejemplo DAO" />
     <option name="LAST_COMMIT_MESSAGE" value="Ejemplo DAO" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Business/TurnoBusinessObject.java</url>
-          <line>67</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/DAO/CompaniaSegurosDAO.java</url>
-          <line>46</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/DAO/CompaniaSegurosDAO.java</url>
-          <line>61</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/DAO/CompaniaSegurosDAO.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

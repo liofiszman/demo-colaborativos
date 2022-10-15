@@ -2,6 +2,7 @@ package DAO;
 
 import DTO.Cliente;
 import DTO.CompaniaSeguro;
+import DataAccess.IDAOCliente;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,7 +10,25 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClienteDAO {
+public class ClienteDAO implements IDAOCliente {
+
+    public ClienteDAO(){
+        try {
+            List<DTO.Cliente> clientes = obtenerClientes();
+            if(clientes.isEmpty()) {
+                Cliente cliente = new Cliente();
+                cliente.set_nombre("Lionel Fizman");
+                cliente.set_telefono("3323232323");
+                CreateCliente(cliente);
+
+                cliente = new Cliente();
+                cliente.set_nombre("Hernan Cossu");
+                cliente.set_telefono("5559595959");
+                CreateCliente(cliente);
+            }
+        }
+        catch (Exception ex) {}
+    }
 
     public int CreateCliente(Cliente p) throws Exception {
         String sql = "insert into cliente (nombre, telefono, apellido, tipo_documento, documento) values (?, ?, ?, ?, ?)";
@@ -26,12 +45,13 @@ public class ClienteDAO {
 
     public List<Cliente> ReadClienteList() throws Exception {
         Statement st = Utils.DBConnection.getConnection().createStatement();
-        ResultSet rs = st.executeQuery("select * from cliente");
+        ResultSet rs = st.executeQuery(
+                "select id,nombre,telefono,apellido,tipo_documento,documento from cliente");
 
         List<Cliente> clienteList = new ArrayList<>();
         while(rs.next()) {
             Cliente cliente = new Cliente();
-            cliente.set_id(rs.getInt("Id"));
+            cliente.set_id(rs.getInt("id"));
             cliente.set_nombre(rs.getString("nombre"));
             cliente.set_telefono(rs.getString("telefono"));
             cliente.set_apellido(rs.getString("apellido"));
@@ -45,15 +65,14 @@ public class ClienteDAO {
 
 
     public Cliente ReadCliente(Integer id) throws Exception {
-
-
-        PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement("select * from cliente where id = ?");
+        PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(
+                "select id,nombre,telefono,apellido,tipo_documento,documento from cliente where id = ?");
         preparedStatement.setInt(1,id);
         preparedStatement.setMaxRows(1);
         ResultSet rs  = preparedStatement.executeQuery();
 
         Cliente cliente = new Cliente();
-        cliente.set_id(rs.getInt("Id"));
+        cliente.set_id(rs.getInt("id"));
         cliente.set_nombre(rs.getString("nombre"));
         cliente.set_telefono(rs.getString("telefono"));
         cliente.set_apellido(rs.getString("apellido"));
@@ -64,15 +83,14 @@ public class ClienteDAO {
     }
 
     public Cliente ReadCliente(String nombre) throws Exception {
-
-
-        PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement("select * from cliente where nombre = ?");
+        PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(
+                "select id,nombre,telefono,apellido,tipo_documento,documento from cliente where nombre = ?");
         preparedStatement.setString(1,nombre);
         preparedStatement.setMaxRows(1);
         ResultSet rs  = preparedStatement.executeQuery();
 
         Cliente cliente = new Cliente();
-        cliente.set_id(rs.getInt("Id"));
+        cliente.set_id(rs.getInt("id"));
         cliente.set_nombre(rs.getString("nombre"));
         cliente.set_telefono(rs.getString("telefono"));
         cliente.set_apellido(rs.getString("apellido"));
@@ -126,16 +144,30 @@ public class ClienteDAO {
         return preparedStatement.executeUpdate();
     }
 
-    public List<Cliente> obtenerCliente() throws Exception {
-        return ReadClienteList();
+    public List<DTO.Cliente> obtenerClientes() {
+        try {
+            return ReadClienteList();
+        }
+        catch (Exception ex) {
+            return null;
+        }
     }
 
-    public DTO.Cliente obtenerCliente(String id) throws Exception {
-        return ReadCliente(Integer.valueOf(id));
+    public DTO.Cliente obtenerCliente(String id) {
+        try {
+            return ReadCliente(Integer.valueOf(id));
+        }
+        catch (Exception ex) {
+            return null;
+        }
     }
 
-    public DTO.Cliente obtenerCLienteNombre(String nombre) throws Exception {
-        return ReadCliente(nombre);
+    public DTO.Cliente obtenerClienteNombre(String nombre) {
+        try {
+            return ReadCliente(nombre);
+        }
+        catch (Exception ex) {
+            return null;
+        }
     }
-
 }

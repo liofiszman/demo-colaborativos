@@ -3,22 +3,22 @@ import Business.ReporteStrategy.ConcreteReporteStrategyDiario;
 import Business.ReporteStrategy.ConcreteReporteStrategyMensual;
 import Business.ReporteStrategy.IReporteStrategy;
 import Business.ReporteStrategy.TipoReporteEnum;
-import Classes.*;
+import Classes.Opcion;
 import DAO.*;
+import DTO.*;
 import DataAccess.*;
-
 import java.util.List;
 
 public class TurnoBusinessObject {
-    DAOTurnos turnos = (DAOTurnos) getDAO(TipoDAOEnum.DAOTurnos);
-    DAOMecanico mecanicos = (DAOMecanico) getDAO(TipoDAOEnum.DAOMecanico);
+    TurnoDAO turnos = (TurnoDAO) getDAO(TipoDAOEnum.DAOTurnos);
+    MecanicoDAO mecanicos = (MecanicoDAO) getDAO(TipoDAOEnum.DAOMecanico);
     CompaniaSegurosDAO companiasSeguro = (CompaniaSegurosDAO) getDAO(TipoDAOEnum.DAOCompaniaSeguro);
 
     IDAO getDAO(TipoDAOEnum tipoDAO) {
         try {
             switch (tipoDAO) {
-                case DAOTurnos -> { return new DAOTurnos(); }
-                case DAOMecanico -> { return new DAOMecanico(); }
+                case DAOTurnos -> { return new TurnoDAO(); }
+                case DAOMecanico -> { return new MecanicoDAO(); }
                 case DAOCompaniaSeguro -> { return new CompaniaSegurosDAO(); }
                 default -> { return null; }
             }
@@ -28,22 +28,22 @@ public class TurnoBusinessObject {
         }
     }
 
-    public List<Turno> obtenerTurnos(String patente) {
+    public List<DTO.Turno> obtenerTurnos(String patente) {
         return turnos.obtenerTurnos(patente);
     }
 
-    public List<Turno> obtenerTurnos(Opcion opcion) {
-        List<Mecanico> opcionesMecanicos = mecanicos.obtenerTurnos(opcion);
+    public List<DTO.Turno> obtenerTurnos(Opcion opcion) {
+        List<DTO.Mecanico> opcionesMecanicos = mecanicos.obtenerTurnos(opcion);
         return turnos.obtenerTurnos(opcion, opcionesMecanicos);
     }
 
     private IReporteStrategy Strategy;
     private void setStrategy(IReporteStrategy strategy) {
         this.Strategy = strategy; }
-    private List<Turno> executeStrategy() {
+    private List<DTO.Turno> executeStrategy() {
         return Strategy.GetTurnos(turnos); }
 
-    public List<Turno> GetTurnos(TipoReporteEnum tipoReporteEnum) {
+    public List<DTO.Turno> GetTurnos(TipoReporteEnum tipoReporteEnum) {
         if (tipoReporteEnum == TipoReporteEnum.Diario)
             setStrategy(new ConcreteReporteStrategyDiario());
         if (tipoReporteEnum == TipoReporteEnum.Mensual)
@@ -83,7 +83,14 @@ public class TurnoBusinessObject {
     public Turno obtenerTurno(String id) {
         return turnos.obtenerTurno(id);
     }
+    public Mecanico obtenerMecanico(int id) {
+        return mecanicos.obtenerMecanico(id);
+    }
 
-    public void registrarAsistencia(String id) { turnos.registrarAsistencia(id); }
-    public void cancelarTurno(String id) { turnos.cancelarTurno(id); }
+    public void registrarAsistencia(String id) {
+        turnos.registrarAsistencia(id);
+    }
+    public void cancelarTurno(String id) {
+        turnos.cancelarTurno(id);
+    }
 }

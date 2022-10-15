@@ -11,31 +11,29 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class CompaniaSegurosDAO implements IDAOCompaniaSeguro {
-    private List<DTO.CompaniaSeguro> _companiasSeguro;
-    private int id = 1;
+    public CompaniaSegurosDAO(){
+        try {
+            List<DTO.CompaniaSeguro> _companiasSeguro = obtenerCompaniasSeguro();
 
-    public CompaniaSegurosDAO() throws Exception {
-        _companiasSeguro = obtenerCompaniasSeguro();
+            if(_companiasSeguro.isEmpty()) {
+                CompaniaSeguro compania = new CompaniaSeguro();
+                compania.setNombre("Sancor");
+                CreateCompaniaSeguro(compania);
 
-        if(_companiasSeguro.isEmpty()) {
-            CompaniaSeguro compania = new CompaniaSeguro();
-            compania.setNombre("Sancor");
-            CreateCompaniaSeguro(compania);
+                compania = new CompaniaSeguro();
+                compania.setNombre("La Caja");
+                CreateCompaniaSeguro(compania);
 
-            compania = new CompaniaSeguro();
-            compania.setNombre("La Caja");
-            CreateCompaniaSeguro(compania);
+                compania = new CompaniaSeguro();
+                compania.setNombre("San Cristobal");
+                CreateCompaniaSeguro(compania);
 
-            compania = new CompaniaSeguro();
-            compania.setNombre("San Cristobal");
-            CreateCompaniaSeguro(compania);
-
-            compania = new CompaniaSeguro();
-            compania.setNombre("Orbis");
-            CreateCompaniaSeguro(compania);
-
-            _companiasSeguro = obtenerCompaniasSeguro();
+                compania = new CompaniaSeguro();
+                compania.setNombre("Orbis");
+                CreateCompaniaSeguro(compania);
+            }
         }
+        catch (Exception ex) {}
     }
 
     public int CreateCompaniaSeguro(DTO.CompaniaSeguro p) throws Exception {
@@ -104,7 +102,6 @@ public class CompaniaSegurosDAO implements IDAOCompaniaSeguro {
         return preparedStatement.executeUpdate();
     }
 
-
     public int UpdateCompaniaSeguro(String nombre, Integer id) throws Exception {
 
         String sql = "update compania_seguros set nombre=? where id=?";
@@ -117,7 +114,6 @@ public class CompaniaSegurosDAO implements IDAOCompaniaSeguro {
 
     }
 
-
     public int DeleteCompaniaSeguro(Integer id) throws Exception {
 
         String sql = "delete from compania_seguros where id=?";
@@ -129,15 +125,30 @@ public class CompaniaSegurosDAO implements IDAOCompaniaSeguro {
     }
 
 
-    public List<CompaniaSeguro> obtenerCompaniasSeguro() throws Exception {
-        return ReadCompaniaSeguroList();
+    public List<CompaniaSeguro> obtenerCompaniasSeguro(){
+        try {
+            return ReadCompaniaSeguroList();
+        }
+        catch (Exception ex) {
+            return null;
+        }
     }
 
-    public DTO.CompaniaSeguro obtenerCompaniaSeguro(String id) throws Exception {
-        return ReadCompaniaSeguro(Integer.valueOf(id));
+    public DTO.CompaniaSeguro obtenerCompaniaSeguro(String id){
+        try {
+            return ReadCompaniaSeguro(Integer.valueOf(id));
+        }
+        catch (Exception ex) {
+            return null;
+        }
     }
 
-    public DTO.CompaniaSeguro obtenerCompaniaSeguroNombre(String nombre) throws Exception {
-        return ReadCompaniaSeguro(nombre);
+    public DTO.CompaniaSeguro obtenerCompaniaSeguroNombre(String nombre){
+        try {
+            return ReadCompaniaSeguro(nombre);
+        }
+        catch (Exception ex) {
+            return null;
+        }
     }
 }

@@ -1,4 +1,6 @@
+/*
 package DataAccess;
+
 
 import Classes.Cliente;
 
@@ -69,3 +71,4 @@ public class DAOCliente implements IDAOCliente {
         }
     };
 }
+*/

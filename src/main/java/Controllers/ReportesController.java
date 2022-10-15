@@ -2,7 +2,8 @@ package Controllers;
 
 import Business.ReporteStrategy.TipoReporteEnum;
 import Classes.Arreglo;
-import Classes.Turno;
+import Classes.FichaMecanica;
+import DTO.*;
 import home.HelloApplication;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableListBase;
@@ -80,7 +81,12 @@ public class ReportesController extends BaseController {
     private static ObservableList<Arreglo> getArreglos(List<Turno> turnos) {
         List<Arreglo> arreglos = new ArrayList<>();
         for(Turno turno :turnos) {
-            arreglos.add(new Arreglo(turno));
+            Mecanico mecanico = HelloApplication.turnosBO.obtenerMecanico(turno.get_mecanico_id());
+            DTO.FichaMecanica fichaMecanica = HelloApplication.turnosBO.obtenerFichaMecanica(turno.get_ficha_mecanica_id());
+            DTO.FichaConformidad fichaConformidad = HelloApplication.turnosBO.obtenerFichaConformidad(fichaMecanica.get_ficha_conformidad_id());
+            DTO.Vehiculo vehiculo = HelloApplication.turnosBO.obtenerVehiculo(turno.get_vehiculo_id());
+            DTO.CompaniaSeguro companiaSeguro = HelloApplication.turnosBO.obtenerCompaniaSeguro(vehiculo.get_compania_seguro_id());
+            arreglos.add(new Arreglo(turno, mecanico, fichaConformidad, fichaMecanica, vehiculo, companiaSeguro));
         }
 
         return observableList(arreglos);
