@@ -11,7 +11,7 @@ import java.util.List;
 public class CompaniaSegurosDAO {
 
 
-    public int create_compania_seguro(CompaniaSeguro p) throws Exception {
+    public int CreateCompaniaSeguro(CompaniaSeguro p) throws Exception {
         String sql = "insert into compania_seguros values (?)";
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
@@ -20,7 +20,7 @@ public class CompaniaSegurosDAO {
         return preparedStatement.executeUpdate();
     }
 
-    public List<CompaniaSeguro> read_compania_seguro_list() throws Exception {
+    public List<CompaniaSeguro> ReadCompaniaSeguroList() throws Exception {
         Statement st = Utils.DBConnection.getConnection().createStatement();
         ResultSet rs = st.executeQuery("select * from cliente");
 
@@ -36,7 +36,7 @@ public class CompaniaSegurosDAO {
     }
 
 
-    public CompaniaSeguro read_compania_seguro(Integer id) throws Exception {
+    public CompaniaSeguro ReadCompaniaSeguro(Integer id) throws Exception {
 
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement("select * from cliente where id = ?");
@@ -52,7 +52,7 @@ public class CompaniaSegurosDAO {
     }
 
 
-    public int update_compania_seguro(CompaniaSeguro p) throws Exception {
+    public int UpdateCompaniaSeguro(CompaniaSeguro p) throws Exception {
 
         String sql = "update compania_seguros set nombre=? where id=?";
 
@@ -65,7 +65,7 @@ public class CompaniaSegurosDAO {
     }
 
 
-    public int update_compania_seguro(String nombre, Integer id) throws Exception {
+    public int UpdateCompaniaSeguro(String nombre, Integer id) throws Exception {
 
         String sql = "update compania_seguros set nombre=? where id=?";
 
@@ -78,7 +78,7 @@ public class CompaniaSegurosDAO {
     }
 
 
-    public int delete_compania_seguro(Integer id) throws Exception {
+    public int DeleteCompaniaSeguro(Integer id) throws Exception {
 
         String sql = "delete from compania_seguros where id=?";
 

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ClienteDAO {
 
-    public int create_cliente(Cliente p) throws Exception {
+    public int CreateCliente(Cliente p) throws Exception {
         String sql = "insert into cliente (nombre, telefono, apellido, tipo_documento, documento) values (?, ?, ?, ?, ?)";
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -23,7 +23,7 @@ public class ClienteDAO {
         return preparedStatement.executeUpdate();
     }
 
-    public List<Cliente> read_client_list() throws Exception {
+    public List<Cliente> ReadClienteList() throws Exception {
         Statement st = Utils.DBConnection.getConnection().createStatement();
         ResultSet rs = st.executeQuery("select * from cliente");
 
@@ -43,7 +43,7 @@ public class ClienteDAO {
     }
 
 
-    public Cliente read_cliente(Integer id) throws Exception {
+    public Cliente ReadCliente(Integer id) throws Exception {
 
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement("select * from cliente where id = ?");
@@ -63,7 +63,7 @@ public class ClienteDAO {
     }
 
 
-    public int update_cliente(Cliente p) throws Exception {
+    public int UpdateCliente(Cliente p) throws Exception {
 
         String sql = "update cliente set nombre=?, telefono=?, apellido=?, tipo_documento=?, documento=? where id=?";
 
@@ -80,7 +80,7 @@ public class ClienteDAO {
     }
 
 
-    public int update_cliente(String nombre, String telefono, String apellido, String tipo_documento, String documento, Integer id) throws Exception {
+    public int UpdateCliente(String nombre, String telefono, String apellido, String tipo_documento, String documento, Integer id) throws Exception {
 
         String sql = "update cliente set nombre=?, telefono=?, apellido=?, tipo_documento=?, documento=? where id=?";
 
@@ -97,7 +97,7 @@ public class ClienteDAO {
     }
 
 
-    public int delete_cliente(Integer id) throws Exception {
+    public int DeleteCliente(Integer id) throws Exception {
 
         String sql = "delete from cliente where id=?";
 

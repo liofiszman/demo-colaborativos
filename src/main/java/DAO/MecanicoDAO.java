@@ -10,7 +10,7 @@ import java.util.List;
 
 public class MecanicoDAO {
 
-    public int create_mecanico(Mecanico p) throws Exception {
+    public int CreateMecanico(Mecanico p) throws Exception {
         String sql = "insert into mecanico (nombre, telefono, apellido, tipo_documento, documento) values (?, ?, ?, ?, ?)";
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -23,7 +23,7 @@ public class MecanicoDAO {
         return preparedStatement.executeUpdate();
     }
 
-    public List<Mecanico> read_client_list() throws Exception {
+    public List<Mecanico> ReadMecanicoList() throws Exception {
         Statement st = Utils.DBConnection.getConnection().createStatement();
         ResultSet rs = st.executeQuery("select * from mecanico");
 
@@ -43,7 +43,7 @@ public class MecanicoDAO {
     }
 
 
-    public Mecanico read_mecanico(Integer id) throws Exception {
+    public Mecanico ReadMecanico(Integer id) throws Exception {
 
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement("select * from mecanico where id = ?");
@@ -63,7 +63,7 @@ public class MecanicoDAO {
     }
 
 
-    public int update_mecanico(Mecanico p) throws Exception {
+    public int UpdateMecanico(Mecanico p) throws Exception {
 
         String sql = "update mecanico set nombre=?, telefono=?, apellido=?, tipo_documento=?, documento=? where id=?";
 
@@ -80,7 +80,7 @@ public class MecanicoDAO {
     }
 
 
-    public int update_mecanico(String nombre, String telefono, String apellido, String tipo_documento, String documento, Integer id) throws Exception {
+    public int UpdateMecanico(String nombre, String telefono, String apellido, String tipo_documento, String documento, Integer id) throws Exception {
 
         String sql = "update mecanico set nombre=?, telefono=?, apellido=?, tipo_documento=?, documento=? where id=?";
 
@@ -97,7 +97,7 @@ public class MecanicoDAO {
     }
 
 
-    public int delete_mecanico(Integer id) throws Exception {
+    public int DeleteMecanico(Integer id) throws Exception {
 
         String sql = "delete from mecanico where id=?";
 

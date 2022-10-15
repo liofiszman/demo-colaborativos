@@ -13,7 +13,7 @@ import java.util.List;
 
 public class TurnoDAO {
 
-    public int create_turno(Turno p) throws Exception {
+    public int CreateTurno(Turno p) throws Exception {
         String sql = "insert into turno (active, fecha, hora, mecanico_id, vehiculo_id, asistencia, ficha_mecanica_id) values (?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -28,7 +28,7 @@ public class TurnoDAO {
         return preparedStatement.executeUpdate();
     }
 
-    public List<Turno> read_client_list() throws Exception {
+    public List<Turno> ReadTurnoList() throws Exception {
         Statement st = Utils.DBConnection.getConnection().createStatement();
         ResultSet rs = st.executeQuery("select * from turno");
 
@@ -50,7 +50,7 @@ public class TurnoDAO {
     }
 
 
-    public Turno read_turno(Integer id) throws Exception {
+    public Turno ReadTurno(Integer id) throws Exception {
 
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement("select * from turno where id = ?");
@@ -72,7 +72,7 @@ public class TurnoDAO {
     }
 
 
-    public int update_turno(Turno p) throws Exception {
+    public int UpdateTurno(Turno p) throws Exception {
 
         String sql = "update turno set active=?, fecha=?, hora=?, mecanico_id=?, vehiculo_id=?, asistencia=?, ficha_mecanica_id=? where id=?";
 
@@ -91,7 +91,7 @@ public class TurnoDAO {
     }
 
 
-    public int update_turno(Boolean active, Date fecha, Time hora, Integer mecanico_id, Integer vehiculo_id, Boolean asistencia, Integer ficha_mecanica_id, Integer id) throws Exception {
+    public int UpdateTurno(Boolean active, Date fecha, Time hora, Integer mecanico_id, Integer vehiculo_id, Boolean asistencia, Integer ficha_mecanica_id, Integer id) throws Exception {
 
         String sql = "update turno set active=?, fecha=?, hora=?, mecanico_id=?, vehiculo_id=?, asistencia=?, ficha_mecanica_id=? where id=?";
 
@@ -110,7 +110,7 @@ public class TurnoDAO {
     }
 
 
-    public int delete_turno(Integer id) throws Exception {
+    public int DeleteTurno(Integer id) throws Exception {
 
         String sql = "delete from turno where id=?";
 
@@ -120,7 +120,7 @@ public class TurnoDAO {
         return preparedStatement.executeUpdate();
     }
 
-    public List<Turno> get_turno_by_mecanico(Integer mecanico_id) throws Exception {
+    public List<Turno> GetTurnoByMecanico(Integer mecanico_id) throws Exception {
         Statement st = Utils.DBConnection.getConnection().createStatement();
         ResultSet rs = st.executeQuery("select * from turno where mecanico_id=?");
         List<Turno> turnoList = new ArrayList<>();
@@ -139,7 +139,7 @@ public class TurnoDAO {
         return turnoList;
     }
 
-    public List<Turno> get_turno_by_ficha_mecanica(Integer ficha_mecanica_id) throws Exception {
+    public List<Turno> GetTurnoByFichaMecanica(Integer ficha_mecanica_id) throws Exception {
         Statement st = DBConnection.getConnection().createStatement();
         ResultSet rs = st.executeQuery("select * from turno where ficha_mecanica_id=?");
         List<Turno> turnoList = new ArrayList<>();
@@ -158,7 +158,7 @@ public class TurnoDAO {
         return turnoList;
     }
 
-    public List<Turno> get_turno_by_vehiculo(Integer vehiculo_id) throws Exception {
+    public List<Turno> GetTurnoByVehiculo(Integer vehiculo_id) throws Exception {
         Statement st = Utils.DBConnection.getConnection().createStatement();
         ResultSet rs = st.executeQuery("select * from turno where vehiculo_id=?");
         List<Turno> turnoList = new ArrayList<>();

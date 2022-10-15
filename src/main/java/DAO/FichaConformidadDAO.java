@@ -12,7 +12,7 @@ import java.util.List;
 public class FichaConformidadDAO {
 
 
-    public int create_compania_seguro(FichaConformidad p) throws Exception {
+    public int CreateFichaConformidad(FichaConformidad p) throws Exception {
         String sql = "insert into ficha_conformidad (motivos_disconforme, firmada, firmada_conforme) values (?, ?, ?)";
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
@@ -23,7 +23,7 @@ public class FichaConformidadDAO {
         return preparedStatement.executeUpdate();
     }
 
-    public List<FichaConformidad> read_ficha_conformidad_list() throws Exception {
+    public List<FichaConformidad> ReadFichaConformidadList() throws Exception {
         Statement st = DBConnection.getConnection().createStatement();
         ResultSet rs = st.executeQuery("select * from ficha_conformidad where id=?");
 
@@ -39,7 +39,7 @@ public class FichaConformidadDAO {
     }
 
 
-    public FichaConformidad read_ficha_conformidad(Integer id) throws Exception {
+    public FichaConformidad ReadFichaConformidad(Integer id) throws Exception {
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement("select * from ficha_conformidad where id = ?");
         preparedStatement.setInt(1,id);
         preparedStatement.setMaxRows(1);
@@ -55,7 +55,7 @@ public class FichaConformidadDAO {
     }
 
 
-    public int update_ficha_conformidad(FichaConformidad p) throws Exception {
+    public int UpdateFichaConformidad(FichaConformidad p) throws Exception {
 
         String sql = "update ficha_conformidad set motivos_disconforme=?, firmada=?, firmada_conforme=? where id=?";
 
@@ -69,7 +69,7 @@ public class FichaConformidadDAO {
     }
 
 
-    public int update_compania_seguro(String motivos_disconforme, Boolean firmada, Boolean firmada_conforme, Integer id) throws Exception {
+    public int UpdateFichaConformidad(String motivos_disconforme, Boolean firmada, Boolean firmada_conforme, Integer id) throws Exception {
         String sql = "update ficha_conformidad set motivos_disconforme=?, firmada=?, firmada_conforme=? where id=?";
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql);
@@ -82,7 +82,7 @@ public class FichaConformidadDAO {
     }
 
 
-    public int delete_compania_seguro(Integer id) throws Exception {
+    public int DeleteFichaConformidad(Integer id) throws Exception {
 
         String sql = "delete from ficha_conformidad where id=?";
 

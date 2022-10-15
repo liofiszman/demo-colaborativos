@@ -5,33 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e91a7b1-eab4-4380-8919-0c98634ac732" name="Changes" comment="Ejemplo DAO">
-      <change beforePath="$PROJECT_DIR$/.idea/demo-colaborativos.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/demo-colaborativos.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_18_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_18_0_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_18_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_18_0_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_18_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_18_0_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_18_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_18_0_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_10_2022_20_22_[Changes]/HelloApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_10_2022_20_22_[Changes]/IDAOCliente.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_10_2022_20_22_[Changes]/IDAOCompaniaSeguro.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_10_2022_20_22_[Changes]/IDAOFichaConformidad.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_10_2022_20_22_[Changes]/IDAOFichaMecanica.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_10_2022_20_22_[Changes]/IDAOMecanico.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_10_2022_20_22_[Changes]/IDAOTurno.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_10_2022_20_22_[Changes]/IDAOVehiculo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_10_2022_20_22_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_10_2022_20_22__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/Dao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DTO/HorarioAtencion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DTO/HorarioAtencion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DTO/Turno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DTO/Turno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DTO/ClienteDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DTO/CompaniaSegurosDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DTO/FichaConformidadDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DTO/FichaMecanicaDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DTO/HorarioAtencionDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DTO/MecanicoDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DTO/TurnoDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DTO/VehiculoDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ClienteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ClienteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/CompaniaSegurosDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/CompaniaSegurosDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/FichaConformidadDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/FichaConformidadDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/FichaMecanicaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/FichaMecanicaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/HorarioAtencionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/HorarioAtencionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/MecanicoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/MecanicoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/TurnoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/TurnoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/VehiculoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/VehiculoDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +100,7 @@
       <updated>1665174082890</updated>
       <workItem from="1665174087616" duration="10747000" />
       <workItem from="1665432414780" duration="7096000" />
-      <workItem from="1665863874519" duration="294000" />
+      <workItem from="1665863874519" duration="1353000" />
     </task>
     <task id="LOCAL-00001" summary="sarasa">
       <created>1665181184047</created>

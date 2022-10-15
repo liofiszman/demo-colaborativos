@@ -13,7 +13,7 @@ import java.util.List;
 
 public class HorarioAtencionDAO {
 
-    public int create_horario_atencion(HorarioAtencion p) throws Exception {
+    public int CreateHorarioAtencion(HorarioAtencion p) throws Exception {
         String sql = "insert into horario_atencion (dia_atencion, hora_desde, hora_hasta, mecanico_id) values (?, ?, ?, ?)";
 
         PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -25,7 +25,7 @@ public class HorarioAtencionDAO {
         return preparedStatement.executeUpdate();
     }
 
-    public List<HorarioAtencion> read_horario_atencion_list() throws Exception {
+    public List<HorarioAtencion> ReadHorarioAtencionList() throws Exception {
         Statement st = Utils.DBConnection.getConnection().createStatement();
         ResultSet rs = st.executeQuery("select * from horario_atencion");
 
@@ -44,7 +44,7 @@ public class HorarioAtencionDAO {
     }
 
 
-    public HorarioAtencion read_horario_atencion(Integer id) throws Exception {
+    public HorarioAtencion ReadHorarioAtencion(Integer id) throws Exception {
 
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement("select * from horario_atencion where id = ?");
@@ -63,7 +63,7 @@ public class HorarioAtencionDAO {
     }
 
 
-    public int update_horario_atencion(HorarioAtencion p) throws Exception {
+    public int UpdateHorarioAtencion(HorarioAtencion p) throws Exception {
 
         String sql = "update horario_atencion set dia_atencion=?, hora_desde=?, hora_hasta=?, mecanico_id=? where id=?";
 
@@ -79,7 +79,7 @@ public class HorarioAtencionDAO {
     }
 
 
-    public int update_horario_atencion(String dia_atencion, Time hora_desde, Time hora_hasta, Integer mecanico_id, Integer id) throws Exception {
+    public int UpdateHorarioAtencion(String dia_atencion, Time hora_desde, Time hora_hasta, Integer mecanico_id, Integer id) throws Exception {
 
         String sql = "update horario_atencion set dia_atencion=?, hora_desde=?, hora_hasta=?, mecanico_id=? where id=?";
 
@@ -95,7 +95,7 @@ public class HorarioAtencionDAO {
     }
 
 
-    public int delete_horario_atencion(Integer id) throws Exception {
+    public int DeleteHorarioAtencion(Integer id) throws Exception {
 
         String sql = "delete from horario_atencion where id=?";
 
@@ -105,7 +105,7 @@ public class HorarioAtencionDAO {
         return preparedStatement.executeUpdate();
     }
 
-    public List<HorarioAtencion> get_horario_atencion_by_mecanico(Integer mecanico_id) throws Exception {
+    public List<HorarioAtencion> GetHorarioAtencionByMecanico (Integer mecanico_id) throws Exception {
         Statement st = Utils.DBConnection.getConnection().createStatement();
         ResultSet rs = st.executeQuery("select * from horario_atencion where mecanico_id=?");
         List<HorarioAtencion> horarioAtencionList = new ArrayList<>();

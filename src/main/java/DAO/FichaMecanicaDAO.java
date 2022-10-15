@@ -11,7 +11,7 @@ import java.util.List;
 
 public class FichaMecanicaDAO {
 
-    public int create_ficha_mecanica(FichaMecanica p) throws Exception {
+    public int CreateFichaMecanica(FichaMecanica p) throws Exception {
         String sql = "insert into ficha_mecanica (actividades, ficha_conformidad_id, repuestos) values (?, ?, ?)";
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -22,7 +22,7 @@ public class FichaMecanicaDAO {
         return preparedStatement.executeUpdate();
     }
 
-    public List<FichaMecanica> read_ficha_mecanica_list() throws Exception {
+    public List<FichaMecanica> ReadFichaMecanicaList() throws Exception {
         Statement st = Utils.DBConnection.getConnection().createStatement();
         ResultSet rs = st.executeQuery("select * from ficha_mecanica");
 
@@ -39,7 +39,7 @@ public class FichaMecanicaDAO {
     }
 
 
-    public FichaMecanica read_ficha_mecanica(Integer id) throws Exception {
+    public FichaMecanica ReadFichaMecanica(Integer id) throws Exception {
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement("select * from ficha_mecanica where id=?");
         preparedStatement.setInt(1,id);
         preparedStatement.setMaxRows(1);
@@ -54,7 +54,7 @@ public class FichaMecanicaDAO {
     }
 
 
-    public int update_ficha_mecanica(FichaMecanica p) throws Exception {
+    public int UpdateFichaMecanica(FichaMecanica p) throws Exception {
         String sql = "update ficha_mecanica set actividades=?, ficha_conformidad_id=?, repuestos=? where id=?";
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql);
@@ -67,7 +67,7 @@ public class FichaMecanicaDAO {
     }
 
 
-    public int update_ficha_mecanica(String actividades, Integer ficha_conformidad_id, String repuestos, Integer id) throws Exception {
+    public int UpdateFichaMecanica(String actividades, Integer ficha_conformidad_id, String repuestos, Integer id) throws Exception {
 
         String sql = "update ficha_mecanica set actividades=?, ficha_conformidad_id=?, repuestos=? where id=?";
 
@@ -82,7 +82,7 @@ public class FichaMecanicaDAO {
     }
 
 
-    public int delete_ficha_mecanica(Integer id) throws Exception {
+    public int DeleteFichaMecanica(Integer id) throws Exception {
 
         String sql = "delete from ficha_mecanica where id=?";
 

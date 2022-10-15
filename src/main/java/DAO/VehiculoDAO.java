@@ -11,7 +11,7 @@ import java.util.List;
 
 public class VehiculoDAO {
 
-    public int create_vehiculo(Vehiculo p) throws Exception {
+    public int CreateVehiculo(Vehiculo p) throws Exception {
         String sql = "insert into vehiculo (id, compania_seguro_id, cliente_id, numero_poliza, marca, patente) values (?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         preparedStatement.setInt(1 ,p.get_id());
@@ -23,7 +23,7 @@ public class VehiculoDAO {
         return preparedStatement.executeUpdate();
     }
 
-    public int create_vehiculo(Integer id, Integer compania_seguro_id, Integer cliente_id, String numero_poliza, String marca, String patente) throws Exception {
+    public int CreateVehiculo(Integer id, Integer compania_seguro_id, Integer cliente_id, String numero_poliza, String marca, String patente) throws Exception {
         String sql = "insert into vehiculo (id, compania_seguro_id, cliente_id, numero_poliza, marca, patente) values (?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         preparedStatement.setInt(1 ,id);
@@ -35,7 +35,7 @@ public class VehiculoDAO {
         return preparedStatement.executeUpdate();
     }
 
-    public List<Vehiculo> read_vehiculo_list() throws Exception {
+    public List<Vehiculo> ReadVehiculoList() throws Exception {
         Statement st = Utils.DBConnection.getConnection().createStatement();
         ResultSet rs = st.executeQuery("select * from vehiculo");
         List<Vehiculo> vehiculoList = new ArrayList<>();
@@ -53,7 +53,7 @@ public class VehiculoDAO {
     }
 
 
-    public Vehiculo read_vehiculo(Integer id) throws Exception {
+    public Vehiculo ReadVehiculo(Integer id) throws Exception {
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement("select * from vehiculo where id=?");
         preparedStatement.setInt(1,id);
         preparedStatement.setMaxRows(1);
@@ -70,7 +70,7 @@ public class VehiculoDAO {
     }
 
 
-    public int update_vehiculo(Vehiculo p) throws Exception {
+    public int UpdateVehiculo(Vehiculo p) throws Exception {
         String sql = "update vehiculo set compania_seguro_id=?, cliente_id=?, numero_poliza=?, marca=?, patente=? where id=?";
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql);
@@ -83,7 +83,7 @@ public class VehiculoDAO {
         return preparedStatement.executeUpdate();
     }
 
-    public int update_vehiculo(Integer compania_seguro_id, Integer cliente_id, String numero_poliza, String marca, String patente, Integer id) throws Exception {
+    public int UpdateVehiculo(Integer compania_seguro_id, Integer cliente_id, String numero_poliza, String marca, String patente, Integer id) throws Exception {
         String sql = "update vehiculo set compania_seguro_id=?, cliente_id=?, numero_poliza=?, marca=?, patente=? where id=?";
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql);
@@ -98,7 +98,7 @@ public class VehiculoDAO {
 
 
 
-    public int delete_vehiculo(Integer id) throws Exception {
+    public int DeleteVehiculo(Integer id) throws Exception {
 
         String sql = "delete from vehiculo where id=?";
 
@@ -108,7 +108,7 @@ public class VehiculoDAO {
         return preparedStatement.executeUpdate();
     }
 
-    public List<Vehiculo> get_vehiculo_by_cliente(Integer cliente_id) throws Exception {
+    public List<Vehiculo> GetVehiculoByCliente(Integer cliente_id) throws Exception {
         Statement st = Utils.DBConnection.getConnection().createStatement();
         ResultSet rs = st.executeQuery("select * from vehiculo where cliente_id=?");
         List<Vehiculo> vehiculoList = new ArrayList<>();
@@ -125,7 +125,7 @@ public class VehiculoDAO {
         return vehiculoList;
     }
 
-    public List<Vehiculo> get_vehiculo_by_compania_seguro(Integer compania_seguro_id) throws Exception {
+    public List<Vehiculo> GetVehiculoByCompaniaSeguro(Integer compania_seguro_id) throws Exception {
         Statement st = Utils.DBConnection.getConnection().createStatement();
         ResultSet rs = st.executeQuery("select * from vehiculo where compania_seguro_id=?");
         List<Vehiculo> vehiculoList = new ArrayList<>();
