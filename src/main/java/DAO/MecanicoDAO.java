@@ -1,5 +1,6 @@
 package DAO;
 
+import Classes.Opcion;
 import DTO.Mecanico;
 
 import java.sql.PreparedStatement;
@@ -7,11 +8,13 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 public class MecanicoDAO {
 
     public int CreateMecanico(Mecanico p) throws Exception {
-        String sql = "insert into mecanico (nombre, telefono, apellido, tipo_documento, documento) values (?, ?, ?, ?, ?)";
+        String sql = "insert into mecanico (nombre, telefono, apellido, tipo_documento, documento,especialidad) values (?, ?, ?, ?, ?,?)";
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         preparedStatement.setString(1 ,p.get_nombre());
@@ -19,6 +22,7 @@ public class MecanicoDAO {
         preparedStatement.setString(3 ,p.get_apellido());
         preparedStatement.setString(4 ,p.get_tipo_documento());
         preparedStatement.setString(5 ,p.get_documento());
+        preparedStatement.setString(6,p.get_especialidad());
 
         return preparedStatement.executeUpdate();
     }
@@ -36,12 +40,25 @@ public class MecanicoDAO {
             mecanico.set_apellido(rs.getString("apellido"));
             mecanico.set_tipo_documento(rs.getString("tipo_documento"));
             mecanico.set_documento(rs.getString("documento"));
+            mecanico.set_especialidad(rs.getString("especialidad"));
             mecanicoList.add(mecanico);
         }
+
 
         return mecanicoList;
     }
 
+    public List<String> ReadEspecialidades() throws Exception {
+        Statement st = Utils.DBConnection.getConnection().createStatement();
+        ResultSet rs = st.executeQuery("select distinct(especialidad) from mecanico");
+
+        List<String> especialidades = new ArrayList<>();
+        while(rs.next()) {
+            String especialidad = rs.getString("especialidad");
+            especialidades.add(especialidad);
+        }
+        return especialidades;
+    }
 
     public Mecanico ReadMecanico(Integer id) throws Exception {
 
@@ -58,14 +75,38 @@ public class MecanicoDAO {
         mecanico.set_apellido(rs.getString("apellido"));
         mecanico.set_tipo_documento(rs.getString("tipo_documento"));
         mecanico.set_documento(rs.getString("documento"));
-
+        mecanico.set_especialidad(rs.getString("especialidad"));
         return mecanico;
     }
 
+    public List<Mecanico> ReadMecanico(String especialidad) throws Exception {
+
+
+        PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement("select * from mecanico where especialidad = ?");
+        preparedStatement.setString(1 ,especialidad);
+        preparedStatement.setMaxRows(1);
+        ResultSet rs  = preparedStatement.executeQuery();
+
+        List<Mecanico> mecanicoList = new ArrayList<>();
+        while(rs.next()) {
+            Mecanico mecanico = new Mecanico();
+            mecanico.set_id(rs.getInt("Id"));
+            mecanico.set_nombre(rs.getString("nombre"));
+            mecanico.set_telefono(rs.getString("telefono"));
+            mecanico.set_apellido(rs.getString("apellido"));
+            mecanico.set_tipo_documento(rs.getString("tipo_documento"));
+            mecanico.set_documento(rs.getString("documento"));
+            mecanico.set_especialidad(rs.getString("especialidad"));
+            mecanicoList.add(mecanico);
+        }
+
+
+        return mecanicoList;
+    }
 
     public int UpdateMecanico(Mecanico p) throws Exception {
 
-        String sql = "update mecanico set nombre=?, telefono=?, apellido=?, tipo_documento=?, documento=? where id=?";
+        String sql = "update mecanico set nombre=?, telefono=?, apellido=?, tipo_documento=?, documento=?, especialidad=? where id=?";
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql);
         preparedStatement.setString(1 ,p.get_nombre());
@@ -73,6 +114,7 @@ public class MecanicoDAO {
         preparedStatement.setString(3 ,p.get_apellido());
         preparedStatement.setString(4 ,p.get_tipo_documento());
         preparedStatement.setString(5 ,p.get_documento());
+        preparedStatement.setString(6,p.get_especialidad());
         preparedStatement.setInt(6 ,p.get_id());
 
 
@@ -80,9 +122,9 @@ public class MecanicoDAO {
     }
 
 
-    public int UpdateMecanico(String nombre, String telefono, String apellido, String tipo_documento, String documento, Integer id) throws Exception {
+    public int UpdateMecanico(String nombre, String telefono, String apellido, String tipo_documento, String documento, Integer id,String especialidad) throws Exception {
 
-        String sql = "update mecanico set nombre=?, telefono=?, apellido=?, tipo_documento=?, documento=? where id=?";
+        String sql = "update mecanico set nombre=?, telefono=?, apellido=?, tipo_documento=?, documento=?, especialidad=? where id=?";
 
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql);
         preparedStatement.setString(1 ,nombre);
@@ -90,6 +132,7 @@ public class MecanicoDAO {
         preparedStatement.setString(3 ,apellido);
         preparedStatement.setString(4 ,tipo_documento);
         preparedStatement.setString(5 ,documento);
+        preparedStatement.setString(6,especialidad);
         preparedStatement.setInt(6 ,id);
 
         return preparedStatement.executeUpdate();
@@ -106,6 +149,49 @@ public class MecanicoDAO {
 
         return preparedStatement.executeUpdate();
     }
+
+
+    public List<DTO.Mecanico> obtenerMecanicos(){
+        try {
+            return this.ReadMecanicoList();
+        }catch (Exception ex){
+            return null;
+        }
+    }
+
+    public DTO.Mecanico obtenerMecanico(String id){
+        try {
+            return this.ReadMecanico(Integer.valueOf(id));
+        }
+        catch (Exception ex) {
+            return null;
+        }
+    }
+
+    public List<String> obtenerEspecialidades(){
+        return this.obtenerEspecialidades();
+    }
+
+
+
+    public DTO.Mecanico getByID(String id) {
+       try{
+           return this.ReadMecanico(Integer.valueOf(id));
+       }catch (Exception ex)
+       {
+           return null;
+       }
+    }
+
+    public List<DTO.Mecanico> obtenerTurnos(Opcion opcion) {
+        try{
+            return this.ReadMecanico(opcion.getEspecialidad());
+        }catch (Exception ex)
+        {
+            return null;
+        }
+    }
+
 
 
 }
