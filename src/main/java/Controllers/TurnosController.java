@@ -30,14 +30,30 @@ public class TurnosController extends BaseController {
     /// Captura la información del formulario para solicitar turno
     @FXML
     protected void verOpcionesButtonClick(ActionEvent event) throws IOException {
-        opcion.setPatente(this.PatenteTextField.getText());
-        opcion.setCliente(this.ClienteTextField.getText());
-        opcion.setEspecialidad(this.selectedEspecialidad.getText());
-        opcion.setCompania(this.selectedCompania.getText());
-        opcion.setFecha(this.FechaSeleccionada.getValue());
+        if(this.PatenteTextField.getText().trim().isEmpty()
+                || this.ClienteTextField.getText().trim().isEmpty()
+                || this.especialidadCombo.getSelectionModel().selectedItemProperty().toString().trim().isEmpty()
+                || this.companiaCombo.getSelectionModel().selectedItemProperty().toString().trim().isEmpty()
+                || this.FechaSeleccionada.getValue() == null
+        ){
+          Dialog dialog = new Dialog();
+          dialog.setTitle("Error");
+          DialogPane dialogPane = new DialogPane();
+          dialogPane.setContentText("Complete todos los campos");
+          dialogPane.getButtonTypes().addAll(ButtonType.OK);
+          dialog.setDialogPane(dialogPane);
 
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        verOpciones(stage);
+          dialog.show();
+        }else {
+            opcion.setPatente(this.PatenteTextField.getText());
+            opcion.setCliente(this.ClienteTextField.getText());
+            opcion.setEspecialidad(this.selectedEspecialidad.getText());
+            opcion.setCompania(this.selectedCompania.getText());
+            opcion.setFecha(this.FechaSeleccionada.getValue());
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            verOpciones(stage);
+        }
     }
 
     /// Lista las opciones de turnos en formato de tabla.
@@ -89,6 +105,8 @@ public class TurnosController extends BaseController {
 
     /// Confirma un turno de la lista previa.
     private void reservarTurno(Classes.Turno turno, ActionEvent event) throws IOException, InterruptedException {
+
+
         int turnoN = HelloApplication.turnosBO.addTurno(turno, opcion);
 
         if(turnoN > 0)
