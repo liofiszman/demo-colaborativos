@@ -15,9 +15,11 @@ public interface IDAOTurno extends IDAO {
     Classes.Turno obtenerTurnoCompleto(String id);
     void registrarAsistencia(String id);
     void cancelarTurno(String id);
-    int addTurno(Turno turno, Opcion opcion);
+    int addTurno(Classes.Turno turno, Opcion opcion);
     void registrarActividades(String numeroTurno, String actividadesText, String insumosText);
 
     void firmaConforme(String numeroTurno);
     void firmaInconforme(String numeroTurno);
+
+    String obtenerTurnoID();
 }

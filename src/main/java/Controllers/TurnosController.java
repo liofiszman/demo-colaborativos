@@ -6,7 +6,9 @@ import DTO.*;
 import home.HelloApplication;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -60,19 +62,37 @@ public class TurnosController extends BaseController {
         addButtonToTable(tableOpciones);
 
         VBox vbox = new VBox(tableOpciones);
+        vbox.getChildren().add(getBackButton());
         Scene scene = new Scene(vbox, 800, 600);
         stage.setScene(scene);
         stage.show();
     }
 
-    /// Confirma un turno de la lista previa.
-    private void reservarTurno(Turno turno, ActionEvent event) throws IOException, InterruptedException {
-        int turnoN = HelloApplication.turnosBO.addTurno(turno, opcion);
-        turno.set_id(turnoN);
+    private static Button getBackButton() {
+        var backButton = new Button();
+        backButton.setAlignment(Pos.BOTTOM_CENTER);
 
-        new BuscadorController().buscarTurno(turno,event);
-        //Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        //HelloApplication.buscadorResultado(stage);
+        backButton.setText("X");
+        backButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    backToHomeStatic(event);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        return backButton;
+    }
+
+    /// Confirma un turno de la lista previa.
+    private void reservarTurno(Classes.Turno turno, ActionEvent event) throws IOException, InterruptedException {
+        int turnoN = HelloApplication.turnosBO.addTurno(turno, opcion);
+
+        if(turnoN > 0)
+            new BuscadorController().buscarTurno(event);
     }
 
     @FXML private TextField BuscadorTurnoTextField;
@@ -128,17 +148,18 @@ public class TurnosController extends BaseController {
     }
 
     private void addButtonToTable(TableView table) {
-        TableColumn<Turno, Void> colBtn = new TableColumn("Reservar");
+        TableColumn<Classes.Turno, Void> colBtn = new TableColumn("Reservar");
         // refactor from https://riptutorial.com/javafx/example/27946/add-button-to-tableview
-        Callback<TableColumn<Turno, Void>, TableCell<Turno, Void>> cellFactory = new Callback<TableColumn<Turno, Void>, TableCell<Turno, Void>>() {
+        Callback<TableColumn<Classes.Turno, Void>, TableCell<Classes.Turno, Void>> cellFactory
+                = new Callback<TableColumn<Classes.Turno, Void>, TableCell<Classes.Turno, Void>>() {
             @Override
-            public TableCell<Turno, Void> call(final TableColumn<Turno, Void> param) {
-                final TableCell<Turno, Void> cell = new TableCell<Turno, Void>() {
+            public TableCell<Classes.Turno, Void> call(final TableColumn<Classes.Turno, Void> param) {
+                final TableCell<Classes.Turno, Void> cell = new TableCell<Classes.Turno, Void>() {
 
                     private final Button btn = new Button("Reservar");
                     {
                         btn.setOnAction((ActionEvent event) -> {
-                            Turno turno = getTableView().getItems().get(getIndex());
+                            Classes.Turno turno = getTableView().getItems().get(getIndex());
                             try {
                                 reservarTurno(turno, event);
                             } catch (IOException | InterruptedException e) {

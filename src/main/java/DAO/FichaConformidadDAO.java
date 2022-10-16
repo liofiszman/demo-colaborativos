@@ -1,5 +1,6 @@
 package DAO;
 
+import DTO.Cliente;
 import DTO.FichaConformidad;
 import DataAccess.IDAOFichaConformidad;
 import Utils.DBConnection;
@@ -11,7 +12,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FichaConformidadDAO implements IDAOFichaConformidad {
+    public FichaConformidadDAO(){
+        try {
+            List<DTO.FichaConformidad> fichasConformidad = obtenerFichasConformidad();
+            if(fichasConformidad.isEmpty()) {
+                FichaConformidad fichaConformidad = new FichaConformidad();
+                fichaConformidad.set_firmada(true);
+                fichaConformidad.set_firmada_conforme(true);
+                CreateFichaConformidad(fichaConformidad);
 
+                fichaConformidad = new FichaConformidad();
+                fichaConformidad.set_firmada(true);
+                fichaConformidad.set_firmada_conforme(false);
+                fichaConformidad.set_motivos_disconforme("Precios");
+                CreateFichaConformidad(fichaConformidad);
+            }
+        }
+        catch (Exception ex) {}
+    }
 
     public int CreateFichaConformidad(FichaConformidad p) throws Exception {
         String sql = "insert into ficha_conformidad (motivos_disconforme, firmada, firmada_conforme) values (?, ?, ?)";
@@ -21,33 +39,39 @@ public class FichaConformidadDAO implements IDAOFichaConformidad {
         preparedStatement.setBoolean(2 ,p.get_firmada());
         preparedStatement.setBoolean(3 ,p.get_firmada_conforme());
 
-        return preparedStatement.executeUpdate();
+        preparedStatement.executeUpdate();
+        ResultSet rs = preparedStatement.getGeneratedKeys();
+        rs.next();
+        return rs.getInt(1);
     }
 
     public List<FichaConformidad> ReadFichaConformidadList() throws Exception {
         Statement st = DBConnection.getConnection().createStatement();
-        ResultSet rs = st.executeQuery("select * from ficha_conformidad where id=?");
+        ResultSet rs = st.executeQuery("select id, motivos_disconforme,firmada,firmada_conforme from ficha_conformidad");
 
         List<FichaConformidad> fichaConformidadList = new ArrayList<>();
         while(rs.next()) {
             FichaConformidad fichaConformidad = new FichaConformidad();
-            fichaConformidad.set_id(rs.getInt("Id"));
+            fichaConformidad.set_id(rs.getInt("id"));
             fichaConformidad.set_firmada(rs.getBoolean("firmada"));
             fichaConformidad.set_motivos_disconforme(rs.getString( "motivos_disconforme"));
             fichaConformidad.set_firmada_conforme(rs.getBoolean( "firmada_conforme"));
+            fichaConformidadList.add(fichaConformidad);
         }
         return fichaConformidadList;
     }
 
 
     public FichaConformidad ReadFichaConformidad(Integer id) throws Exception {
-        PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement("select * from ficha_conformidad where id = ?");
+        PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(
+                "select id, motivos_disconforme,firmada,firmada_conforme from ficha_conformidad where id = ?");
         preparedStatement.setInt(1,id);
         preparedStatement.setMaxRows(1);
         ResultSet rs  = preparedStatement.executeQuery();
+        rs.next();
 
         FichaConformidad fichaConformidad = new FichaConformidad();
-        fichaConformidad.set_id(rs.getInt("Id"));
+        fichaConformidad.set_id(rs.getInt("id"));
         fichaConformidad.set_motivos_disconforme(rs.getString("motivos_disconforme"));
         fichaConformidad.set_firmada(rs.getBoolean("firmada"));
         fichaConformidad.set_firmada_conforme(rs.getBoolean("firmada_conforme"));
@@ -97,7 +121,8 @@ public class FichaConformidadDAO implements IDAOFichaConformidad {
     @Override
     public List<FichaConformidad> obtenerFichasConformidad() {
         try { return ReadFichaConformidadList();}
-        catch (Exception ex) {return null;}
+        catch (Exception ex) {
+            return null;}
     }
 
     @Override

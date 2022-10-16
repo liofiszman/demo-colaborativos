@@ -2,6 +2,7 @@ package DAO;
 
 import DTO.Cliente;
 import DTO.CompaniaSeguro;
+import DTO.Turno;
 import DTO.Vehiculo;
 import DataAccess.IDAOVehiculo;
 
@@ -14,6 +15,33 @@ import java.util.List;
 public class VehiculoDAO implements IDAOVehiculo {
     CompaniaSegurosDAO companiaSeguros = new CompaniaSegurosDAO();
     ClienteDAO clientes = new ClienteDAO();
+
+    public VehiculoDAO(){
+        try {
+            List<DTO.Vehiculo> vehiculos = obtenerVehiculos();
+            if(vehiculos.isEmpty()) {
+                Vehiculo vehiculo = new Vehiculo();
+                vehiculo.set_id(1);
+                vehiculo.set_patente("OSU997");
+                vehiculo.set_compania_seguro_id(companiaSeguros.obtenerCompaniaSeguroNombre("Sancor").getId());
+                vehiculo.set_cliente_id(clientes.obtenerClienteNombre("Lionel Fizman").get_id());
+                vehiculo.set_numero_poliza("123");
+                vehiculo.set_marca("NN");
+                CreateVehiculo(vehiculo);
+
+                vehiculo = new Vehiculo();
+                vehiculo.set_id(2);
+                vehiculo.set_patente("AE477IR");
+                vehiculo.set_compania_seguro_id(companiaSeguros.obtenerCompaniaSeguroNombre("Orbis").getId());
+                vehiculo.set_cliente_id(clientes.obtenerClienteNombre("Hernan Cossu").get_id());
+                vehiculo.set_numero_poliza("123");
+                vehiculo.set_marca("NN");
+                CreateVehiculo(vehiculo);
+            }
+        }
+        catch (Exception ex) {
+        }
+    }
 
     public int CreateVehiculo(Vehiculo p) throws Exception {
         String sql = "insert into vehiculo (id, compania_seguro_id, cliente_id, numero_poliza, marca, patente) values (?, ?, ?, ?, ?, ?)";
@@ -62,6 +90,7 @@ public class VehiculoDAO implements IDAOVehiculo {
         preparedStatement.setInt(1,id);
         preparedStatement.setMaxRows(1);
         ResultSet rs  = preparedStatement.executeQuery();
+        rs.next();
 
         Vehiculo vehiculo = new Vehiculo();
         vehiculo.set_id (rs.getInt("id"));
@@ -147,20 +176,25 @@ public class VehiculoDAO implements IDAOVehiculo {
     }
 
     public Vehiculo GetVehiculoByPatente(String patente) throws Exception {
-        PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(
-                "select * from vehiculo where patente=?");
-        preparedStatement.setString(1,patente);
+        String sql = "select * from vehiculo " +
+                "where patente LIKE \'"+patente+"\'";
+        PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql);
         preparedStatement.setMaxRows(1);
         ResultSet rs  = preparedStatement.executeQuery();
 
-        Vehiculo vehiculo = new Vehiculo();
-        vehiculo.set_id (rs.getInt("id"));
-        vehiculo.set_compania_seguro_id(rs.getInt("compania_seguro_id"));
-        vehiculo.set_cliente_id(rs.getInt("cliente_id"));
-        vehiculo.set_numero_poliza(rs.getString("numero_poliza"));
-        vehiculo.set_marca(rs.getString("marca"));
-        vehiculo.set_patente(rs.getString("patente"));
-        return vehiculo;
+        if(rs.next())
+        {
+            Vehiculo vehiculo = new Vehiculo();
+            vehiculo.set_id (rs.getInt("id"));
+            vehiculo.set_compania_seguro_id(rs.getInt("compania_seguro_id"));
+            vehiculo.set_cliente_id(rs.getInt("cliente_id"));
+            vehiculo.set_numero_poliza(rs.getString("numero_poliza"));
+            vehiculo.set_marca(rs.getString("marca"));
+            vehiculo.set_patente(rs.getString("patente"));
+            return vehiculo;
+        }
+
+        return null;
     }
 
     public List<Vehiculo> obtenerVehiculos() {
@@ -186,12 +220,32 @@ public class VehiculoDAO implements IDAOVehiculo {
             CompaniaSeguro companiaSeguro = companiaSeguros.obtenerCompaniaSeguroNombre(compania);
             Cliente cliente = clientes.obtenerClienteNombre(nombreCliente);
             vehiculo = new Vehiculo();
+            vehiculo.set_id(obtenerID() + 1);
             vehiculo.set_patente(patente);
             vehiculo.set_compania_seguro_id(companiaSeguro.getId());
             vehiculo.set_cliente_id(cliente.get_id());
+            vehiculo.set_numero_poliza("123");
+            vehiculo.set_marca("NN");
+            CreateVehiculo(vehiculo);
 
             return vehiculo;
         }
         catch (Exception ex) {return null;}
+    }
+
+    public int obtenerID() {
+        try {
+            PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(
+                    "select id from vehiculo order by id desc");
+            preparedStatement.setMaxRows(1);
+            ResultSet rs  = preparedStatement.executeQuery();
+            rs.next();
+
+            Turno turno = new Turno();
+            turno.set_id(rs.getInt("id"));
+
+            return turno.get_id();
+        }
+        catch (Exception ex) {return 0;}
     }
 }

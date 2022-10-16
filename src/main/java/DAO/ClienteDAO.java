@@ -18,12 +18,18 @@ public class ClienteDAO implements IDAOCliente {
             if(clientes.isEmpty()) {
                 Cliente cliente = new Cliente();
                 cliente.set_nombre("Lionel Fizman");
+                cliente.set_apellido("Fizman");
                 cliente.set_telefono("3323232323");
+                cliente.set_tipo_documento("DNI");
+                cliente.set_documento("123123");
                 CreateCliente(cliente);
 
                 cliente = new Cliente();
                 cliente.set_nombre("Hernan Cossu");
+                cliente.set_apellido("Cossu");
                 cliente.set_telefono("5559595959");
+                cliente.set_tipo_documento("DNI");
+                cliente.set_documento("234234");
                 CreateCliente(cliente);
             }
         }
@@ -70,6 +76,7 @@ public class ClienteDAO implements IDAOCliente {
         preparedStatement.setInt(1,id);
         preparedStatement.setMaxRows(1);
         ResultSet rs  = preparedStatement.executeQuery();
+        rs.next();
 
         Cliente cliente = new Cliente();
         cliente.set_id(rs.getInt("id"));
@@ -83,11 +90,12 @@ public class ClienteDAO implements IDAOCliente {
     }
 
     public Cliente ReadCliente(String nombre) throws Exception {
-        PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(
-                "select id,nombre,telefono,apellido,tipo_documento,documento from cliente where nombre = ?");
-        preparedStatement.setString(1,nombre);
+        String sql = "select id,nombre,telefono,apellido,tipo_documento,documento from cliente " +
+                "where nombre LIKE \'"+nombre+"\'";
+        PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql);
         preparedStatement.setMaxRows(1);
         ResultSet rs  = preparedStatement.executeQuery();
+        rs.next();
 
         Cliente cliente = new Cliente();
         cliente.set_id(rs.getInt("id"));
@@ -173,9 +181,13 @@ public class ClienteDAO implements IDAOCliente {
         try {
             Cliente cliente = new Cliente();
             cliente.set_nombre(nombre);
+            cliente.set_apellido(nombre);
             cliente.set_telefono("555555555");
+            cliente.set_tipo_documento("DNI");
+            cliente.set_documento("555555555");
             CreateCliente(cliente);
-            return cliente;
+
+            return obtenerClienteNombre(nombre);
         }
         catch (Exception ex) {
             return null;

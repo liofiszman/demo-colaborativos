@@ -10,12 +10,22 @@ import DataAccess.*;
 import java.util.List;
 
 public class TurnoBusinessObject {
-    TurnoDAO turnos = (TurnoDAO) getDAO(TipoDAOEnum.DAOTurnos);
-    MecanicoDAO mecanicos = (MecanicoDAO) getDAO(TipoDAOEnum.DAOMecanico);
-    CompaniaSegurosDAO companiasSeguro = (CompaniaSegurosDAO) getDAO(TipoDAOEnum.DAOCompaniaSeguro);
-    VehiculoDAO vehiculos = (VehiculoDAO) getDAO(TipoDAOEnum.DAOVehiculo);
-    FichaMecanicaDAO fichasMecanicas = (FichaMecanicaDAO) getDAO(TipoDAOEnum.DAOFichaMecanica);
-    FichaConformidadDAO fichasConformidad = (FichaConformidadDAO) getDAO(TipoDAOEnum.DAOFichaConformidad);
+    TurnoDAO turnos;
+    MecanicoDAO mecanicos;
+    CompaniaSegurosDAO companiasSeguro;
+    VehiculoDAO vehiculos;
+    FichaMecanicaDAO fichasMecanicas;
+    FichaConformidadDAO fichasConformidad;
+
+    public TurnoBusinessObject() {
+        turnos = (TurnoDAO) getDAO(TipoDAOEnum.DAOTurnos);
+        mecanicos = (MecanicoDAO) getDAO(TipoDAOEnum.DAOMecanico);
+        companiasSeguro = (CompaniaSegurosDAO) getDAO(TipoDAOEnum.DAOCompaniaSeguro);
+        vehiculos = (VehiculoDAO) getDAO(TipoDAOEnum.DAOVehiculo);
+        fichasMecanicas = (FichaMecanicaDAO) getDAO(TipoDAOEnum.DAOFichaMecanica);
+        fichasConformidad = (FichaConformidadDAO) getDAO(TipoDAOEnum.DAOFichaConformidad);
+    }
+
 
     IDAO getDAO(TipoDAOEnum tipoDAO) {
         try {
@@ -39,7 +49,7 @@ public class TurnoBusinessObject {
     }
 
     public List<Classes.Turno> obtenerTurnos(Opcion opcion) throws Exception{
-        List<DTO.Mecanico> opcionesMecanicos = mecanicos.obtenerTurnos(opcion);
+        List<DTO.Mecanico> opcionesMecanicos = mecanicos.obtenerMecanicosPorEspecialidad(opcion);
         return turnos.obtenerTurnosC(opcion, opcionesMecanicos);
     }
 
@@ -58,7 +68,7 @@ public class TurnoBusinessObject {
         return executeStrategy();
     }
 
-    public int addTurno(Turno turno, Opcion opcion) {
+    public int addTurno(Classes.Turno turno, Opcion opcion) {
         return turnos.addTurno(turno, opcion);
     }
 
@@ -114,4 +124,7 @@ public class TurnoBusinessObject {
         return vehiculos.obtenerVehiculo(id);
     }
 
+    public String obtenerTurnoID() {
+        return turnos.obtenerTurnoID();
+    }
 }

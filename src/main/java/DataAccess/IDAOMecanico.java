@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface IDAOMecanico extends IDAO {
     List<DTO.Mecanico> obtenerMecanicos();
-    List<DTO.Mecanico> obtenerTurnos(Opcion opcion);
+    List<DTO.Mecanico> obtenerMecanicosPorEspecialidad(Opcion opcion);
     List<String> obtenerEspecialidades();
     DTO.Mecanico obtenerMecanico(String id);
     DTO.Mecanico obtenerMecanico(int id);

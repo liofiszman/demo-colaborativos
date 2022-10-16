@@ -1,10 +1,7 @@
 package DAO;
 
-import Classes.FichaConformidad;
 import Classes.Opcion;
-import DTO.FichaMecanica;
-import DTO.HorarioAtencion;
-import DTO.Turno;
+import DTO.*;
 import DataAccess.IDAOTurno;
 import Utils.DBConnection;
 
@@ -24,7 +21,40 @@ public class TurnoDAO implements IDAOTurno {
     FichaMecanicaDAO _fichaMecanicaDAO = new FichaMecanicaDAO();
     FichaConformidadDAO _fichaConformidadDAO = new FichaConformidadDAO();
     HorarioAtencionDAO _horarioAtencionDAO = new HorarioAtencionDAO();
+    VehiculoDAO _vehiculos = new VehiculoDAO();
+    MecanicoDAO _mecanicosDAO = new MecanicoDAO();
+
     Opcion _opcion;
+
+    public TurnoDAO() {
+        try {
+            List<DTO.Turno> turnos = ReadTurnoList();
+            if(turnos.isEmpty()) {
+
+                Turno turno = new Turno();
+                turno.set_active(true);
+                turno.set_fecha(Date.valueOf(LocalDate.of(2022,10,20)));
+                turno.set_hora(Time.valueOf(LocalTime.of(10,0,0)));
+                turno.set_mecanico_id(_mecanicosDAO.obtenerMecanicoNombre("Yago Marti").get_id());
+                turno.set_vehiculo_id(_vehiculos.GetVehiculoByPatente("OSU997").get_id());
+                turno.set_ficha_mecanica_id(_fichaMecanicaDAO.obtenerFichasMecanicas().stream().findFirst().get().get_id());
+                turno.set_asistencia(false);
+                CreateTurno(turno);
+
+                turno = new Turno();
+                turno.set_active(true);
+                turno.set_fecha(Date.valueOf(LocalDate.of(2022,10,27)));
+                turno.set_hora(Time.valueOf(LocalTime.of(14,0,0)));
+                turno.set_mecanico_id(_mecanicosDAO.obtenerMecanicoNombre("Yago Marti").get_id());
+                turno.set_vehiculo_id(_vehiculos.GetVehiculoByPatente("AE477IR").get_id());
+                turno.set_ficha_mecanica_id(_fichaMecanicaDAO.obtenerFichasMecanicas().get(_fichaMecanicaDAO.obtenerFichasMecanicas().size() - 1).get_id());
+                turno.set_asistencia(false);
+                CreateTurno(turno);
+            }
+        }
+        catch (Exception ex) {
+        }
+    }
 
     public int CreateTurno(Turno p) throws Exception {
         String sql = "insert into turno (active, fecha, hora, mecanico_id, vehiculo_id, asistencia, ficha_mecanica_id) values (?, ?, ?, ?, ?, ?, ?)";
@@ -35,8 +65,8 @@ public class TurnoDAO implements IDAOTurno {
         preparedStatement.setTime(3 ,p.get_hora());
         preparedStatement.setInt(4 ,p.get_mecanico_id());
         preparedStatement.setInt(5 ,p.get_vehiculo_id());
-        preparedStatement.setBoolean(5 ,p.get_asistencia());
-        preparedStatement.setInt(5 ,p.get_ficha_mecanica_id());
+        preparedStatement.setBoolean(6 ,p.get_asistencia());
+        preparedStatement.setInt(7 ,p.get_ficha_mecanica_id());
 
         return preparedStatement.executeUpdate();
     }
@@ -70,6 +100,7 @@ public class TurnoDAO implements IDAOTurno {
         preparedStatement.setInt(1,id);
         preparedStatement.setMaxRows(1);
         ResultSet rs  = preparedStatement.executeQuery();
+        rs.next();
 
         Turno turno = new Turno();
         turno.set_id(rs.getInt("id"));
@@ -227,9 +258,9 @@ public class TurnoDAO implements IDAOTurno {
     }
 
     public List<Classes.Turno> obtenerTurnosC(Opcion opcion, List<DTO.Mecanico> mecanicos) throws Exception {
-
+        _opcion = opcion;
         List<Classes.Turno> opciones = new ArrayList<Classes.Turno>();
-        List<Turno> turnosDados = GetTurnoByFechas(opcion.getFecha(), opcion.getFechaHasta(), true);
+        List<Turno> turnosDados = GetTurnoByFechas(opcion.getFecha(), opcion.getFecha().plusDays(7), true);
 
         for (int i = 0; i < 8; i++) {
             if(opcion.getFecha().plusDays(i).getDayOfWeek() == DayOfWeek.SUNDAY)
@@ -240,7 +271,7 @@ public class TurnoDAO implements IDAOTurno {
                 for (HorarioAtencion horario : horariosAtencion){
                     // Buscar quien trabaja el día esperado.
                     LocalDate fecha = opcion.getFecha().plusDays(i);
-                    if(fecha.getDayOfWeek().toString() != horario.get_dia_atencion())
+                    if(! fecha.getDayOfWeek().toString().equals(horario.get_dia_atencion()))
                         continue;
                     _opcion.setFecha(fecha);
                     _opcion.setMecanico(mecanico);
@@ -304,7 +335,8 @@ public class TurnoDAO implements IDAOTurno {
 
                 if(fichaConformidad != null)
                     turno.getFichaMecanica().setFichaConformidad(
-                            new FichaConformidad(fichaConformidad.get_id(), fichaConformidad.get_firmada_conforme()));
+                            new Classes.FichaConformidad(fichaConformidad.get_id(), fichaConformidad.get_firmada_conforme()
+                            , fichaConformidad.get_firmada(), fichaConformidad.get_motivos_disconforme()));
             }
 
             return turno;
@@ -333,8 +365,31 @@ public class TurnoDAO implements IDAOTurno {
         catch (Exception ex) {}
     }
 
-    public int addTurno(Turno turno, Opcion opcion) {
-        return 0;
+    public int addTurno(Classes.Turno turno, Opcion opcion) {
+        try {
+            Turno turnoDTO = new Turno();
+            turnoDTO.set_fecha(Date.valueOf(turno.getFecha()));
+            turnoDTO.set_hora(Time.valueOf(turno.getHora()));
+            turnoDTO.set_active(true);
+            turnoDTO.set_mecanico_id(turno.getMecanico().getId());
+            turnoDTO.set_vehiculo_id(_vehiculos.obtenerVehiculoPatente(opcion.getPatente(), opcion.getCompania(), opcion.getCliente()).get_id());
+            turnoDTO.set_asistencia(false);
+
+            FichaConformidad fichaConformidad = new FichaConformidad();
+            fichaConformidad.set_firmada(false);
+            fichaConformidad.set_firmada_conforme(false);
+            fichaConformidad.set_motivos_disconforme("");
+
+            FichaMecanica fichaMecanica = new FichaMecanica();
+            fichaMecanica.set_actividades("");
+            fichaMecanica.set_repuestos("");
+            fichaMecanica.set_ficha_conformidad_id(_fichaConformidadDAO.CreateFichaConformidad(fichaConformidad));
+            turnoDTO.set_ficha_mecanica_id(_fichaMecanicaDAO.CreateFichaMecanica(fichaMecanica));
+
+            return CreateTurno(turnoDTO);
+        }
+        catch (Exception ex) {
+            return 0;}
     }
 
     public void registrarActividades(String numeroTurno, String actividadesText, String insumosText) {
@@ -355,5 +410,21 @@ public class TurnoDAO implements IDAOTurno {
         Turno turno = obtenerTurno(numeroTurno);
         FichaMecanica fichaMecanica = _fichaMecanicaDAO.obtenerFichaMecanica(turno.get_ficha_mecanica_id());
         _fichaConformidadDAO.firmar(fichaMecanica.get_ficha_conformidad_id(), false);
+    }
+
+    public String obtenerTurnoID() {
+        try {
+            PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(
+                "select id from turno order by id desc");
+            preparedStatement.setMaxRows(1);
+            ResultSet rs  = preparedStatement.executeQuery();
+            rs.next();
+
+            Turno turno = new Turno();
+            turno.set_id(rs.getInt("id"));
+
+            return turno.get_id().toString();
+        }
+        catch (Exception ex) {return null;}
     }
 }

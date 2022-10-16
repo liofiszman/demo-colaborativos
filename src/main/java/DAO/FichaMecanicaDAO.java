@@ -11,6 +11,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FichaMecanicaDAO implements IDAOFichaMecanica {
+    FichaConformidadDAO fichasConfomidadDAO = new FichaConformidadDAO();
+
+    public FichaMecanicaDAO() {
+        List<DTO.FichaMecanica> fichasMecanicas = obtenerFichasMecanicas();
+        if(fichasMecanicas.isEmpty()) {
+            try {
+                FichaMecanica fichaMecanica = new FichaMecanica();
+                fichaMecanica.set_actividades("Cambio de aceite.");
+                fichaMecanica.set_repuestos("LION400, $2200.");
+                fichaMecanica.set_ficha_conformidad_id(fichasConfomidadDAO.obtenerFichasConformidad().stream().findFirst().get().get_id());
+                CreateFichaMecanica(fichaMecanica);
+
+                fichaMecanica = new FichaMecanica();
+                fichaMecanica.set_actividades("Alineado y balanceado.");
+                fichaMecanica.set_repuestos("Sin insumos.");
+                fichaMecanica.set_ficha_conformidad_id(fichasConfomidadDAO.obtenerFichasConformidad().get(fichasConfomidadDAO.obtenerFichasConformidad().size() - 1).get_id());
+                CreateFichaMecanica(fichaMecanica);
+            }
+            catch (Exception ex) {}
+        }
+    }
 
     public int CreateFichaMecanica(FichaMecanica p) throws Exception {
         String sql = "insert into ficha_mecanica (actividades, ficha_conformidad_id, repuestos) values (?, ?, ?)";
@@ -20,17 +41,20 @@ public class FichaMecanicaDAO implements IDAOFichaMecanica {
         preparedStatement.setInt(2 ,p.get_ficha_conformidad_id());
         preparedStatement.setString(3 ,p.get_repuestos());
 
-        return preparedStatement.executeUpdate();
+        preparedStatement.executeUpdate();
+        ResultSet rs = preparedStatement.getGeneratedKeys();
+        rs.next();
+        return rs.getInt(1);
     }
 
     public List<FichaMecanica> ReadFichaMecanicaList() throws Exception {
         Statement st = Utils.DBConnection.getConnection().createStatement();
-        ResultSet rs = st.executeQuery("select * from ficha_mecanica");
+        ResultSet rs = st.executeQuery("select id,actividades,ficha_conformidad_id,repuestos from ficha_mecanica");
 
         List<FichaMecanica> fichaMecanicaList = new ArrayList<>();
         while(rs.next()) {
             FichaMecanica fichaMecanica = new FichaMecanica();
-            fichaMecanica.set_id(rs.getInt("Id"));
+            fichaMecanica.set_id(rs.getInt("id"));
             fichaMecanica.set_actividades(rs.getString("actividades"));
             fichaMecanica.set_ficha_conformidad_id(rs.getInt("ficha_conformidad_id"));
             fichaMecanica.set_repuestos(rs.getString("repuestos"));
@@ -42,7 +66,8 @@ public class FichaMecanicaDAO implements IDAOFichaMecanica {
 
     @Override
     public List<FichaMecanica> obtenerFichasMecanicas() {
-        return null;
+        try {return ReadFichaMecanicaList();}
+        catch (Exception ex) {return null;}
     }
 
     public FichaMecanica obtenerFichaMecanica(String id) {
@@ -76,6 +101,7 @@ public class FichaMecanicaDAO implements IDAOFichaMecanica {
         preparedStatement.setInt(1,id);
         preparedStatement.setMaxRows(1);
         ResultSet rs  = preparedStatement.executeQuery();
+        rs.next();
 
         FichaMecanica fichaMecanica = new FichaMecanica();
         fichaMecanica.set_id(rs.getInt("Id"));

@@ -67,6 +67,7 @@ public class CompaniaSegurosDAO implements IDAOCompaniaSeguro {
         preparedStatement.setInt(1,id);
         preparedStatement.setMaxRows(1);
         ResultSet rs  = preparedStatement.executeQuery();
+        rs.next();
 
         CompaniaSeguro companiaSeguro = new CompaniaSeguro();
         companiaSeguro.setId(rs.getInt("id"));
@@ -81,6 +82,7 @@ public class CompaniaSegurosDAO implements IDAOCompaniaSeguro {
         preparedStatement.setString(1,nombre);
         preparedStatement.setMaxRows(1);
         ResultSet rs  = preparedStatement.executeQuery();
+        rs.next();
 
         CompaniaSeguro companiaSeguro = new CompaniaSeguro();
         companiaSeguro.setId(rs.getInt("id"));

@@ -11,6 +11,6 @@ public class ConcreteReporteStrategyDiario implements IReporteStrategy {
         return turnos.obtenerTurnos(
                 LocalDate.now().minusDays(1),
                 LocalDate.now().plusDays(1),
-                false); }
-
+                false);
+    }
 }

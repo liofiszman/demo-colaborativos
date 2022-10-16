@@ -21,6 +21,7 @@ public class MecanicoDAO implements IDAOMecanico {
             if(mecanicos.isEmpty()) {
                 Mecanico mecanico = new Mecanico();
                 mecanico.set_nombre("Gabriel Martinez");
+                mecanico.set_apellido("Martinez");
                 mecanico.set_tipo_documento("DNI");
                 mecanico.set_documento("33.333.333");
                 mecanico.set_telefono("3323232323");
@@ -29,6 +30,7 @@ public class MecanicoDAO implements IDAOMecanico {
 
                 mecanico = new Mecanico();
                 mecanico.set_nombre("Yago Marti");
+                mecanico.set_apellido("Marti");
                 mecanico.set_tipo_documento("DNI");
                 mecanico.set_documento("55.333.333");
                 mecanico.set_telefono("5523232323");
@@ -37,6 +39,7 @@ public class MecanicoDAO implements IDAOMecanico {
 
                 mecanico = new Mecanico();
                 mecanico.set_nombre("Juan Perez");
+                mecanico.set_apellido("Perez");
                 mecanico.set_tipo_documento("DNI");
                 mecanico.set_documento("44.333.333");
                 mecanico.set_telefono("4423232323");
@@ -44,7 +47,8 @@ public class MecanicoDAO implements IDAOMecanico {
                 CreateMecanico(mecanico);
             }
         }
-        catch (Exception ex) {}
+        catch (Exception ex) {
+        }
     }
 
     public int CreateMecanico(Mecanico p) throws Exception {
@@ -95,10 +99,12 @@ public class MecanicoDAO implements IDAOMecanico {
     }
 
     public Mecanico ReadMecanico(Integer id) throws Exception {
-        PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement("select * from mecanico where id = ?");
+        PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(
+                "select * from mecanico where id = ?");
         preparedStatement.setInt(1 ,id);
         preparedStatement.setMaxRows(1);
         ResultSet rs  = preparedStatement.executeQuery();
+        rs.next();
 
         Mecanico mecanico = new Mecanico();
         mecanico.set_id(rs.getInt("id"));
@@ -112,11 +118,12 @@ public class MecanicoDAO implements IDAOMecanico {
     }
 
     public Mecanico ReadMecanicoNombre(String nombre) throws Exception {
-        PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(
-                "select id,nombre,telefono,apellido,tipo_documento,documento,especialidad from mecanico where nombre = ?");
-        preparedStatement.setString(1 ,nombre);
+        String sql = "select id,nombre,telefono,apellido,tipo_documento,documento,especialidad from mecanico " +
+                "where nombre LIKE \'"+nombre+"\'";
+        PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql);
         preparedStatement.setMaxRows(1);
         ResultSet rs  = preparedStatement.executeQuery();
+        rs.next();
 
         Mecanico mecanico = new Mecanico();
         mecanico.set_id(rs.getInt("id"));
@@ -130,12 +137,11 @@ public class MecanicoDAO implements IDAOMecanico {
     }
 
     public List<Mecanico> ReadMecanico(String especialidad) throws Exception {
-
-
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement("select * from mecanico where especialidad = ?");
         preparedStatement.setString(1 ,especialidad);
         preparedStatement.setMaxRows(1);
         ResultSet rs  = preparedStatement.executeQuery();
+
 
         List<Mecanico> mecanicoList = new ArrayList<>();
         while(rs.next()) {
@@ -234,10 +240,11 @@ public class MecanicoDAO implements IDAOMecanico {
     }
 
     public List<String> obtenerEspecialidades(){
-        return this.obtenerEspecialidades();
+        try {return ReadEspecialidades();}
+        catch (Exception ex) {return null;}
     }
 
-    public List<DTO.Mecanico> obtenerTurnos(Opcion opcion) {
+    public List<DTO.Mecanico> obtenerMecanicosPorEspecialidad(Opcion opcion) {
         try{
             return this.ReadMecanico(opcion.getEspecialidad());
         }catch (Exception ex)

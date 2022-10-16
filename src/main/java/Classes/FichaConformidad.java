@@ -17,6 +17,13 @@ public class FichaConformidad {
         this.motivosDisconforme = motivosDisconforme;
     }
 
+    public FichaConformidad(int id, boolean firmaConforme, boolean firmada, String motivosDisconforme) {
+        this.id = id;
+        this.firmada = firmada;
+        this.firmaConforme = firmaConforme;
+        this.motivosDisconforme = motivosDisconforme;
+    }
+
     private int id;
     public int getId() {
         return id;

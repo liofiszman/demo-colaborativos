@@ -115,7 +115,9 @@ public class Turno {
                 && fichaMecanica.getFichaConformidad() != null
                 && fichaMecanica.getFichaConformidad().isFirmada())
             return EstadoTurnoEnum.FIRMADO;
-        if(fichaMecanica != null)
+        if(fichaMecanica != null
+                && (! fichaMecanica.getRepuestos().isEmpty()
+                    || ! fichaMecanica.getActividades().isEmpty()))
             return EstadoTurnoEnum.TRABAJADO;
         if(asistencia)
             return EstadoTurnoEnum.ASISTENCIA;

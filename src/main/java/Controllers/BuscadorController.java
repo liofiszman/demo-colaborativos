@@ -21,7 +21,7 @@ public class BuscadorController extends BaseController {
     private String numeroTurno;
 
     /// Confirma un turno de la lista previa.
-    public void buscarTurno(Turno turno, ActionEvent event) throws IOException, InterruptedException {
+    public void buscarTurno(ActionEvent event) throws IOException, InterruptedException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         showStage(stage, "/Views/buscador-view.fxml");
     }
@@ -65,6 +65,6 @@ public class BuscadorController extends BaseController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        BuscadorTurnoTextField.setText(HelloApplication.turnosBO.obtenerTurnoID());
     }
 }

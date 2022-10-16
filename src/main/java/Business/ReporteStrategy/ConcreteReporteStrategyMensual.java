@@ -8,10 +8,10 @@ import java.util.List;
 
 public class ConcreteReporteStrategyMensual implements  IReporteStrategy {
     public List<DTO.Turno> GetTurnos(TurnoDAO turnos) {
-        LocalDate today = LocalDate.now();
         return turnos.obtenerTurnos(
-                today.withDayOfMonth(1),
-                today.withDayOfMonth(today.getMonth().length(today.isLeapYear())),
+                LocalDate.now().withDayOfMonth(1),
+                LocalDate.now().withDayOfMonth(LocalDate.now().getMonth().length(LocalDate.now().isLeapYear())),
                 false
-        ); }
+        );
+    }
 }
