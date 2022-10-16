@@ -42,7 +42,10 @@ public class AsistenciaController extends BaseController  {
         numeroTurno = this.TurnoTextField.getText();
         Classes.Turno turno = HelloApplication.turnosBO.obtenerTurnoCompleto(numeroTurno);
 
-        if(turno != null && turno.getEstadoTurno() != EstadoTurnoEnum.CREADO)
+        if(turno == null) {
+            datosTurnoText.setText("No se encontró un el turno ");
+        }
+        else if(turno != null && turno.getEstadoTurno() != EstadoTurnoEnum.CREADO)
             datosTurnoText.setText("No se puede confirmar un turno con estado " + turno.getEstadoTurno().toString());
         else {
             try{

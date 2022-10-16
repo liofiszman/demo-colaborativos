@@ -6,8 +6,7 @@ import DTO.Mecanico;
 import home.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,11 +40,31 @@ public class ActividadesController extends BaseController  {
 
     @FXML
     protected void registrarButtonClick(ActionEvent event) throws IOException {
+
         numeroTurno = this.TurnoTextField.getText();
-        String actividadesText = this.actividadesTextField.getText();
-        String insumosText = this.insumosTextField.getText();
-        HelloApplication.turnosBO.registrarActividades(numeroTurno,actividadesText,insumosText);
-        backToHome(event);
+        if(!numeroTurno.trim().isEmpty() && HelloApplication.turnosBO.obtenerTurno(numeroTurno) != null) {
+
+            String actividadesText = this.actividadesTextField.getText();
+            String insumosText = this.insumosTextField.getText();
+            HelloApplication.turnosBO.registrarActividades(numeroTurno, actividadesText, insumosText);
+            Dialog dialog = new Dialog();
+            dialog.setTitle("");
+            DialogPane dialogPane = new DialogPane();
+            dialogPane.setContentText("Actividades Registradas");
+            dialogPane.getButtonTypes().addAll(ButtonType.OK);
+            dialog.setDialogPane(dialogPane);
+            backToHome(event);
+
+        }else{
+
+            Dialog dialog = new Dialog();
+            dialog.setTitle("Error");
+            DialogPane dialogPane = new DialogPane();
+            dialogPane.setContentText("Seleccione un turno valido");
+            dialogPane.getButtonTypes().addAll(ButtonType.OK);
+            dialog.setDialogPane(dialogPane);
+            dialog.show();
+        }
     }
 
     // ASISTENCIA
