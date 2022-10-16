@@ -71,8 +71,8 @@ public class Turno {
     public boolean getAsistencia(){
         return asistencia;
     }
-    public boolean setAsistnecia(boolean asistencia){
-        return asistencia;
+    public void setAsistnecia(boolean asistencia){
+        this.asistencia = asistencia;
     }
 
     private Mecanico mecanico;

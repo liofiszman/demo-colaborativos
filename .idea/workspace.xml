@@ -5,44 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e91a7b1-eab4-4380-8919-0c98634ac732" name="Changes" comment="Added DTO's">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1dab3bdc-7096-4402-996d-50154916eb6c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1dab3bdc-7096-4402-996d-50154916eb6c.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Business/ReporteStrategy/ConcreteReporteStrategyDiario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Business/ReporteStrategy/ConcreteReporteStrategyDiario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Business/ReporteStrategy/ConcreteReporteStrategyMensual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Business/ReporteStrategy/ConcreteReporteStrategyMensual.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Business/TurnoBusinessObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Business/TurnoBusinessObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Classes/FichaConformidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classes/FichaConformidad.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Classes/Turno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classes/Turno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/BaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/BuscadorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/BuscadorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/TurnosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/TurnosController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ClienteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ClienteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/CompaniaSegurosDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/CompaniaSegurosDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/FichaConformidadDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/FichaConformidadDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/FichaMecanicaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/FichaMecanicaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/MecanicoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/MecanicoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/TurnoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/TurnoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/VehiculoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/VehiculoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DataAccess/IDAOMecanico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataAccess/IDAOMecanico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DataAccess/IDAOTurno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataAccess/IDAOTurno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Business/ReporteStrategy/ConcreteReporteStrategyMensual.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Business/ReporteStrategy/ConcreteReporteStrategyMensual.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Business/TurnoBusinessObject$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Business/TurnoBusinessObject$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Business/TurnoBusinessObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Business/TurnoBusinessObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Classes/FichaConformidad.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Classes/FichaConformidad.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Classes/Turno.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Classes/Turno.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/BaseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/BaseController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/BuscadorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/BuscadorController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/TurnosController$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/TurnosController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/TurnosController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/TurnosController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/TurnosController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DAO/ClienteDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/ClienteDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DAO/CompaniaSegurosDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/CompaniaSegurosDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DAO/FichaConformidadDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/FichaConformidadDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DAO/FichaMecanicaDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/FichaMecanicaDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DAO/MecanicoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/MecanicoDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DAO/TurnoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/TurnoDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DAO/VehiculoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DAO/VehiculoDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/IDAOMecanico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/IDAOMecanico.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/IDAOTurno.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/IDAOTurno.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,9 +212,9 @@
           <option name="timeStamp" value="105" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Classes/Turno.java</url>
-          <line>111</line>
-          <option name="timeStamp" value="106" />
+          <url>file://$PROJECT_DIR$/src/main/java/DAO/TurnoDAO.java</url>
+          <line>329</line>
+          <option name="timeStamp" value="107" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
