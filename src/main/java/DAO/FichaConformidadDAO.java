@@ -1,6 +1,7 @@
 package DAO;
 
 import DTO.FichaConformidad;
+import DataAccess.IDAOFichaConformidad;
 import Utils.DBConnection;
 
 import java.sql.PreparedStatement;
@@ -9,7 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FichaConformidadDAO {
+public class FichaConformidadDAO implements IDAOFichaConformidad {
 
 
     public int CreateFichaConformidad(FichaConformidad p) throws Exception {
@@ -93,4 +94,31 @@ public class FichaConformidadDAO {
     }
 
 
+    @Override
+    public List<FichaConformidad> obtenerFichasConformidad() {
+        try { return ReadFichaConformidadList();}
+        catch (Exception ex) {return null;}
+    }
+
+    @Override
+    public FichaConformidad obtenerFichaConformidad(String id) {
+        return obtenerFichaConformidad(Integer.valueOf(id));
+    }
+
+    public FichaConformidad obtenerFichaConformidad(Integer id) {
+        try { return ReadFichaConformidad(id);}
+        catch (Exception ex) {return null;}
+    }
+
+    public void firmar(int id, boolean conforme) {
+        try {String sql = "update ficha_conformidad set firmada=true, firmada_conforme=? where id=?";
+
+            PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql);
+            preparedStatement.setBoolean(1 ,conforme);
+            preparedStatement.setInt(2 ,id);
+
+            preparedStatement.executeUpdate();}
+        catch (Exception ex) {}
+
+    }
 }

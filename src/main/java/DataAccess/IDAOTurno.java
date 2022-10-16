@@ -9,13 +9,13 @@ import java.util.List;
 
 public interface IDAOTurno extends IDAO {
     List<DTO.Turno> obtenerTurnos(String patente);
-    List<DTO.Turno> obtenerTurnos(LocalDate fechaDesde, LocalDate fechaHasta);
-    List<DTO.Turno> obtenerTurnos(Opcion opcion, List<DTO.Mecanico> mecanicos);
+    List<DTO.Turno> obtenerTurnos(LocalDate fechaDesde, LocalDate fechaHasta, boolean onlyActive);
+    List<Classes.Turno> obtenerTurnosC(Opcion opcion, List<DTO.Mecanico> mecanicos) throws Exception;
     DTO.Turno obtenerTurno(String id);
+    Classes.Turno obtenerTurnoCompleto(String id);
     void registrarAsistencia(String id);
     void cancelarTurno(String id);
     int addTurno(Turno turno, Opcion opcion);
-    String obtenerTurnoID();
     void registrarActividades(String numeroTurno, String actividadesText, String insumosText);
 
     void firmaConforme(String numeroTurno);

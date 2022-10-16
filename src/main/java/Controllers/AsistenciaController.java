@@ -2,6 +2,8 @@ package Controllers;
 
 import Business.EstadoTurnoEnum;
 import Classes.Turno;
+import DTO.FichaMecanica;
+import DTO.Mecanico;
 import home.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,23 +22,25 @@ public class AsistenciaController extends BaseController  {
     protected void datosTurnoButtonClick(ActionEvent event) {
         numeroTurno = this.TurnoTextField.getText();
 
-        Turno turno = HelloApplication.turnosBO.obtenerTurno(numeroTurno);
+        DTO.Turno turno = HelloApplication.turnosBO.obtenerTurno(numeroTurno);
 
         if(turno == null) {
             datosTurnoText.setText("Turno "+numeroTurno+" no encontrado.");
         }
         else {
-            String formatoCalendario = turno.getFecha().toString();
-            String FormatoHora = turno.getHora().toString();
+            Mecanico mecanico = HelloApplication.turnosBO.obtenerMecanico(turno.get_mecanico_id());
+
+            String formatoCalendario = turno.get_fecha().toString();
+            String FormatoHora = turno.get_hora().toString();
             datosTurnoText.setText("Turno para el "+formatoCalendario+" a las "+FormatoHora+" hs");
-            datosTurnoSecondText.setText("Mecánico "+turno.getMecanico().getNombre()+", "+turno.getMecanico().getEspecialidad());
+            datosTurnoSecondText.setText("Mecánico "+mecanico.get_nombre()+", "+mecanico.get_especialidad());
         }
     }
 
     @FXML
     protected void confirmarTurnoButtonClick(ActionEvent event) throws IOException {
         numeroTurno = this.TurnoTextField.getText();
-        Turno turno = HelloApplication.turnosBO.obtenerTurno(numeroTurno);
+        Classes.Turno turno = HelloApplication.turnosBO.obtenerTurnoCompleto(numeroTurno);
 
         if(turno != null && turno.getEstadoTurno() != EstadoTurnoEnum.CREADO)
             datosTurnoText.setText("No se puede confirmar un turno con estado " + turno.getEstadoTurno().toString());
@@ -54,7 +58,7 @@ public class AsistenciaController extends BaseController  {
     @FXML
     protected void cancelarTurnoButtonClick(ActionEvent event) throws IOException {
         numeroTurno = this.TurnoTextField.getText();
-        Turno turno = HelloApplication.turnosBO.obtenerTurno(numeroTurno);
+        Classes.Turno turno = HelloApplication.turnosBO.obtenerTurnoCompleto(numeroTurno);
 
         if(turno != null && turno.getEstadoTurno() != EstadoTurnoEnum.CREADO)
             datosTurnoText.setText("No se puede cancelar un turno con estado " + turno.getEstadoTurno().toString());

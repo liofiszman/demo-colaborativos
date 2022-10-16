@@ -1,6 +1,8 @@
 package Controllers;
 
 import Classes.Turno;
+import DTO.FichaMecanica;
+import DTO.Mecanico;
 import home.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,19 +19,23 @@ public class ConformidadController extends BaseController  {
     @FXML
     protected void datosTurnoButtonClick(ActionEvent event) {
         numeroTurno = this.numeroTurnoText.getText();
-        Turno turno = HelloApplication.turnosBO.obtenerTurno(numeroTurno);
+        DTO.Turno turno = HelloApplication.turnosBO.obtenerTurno(numeroTurno);
 
         if(turno == null) {
             datosTurnoText.setText("Turno "+numeroTurno+" no encontrado.");
         }
         else {
-            String formatoCalendario = turno.getFecha().toString();
-            String FormatoHora = turno.getHora().toString();
+            Mecanico mecanico = HelloApplication.turnosBO.obtenerMecanico(turno.get_mecanico_id());
+            FichaMecanica fichaMecanica = HelloApplication.turnosBO.obtenerFichaMecanica(turno.get_ficha_mecanica_id());
+
+            String formatoCalendario = turno.get_fecha().toString();
+            String FormatoHora = turno.get_hora().toString();
 
             datosTurnoText.setText("Turno para el "+formatoCalendario+" a las "+FormatoHora+" hs");
-            datosTurnoSecondText.setText("Mecánico "+turno.getMecanico().getNombre()+", "+turno.getMecanico().getEspecialidad());
-            actividadesText.setText(turno.getFichaMecanica().getActividades());
-            insumosText.setText(turno.getFichaMecanica().getRepuestos());
+            datosTurnoSecondText.setText("Mecánico "+mecanico.get_nombre()+", "+mecanico.get_especialidad());
+
+            actividadesText.setText(fichaMecanica.get_actividades());
+            insumosText.setText(fichaMecanica.get_repuestos());
         }
     }
 

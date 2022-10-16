@@ -17,6 +17,13 @@ public class Turno {
         this.mecanico = mecanico;
     }
 
+    public Turno(LocalDate fecha, LocalTime hora, DTO.Mecanico _mecanico){
+        this.fecha = fecha;
+        this.hora = hora;
+        Mecanico mecanico = new Mecanico(_mecanico.get_id(), _mecanico.get_nombre(), _mecanico.get_especialidad());
+        this.mecanico = mecanico;
+    }
+
     public Turno(int id, LocalDate fecha, LocalTime hora, Mecanico mecanico, Vehiculo vehiculo, FichaMecanica fichaMecanica){
         this.id = id;
         this.fecha = fecha;

@@ -113,6 +113,25 @@ public class HorarioAtencionDAO {
         return horarioAtencionList;
     }
 
+    public List<HorarioAtencion> getByMecanico(Integer mecanico_id) throws Exception{
+        PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(
+                "select id,dia_atencion,hora_desde,hora_hasta,mecanico_id from horario_atencion where mecanico_id = ?");
+        preparedStatement.setInt(1 ,mecanico_id);
+        ResultSet rs  = preparedStatement.executeQuery();
+
+        List<HorarioAtencion> horarioAtencionList = new ArrayList<>();
+        while(rs.next()) {
+            HorarioAtencion horarioAtencion = new HorarioAtencion();
+            horarioAtencion.set_id(rs.getInt("id"));
+            horarioAtencion.set_dia_atencion(rs.getString("dia_atencion"));
+            horarioAtencion.set_hora_desde(rs.getTime("hora_desde"));
+            horarioAtencion.set_hora_hasta(rs.getTime("hora_hasta"));
+            horarioAtencion.set_mecanico_id(rs.getInt("mecanico_id"));
+            horarioAtencionList.add(horarioAtencion);
+        }
+
+        return horarioAtencionList;
+    }
 
     public HorarioAtencion ReadHorarioAtencion(Integer id) throws Exception {
 

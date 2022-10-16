@@ -41,8 +41,12 @@ public class TurnosController extends BaseController {
     /// Lista las opciones de turnos en formato de tabla.
     public void verOpciones(Stage stage) {
         // llamar elemento del DOM para obtener opciones de turnos a partir de los datos en Opcion opcion
-        List<Turno> opciones = HelloApplication.turnosBO.obtenerTurnos(opcion);
-        TableView<Turno> tableOpciones = new TableView<Turno>();
+        List<Classes.Turno> opciones;
+
+        try {opciones = HelloApplication.turnosBO.obtenerTurnos(opcion);}
+        catch (Exception ex) { opciones = new ArrayList<Classes.Turno>(); }
+
+        TableView<Classes.Turno> tableOpciones = new TableView<Classes.Turno>();
         tableOpciones.setItems(FXCollections.observableArrayList(opciones));
 
         TableColumn fechaCol = new TableColumn("Fecha");

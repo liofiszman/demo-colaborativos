@@ -237,15 +237,6 @@ public class MecanicoDAO implements IDAOMecanico {
         return this.obtenerEspecialidades();
     }
 
-    public DTO.Mecanico getByID(String id) {
-       try{
-           return this.ReadMecanico(Integer.valueOf(id));
-       }catch (Exception ex)
-       {
-           return null;
-       }
-    }
-
     public List<DTO.Mecanico> obtenerTurnos(Opcion opcion) {
         try{
             return this.ReadMecanico(opcion.getEspecialidad());

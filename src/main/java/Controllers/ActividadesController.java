@@ -1,6 +1,8 @@
 package Controllers;
 
 import Classes.Turno;
+import DTO.FichaMecanica;
+import DTO.Mecanico;
 import home.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,19 +20,22 @@ public class ActividadesController extends BaseController  {
     protected void datosTurnoButtonClick(ActionEvent event) {
         numeroTurno = this.TurnoTextField.getText();
 
-        Turno turno = HelloApplication.turnosBO.obtenerTurno(numeroTurno);
+        DTO.Turno turno = HelloApplication.turnosBO.obtenerTurno(numeroTurno);
 
         if(turno == null) {
             datosTurnoText.setText("Turno "+numeroTurno+" no encontrado.");
         }
         else {
-            String formatoCalendario = turno.getFecha().toString();
-            String FormatoHora = turno.getHora().toString();
-            datosTurnoText.setText("Turno para el "+formatoCalendario+" a las "+FormatoHora+" hs");
-            datosTurnoSecondText.setText("Mecánico "+turno.getMecanico().getNombre()+", "+turno.getMecanico().getEspecialidad());
+            Mecanico mecanico = HelloApplication.turnosBO.obtenerMecanico(turno.get_mecanico_id());
+            FichaMecanica fichaMecanica = HelloApplication.turnosBO.obtenerFichaMecanica(turno.get_ficha_mecanica_id());
 
-            actividadesTextField.setText(turno.getFichaMecanica().getActividades());
-            insumosTextField.setText(turno.getFichaMecanica().getRepuestos());
+            String formatoCalendario = turno.get_fecha().toString();
+            String FormatoHora = turno.get_hora().toString();
+            datosTurnoText.setText("Turno para el "+formatoCalendario+" a las "+FormatoHora+" hs");
+            datosTurnoSecondText.setText("Mecánico "+mecanico.get_nombre()+", "+mecanico.get_especialidad());
+
+            actividadesTextField.setText(fichaMecanica.get_actividades());
+            insumosTextField.setText(fichaMecanica.get_repuestos());
         }
     }
 

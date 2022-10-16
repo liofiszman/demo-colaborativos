@@ -14,6 +14,12 @@ public class Mecanico extends Persona{
         this.setHorariosAtencion(horariosAtencion);
     }
 
+    public Mecanico(int id, String nombre, String especialidad) {
+        this.setId(id);
+        this.setNombre(nombre);
+        this.setEspecialidad(especialidad);
+    }
+
     private String especialidad;
     public String getEspecialidad() {
         return especialidad;

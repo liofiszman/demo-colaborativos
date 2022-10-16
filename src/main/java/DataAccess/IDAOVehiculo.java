@@ -1,6 +1,6 @@
 package DataAccess;
 
-import Classes.Vehiculo;
+import DTO.Vehiculo;
 
 import java.util.List;
 

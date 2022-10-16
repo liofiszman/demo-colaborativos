@@ -1,7 +1,9 @@
 package DAO;
 
+import DTO.Cliente;
 import DTO.CompaniaSeguro;
 import DTO.Vehiculo;
+import DataAccess.IDAOVehiculo;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,7 +11,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VehiculoDAO {
+public class VehiculoDAO implements IDAOVehiculo {
+    CompaniaSegurosDAO companiaSeguros = new CompaniaSegurosDAO();
+    ClienteDAO clientes = new ClienteDAO();
 
     public int CreateVehiculo(Vehiculo p) throws Exception {
         String sql = "insert into vehiculo (id, compania_seguro_id, cliente_id, numero_poliza, marca, patente) values (?, ?, ?, ?, ?, ?)";
@@ -142,4 +146,52 @@ public class VehiculoDAO {
         return vehiculoList;
     }
 
+    public Vehiculo GetVehiculoByPatente(String patente) throws Exception {
+        PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(
+                "select * from vehiculo where patente=?");
+        preparedStatement.setString(1,patente);
+        preparedStatement.setMaxRows(1);
+        ResultSet rs  = preparedStatement.executeQuery();
+
+        Vehiculo vehiculo = new Vehiculo();
+        vehiculo.set_id (rs.getInt("id"));
+        vehiculo.set_compania_seguro_id(rs.getInt("compania_seguro_id"));
+        vehiculo.set_cliente_id(rs.getInt("cliente_id"));
+        vehiculo.set_numero_poliza(rs.getString("numero_poliza"));
+        vehiculo.set_marca(rs.getString("marca"));
+        vehiculo.set_patente(rs.getString("patente"));
+        return vehiculo;
+    }
+
+    public List<Vehiculo> obtenerVehiculos() {
+        try { return ReadVehiculoList(); }
+        catch (Exception ex) {return null; }
+    }
+
+    public Vehiculo obtenerVehiculo(String id) {
+        return obtenerVehiculo(Integer.valueOf(id));
+    }
+
+    public Vehiculo obtenerVehiculo(int id) {
+        try {return ReadVehiculo(id);}
+        catch (Exception ex) {return null;}
+    }
+
+    public Vehiculo obtenerVehiculoPatente(String patente, String compania, String nombreCliente) {
+        try {
+            Vehiculo vehiculo = GetVehiculoByPatente(patente);
+            if(vehiculo != null)
+                return vehiculo;
+
+            CompaniaSeguro companiaSeguro = companiaSeguros.obtenerCompaniaSeguroNombre(compania);
+            Cliente cliente = clientes.obtenerClienteNombre(nombreCliente);
+            vehiculo = new Vehiculo();
+            vehiculo.set_patente(patente);
+            vehiculo.set_compania_seguro_id(companiaSeguro.getId());
+            vehiculo.set_cliente_id(cliente.get_id());
+
+            return vehiculo;
+        }
+        catch (Exception ex) {return null;}
+    }
 }

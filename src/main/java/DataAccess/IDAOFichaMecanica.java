@@ -7,5 +7,6 @@ import java.util.List;
 public interface IDAOFichaMecanica extends IDAO {
     List<DTO.FichaMecanica> obtenerFichasMecanicas();
     DTO.FichaMecanica obtenerFichaMecanica(String id);
-    void actualizar(DTO.FichaMecanica ficha);
+    DTO.FichaMecanica obtenerFichaMecanica(int id);
+    void registrarActividades(int id, String actividadesText,String insumosText);
 }

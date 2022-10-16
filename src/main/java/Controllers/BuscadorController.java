@@ -65,6 +65,6 @@ public class BuscadorController extends BaseController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        BuscadorTurnoTextField.setText(HelloApplication.turnosBO.obtenerTurnoID());
+
     }
 }

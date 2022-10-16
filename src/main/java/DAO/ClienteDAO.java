@@ -167,6 +167,17 @@ public class ClienteDAO implements IDAOCliente {
             return ReadCliente(nombre);
         }
         catch (Exception ex) {
+
+        }
+
+        try {
+            Cliente cliente = new Cliente();
+            cliente.set_nombre(nombre);
+            cliente.set_telefono("555555555");
+            CreateCliente(cliente);
+            return cliente;
+        }
+        catch (Exception ex) {
             return null;
         }
     }

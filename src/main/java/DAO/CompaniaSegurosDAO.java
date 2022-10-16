@@ -134,9 +134,9 @@ public class CompaniaSegurosDAO implements IDAOCompaniaSeguro {
         }
     }
 
-    public DTO.CompaniaSeguro obtenerCompaniaSeguro(String id){
+    public DTO.CompaniaSeguro obtenerCompaniaSeguro(int id){
         try {
-            return ReadCompaniaSeguro(Integer.valueOf(id));
+            return ReadCompaniaSeguro(id);
         }
         catch (Exception ex) {
             return null;

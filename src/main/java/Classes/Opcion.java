@@ -36,13 +36,13 @@ public class Opcion {
         Hora = hora;
     }
 
-    private Mecanico Mecanico;
+    private DTO.Mecanico Mecanico;
 
-    public Classes.Mecanico getMecanico() {
+    public DTO.Mecanico getMecanico() {
         return Mecanico;
     }
 
-    public void setMecanico(Classes.Mecanico mecanico) {
+    public void setMecanico(DTO.Mecanico mecanico) {
         Mecanico = mecanico;
     }
 

@@ -2,6 +2,7 @@ package DAO;
 
 import DTO.CompaniaSeguro;
 import DTO.FichaMecanica;
+import DataAccess.IDAOFichaMecanica;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,7 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FichaMecanicaDAO {
+public class FichaMecanicaDAO implements IDAOFichaMecanica {
 
     public int CreateFichaMecanica(FichaMecanica p) throws Exception {
         String sql = "insert into ficha_mecanica (actividades, ficha_conformidad_id, repuestos) values (?, ?, ?)";
@@ -38,6 +39,37 @@ public class FichaMecanicaDAO {
         return fichaMecanicaList;
     }
 
+
+    @Override
+    public List<FichaMecanica> obtenerFichasMecanicas() {
+        return null;
+    }
+
+    public FichaMecanica obtenerFichaMecanica(String id) {
+        return obtenerFichaMecanica(Integer.valueOf(id));
+    };
+
+    public void registrarActividades(int id, String actividadesText,String insumosText) {
+        try {
+            String sql = "update ficha_mecanica set actividades=?, repuestos=? where id=?";
+
+            PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement(sql);
+            preparedStatement.setString(1 ,actividadesText);
+            preparedStatement.setString(2 ,insumosText);
+            preparedStatement.setInt(3 ,id);
+
+            preparedStatement.executeUpdate();}
+        catch (Exception ex) {}
+    }
+
+    public FichaMecanica obtenerFichaMecanica(int id) {
+        try {
+            return ReadFichaMecanica(id);
+        }
+        catch (Exception ex) {
+            return null;
+        }
+    };
 
     public FichaMecanica ReadFichaMecanica(Integer id) throws Exception {
         PreparedStatement preparedStatement = Utils.DBConnection.getConnection().prepareStatement("select * from ficha_mecanica where id=?");
@@ -94,11 +126,11 @@ public class FichaMecanicaDAO {
 
     public List<FichaMecanica> get_ficha_mecanica_by_ficha_conformidad(Integer ficha_conformidad_id) throws Exception {
         Statement st = Utils.DBConnection.getConnection().createStatement();
-        ResultSet rs = st.executeQuery("select * from ficha_mecanica where ficha_conformidad_id=?");
+        ResultSet rs = st.executeQuery("select id,actividades,ficha_conformidad_id,repuestos from ficha_mecanica where ficha_conformidad_id=?");
         List<FichaMecanica> fichaMecanicaList = new ArrayList<>();
         while(rs.next()) {
             FichaMecanica fichaMecanica = new FichaMecanica();
-            fichaMecanica.set_id(rs.getInt("Id"));
+            fichaMecanica.set_id(rs.getInt("id"));
             fichaMecanica.set_actividades(rs.getString("actividades"));
             fichaMecanica.set_ficha_conformidad_id(rs.getInt("ficha_conformidad_id"));
             fichaMecanica.set_repuestos(rs.getString("repuestos"));

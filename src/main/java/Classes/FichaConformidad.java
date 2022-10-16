@@ -6,11 +6,13 @@ public class FichaConformidad {
 
     public FichaConformidad(int id, boolean firmaConforme) {
         this.id = id;
+        this.firmada = true;
         this.firmaConforme = firmaConforme;
     }
 
     public FichaConformidad(int id, boolean firmaConforme, String motivosDisconforme) {
         this.id = id;
+        this.firmada = true;
         this.firmaConforme = firmaConforme;
         this.motivosDisconforme = motivosDisconforme;
     }

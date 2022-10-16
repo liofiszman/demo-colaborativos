@@ -13,13 +13,19 @@ public class TurnoBusinessObject {
     TurnoDAO turnos = (TurnoDAO) getDAO(TipoDAOEnum.DAOTurnos);
     MecanicoDAO mecanicos = (MecanicoDAO) getDAO(TipoDAOEnum.DAOMecanico);
     CompaniaSegurosDAO companiasSeguro = (CompaniaSegurosDAO) getDAO(TipoDAOEnum.DAOCompaniaSeguro);
+    VehiculoDAO vehiculos = (VehiculoDAO) getDAO(TipoDAOEnum.DAOVehiculo);
+    FichaMecanicaDAO fichasMecanicas = (FichaMecanicaDAO) getDAO(TipoDAOEnum.DAOFichaMecanica);
+    FichaConformidadDAO fichasConformidad = (FichaConformidadDAO) getDAO(TipoDAOEnum.DAOFichaConformidad);
 
     IDAO getDAO(TipoDAOEnum tipoDAO) {
         try {
             switch (tipoDAO) {
                 case DAOTurnos -> { return new TurnoDAO(); }
                 case DAOMecanico -> { return new MecanicoDAO(); }
+                case DAOVehiculo -> { return new VehiculoDAO(); }
                 case DAOCompaniaSeguro -> { return new CompaniaSegurosDAO(); }
+                case DAOFichaConformidad -> { return new FichaConformidadDAO(); }
+                case DAOFichaMecanica -> { return new FichaMecanicaDAO(); }
                 default -> { return null; }
             }
         }
@@ -32,9 +38,9 @@ public class TurnoBusinessObject {
         return turnos.obtenerTurnos(patente);
     }
 
-    public List<DTO.Turno> obtenerTurnos(Opcion opcion) {
+    public List<Classes.Turno> obtenerTurnos(Opcion opcion) throws Exception{
         List<DTO.Mecanico> opcionesMecanicos = mecanicos.obtenerTurnos(opcion);
-        return turnos.obtenerTurnos(opcion, opcionesMecanicos);
+        return turnos.obtenerTurnosC(opcion, opcionesMecanicos);
     }
 
     private IReporteStrategy Strategy;
@@ -56,10 +62,6 @@ public class TurnoBusinessObject {
         return turnos.addTurno(turno, opcion);
     }
 
-    public String obtenerTurnoID() {
-        return turnos.obtenerTurnoID();
-    }
-
     public List<String> obtenerEspecialidades() {
         return mecanicos.obtenerEspecialidades();
     }
@@ -68,11 +70,17 @@ public class TurnoBusinessObject {
         return companiasSeguro.obtenerCompaniasSeguro()
                 .stream().map(DTO.CompaniaSeguro::getNombre).toList();
     }
+    public CompaniaSeguro obtenerCompaniaSeguro(int id) {
+        return companiasSeguro.obtenerCompaniaSeguro(id);
+    }
 
     public void registrarActividades(String numeroTurno,String actividadesText,String insumosText){
         turnos.registrarActividades(numeroTurno, actividadesText, insumosText);
     }
 
+    public FichaConformidad obtenerFichaConformidad(int id) {
+        return fichasConformidad.obtenerFichaConformidad(id);
+    }
     public void firmaConforme(String numeroTurno){
         turnos.firmaConforme(numeroTurno);
     }
@@ -83,6 +91,10 @@ public class TurnoBusinessObject {
     public Turno obtenerTurno(String id) {
         return turnos.obtenerTurno(id);
     }
+    public Classes.Turno obtenerTurnoCompleto(String id) {
+        return turnos.obtenerTurnoCompleto(id);
+    }
+
     public Mecanico obtenerMecanico(int id) {
         return mecanicos.obtenerMecanico(id);
     }
@@ -93,4 +105,13 @@ public class TurnoBusinessObject {
     public void cancelarTurno(String id) {
         turnos.cancelarTurno(id);
     }
+
+    public FichaMecanica obtenerFichaMecanica(int id)  {
+        return fichasMecanicas.obtenerFichaMecanica(id);
+    }
+
+    public Vehiculo obtenerVehiculo(int id)  {
+        return vehiculos.obtenerVehiculo(id);
+    }
+
 }
