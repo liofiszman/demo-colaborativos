@@ -8,6 +8,7 @@ import DAO.*;
 import DTO.*;
 import DataAccess.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TurnoBusinessObject {
     TurnoDAO turnos;
@@ -30,13 +31,13 @@ public class TurnoBusinessObject {
     IDAO getDAO(TipoDAOEnum tipoDAO) {
         try {
             switch (tipoDAO) {
-                case DAOTurnos -> { return new TurnoDAO(); }
-                case DAOMecanico -> { return new MecanicoDAO(); }
-                case DAOVehiculo -> { return new VehiculoDAO(); }
-                case DAOCompaniaSeguro -> { return new CompaniaSegurosDAO(); }
-                case DAOFichaConformidad -> { return new FichaConformidadDAO(); }
-                case DAOFichaMecanica -> { return new FichaMecanicaDAO(); }
-                default -> { return null; }
+                case DAOTurnos : { return new TurnoDAO(); }
+                case DAOMecanico : { return new MecanicoDAO(); }
+                case DAOVehiculo : { return new VehiculoDAO(); }
+                case DAOCompaniaSeguro : { return new CompaniaSegurosDAO(); }
+                case DAOFichaConformidad : { return new FichaConformidadDAO(); }
+                case DAOFichaMecanica : { return new FichaMecanicaDAO(); }
+                default : { return null; }
             }
         }
         catch (Exception ex){
@@ -78,7 +79,7 @@ public class TurnoBusinessObject {
 
     public List<String> getCompanias() throws Exception {
         return companiasSeguro.obtenerCompaniasSeguro()
-                .stream().map(DTO.CompaniaSeguro::getNombre).toList();
+                .stream().map(DTO.CompaniaSeguro::getNombre).collect(Collectors.toList());
     }
     public CompaniaSeguro obtenerCompaniaSeguro(int id) {
         return companiasSeguro.obtenerCompaniaSeguro(id);
